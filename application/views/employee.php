@@ -1,7 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<title><?php echo $this->lang->line('website_title'); ?></title>
+<title>Telework Benefits for Employees</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="Telework Portfolio is a professional network that makes it easy for employees and employers to measure their telework ROI." />
@@ -30,22 +30,22 @@
     <div class="details_holder">
         <div class="company_beenefits">
         	<div class="title">Employee Benefit</div>
-            <div class="video_holder"><a href="#"><img src="resource/images/video1.png" alt="" /></a></div>
+         <!--   <div class="video_holder"><a href="#"><img src="resource/images/video1.png" alt="" /></a></div>-->
             <div class="benefit_text">
-            	<div class="text_holder"><strong> Improves employee satisfaction</strong><br />People are sick of the rat race, eager to take control of their lives, and desperate to find a balance between work and life.</div>
-            	<div class="text_holder"><strong>increases productivity</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam elementum, augue vel scelerisque blandit, magna sem pellentesque sem, ac porta risus diam sagittis tortor. Vivamus vel turpis massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</div>
-            	<div class="text_holder"><strong>Benefit one</strong><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam elementum, augue vel scelerisque blandit, magna sem pellentesque sem, ac porta risus diam sagittis tortor. Vivamus vel turpis massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</div>
+            	<div class="text_holder"><strong>Save Time and Money with Less Traveling</strong><br />Not only would an individual save on gas by telecommuting, but they are saving on maintenance costs, toll fees, tickets, and public transportation costs. Employees working from home can save hours a week by not commuting. A telecommuter can also save on that one hour extra day care cost they’ve been paying. </div>
+            	<div class="text_holder"><strong>Better Work-Life Balance</strong><br />Employees can easily adjust their working hours around their life, with the exceptions of deadlines and meetings. Teleworking can reduce an employee taking personal and sick days because they are more flexible with their schedule.</div>
+            	<div class="text_holder"><strong>Greater Work Opportunities</strong><br />Those in rural areas may be limited in their work opportunities. Driving 50+ miles one way is just not economically feasible for some, and takes away from their personal life. There are more opportunities for advancement if someone can work from home. An employee can live hundreds of miles away and have their dream job. </div>
             
 </div>
-            <div class="thumb_images">
+      <!--      <div class="thumb_images">
             	<ul>
                 	<li><a href="#"><img src="resource/images/img3.png" alt="" /></a><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br /><br /><a href="#">Read More</a></li>
                     <li><a href="#"><img src="resource/images/img3.png" alt="" /></a><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br /><br /><a href="#">Read More</a></li>
                     <li><a href="#"><img src="resource/images/img3.png" alt="" /></a><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br /><br /><a href="#">Read More</a></li>
                     <li class="nospace"><a href="#"><img src="resource/images/img3.png" alt="" /></a><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br /><br /><a href="#">Read More</a></li>
                 </ul>
-            </div>
-            <div class="btn_holder"><a href="<?php echo base_url("account/sign_up");?>"><img src="resource/images/discover-btn.png" alt="" /></a></div>
+            </div>-->
+            <div class="btn_holder"><a href="<?php echo base_url("sign_up");?>"><img src="resource/images/discover-btn.png" alt="" /></a></div>
         </div>
     </div> 
  <?php echo $this->load->view('footer'); ?> </div>

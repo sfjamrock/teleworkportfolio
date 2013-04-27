@@ -24,7 +24,7 @@ class Account_details_model extends CI_Model {
 	 * @param array $attributes
 	 * @return void
 	 */
-	function update($account_id, $attributes = array())
+	function update($account_id, $firstname, $lastname, $attributes = array())
 	{
 			
 		if (isset($attributes['fullname'])) if (strlen($attributes['fullname']) > 160) $attributes['fullname'] = substr($attributes['fullname'], 0, 160);
@@ -109,10 +109,17 @@ class Account_details_model extends CI_Model {
 		}
 		// Insert
 		else
-		{
+		{	
+			$ipaddress = $_SERVER['REMOTE_ADDR'];
+			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
+			$location = json_decode($json);
+
 			$attributes['account_id'] = $account_id;
 			$attributes['firstname'] =$firstname;
 			$attributes['lastname'] =$lastname;
+			$attributes['city'] =$location->city;;
+			$attributes['state'] =$location->region_code;
+
 			$this->db->insert('a3m_account_details', $attributes);
 		}
 	}

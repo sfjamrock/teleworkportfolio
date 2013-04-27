@@ -27,16 +27,8 @@ function GetTask($term)
 function self_tracker($a,$b,$c)
 {
 	$a=implode(",",$a);
-	$data1 = array(
 	
-					'mile' => $this->input->post('mile'),
-					'time' => $this->input->post('time'),
-					'money' => $this->input->post('money'),
-					'user_id' => $this->session->userdata('account_id'),
-					'date' => mdate('%Y-%m-%d %H:%i:%s', now())
-					);
-	
-	$data2 = array(
+	$data = array(
 					'job_title'=> $this->input->post('title'),
 					'eligible_task_list' => $a,
 					'eligible_num' => $b,
@@ -44,8 +36,7 @@ function self_tracker($a,$b,$c)
 					'user_id' => $this->session->userdata('account_id'),
 					'date' => mdate('%Y-%m-%d %H:%i:%s', now())
 					);
-	$query1 = $this->db->insert('telework_tracker',$data1);
-	$query2 = $this->db->insert('eligible_tracker',$data2);
+	$query = $this->db->insert('eligible_tracker',$data);
 }
 function start_tracker()
 {

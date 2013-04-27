@@ -17,7 +17,7 @@ class Teleworkwizard extends CI_Controller {
 	{
  		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('account/sign_in/?continue='.urlencode(base_url().'teleworkwizard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
 		}
 		if ($this->authentication->is_signed_in())
 		{
@@ -55,7 +55,7 @@ class Teleworkwizard extends CI_Controller {
 	{
 		 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('account/sign_in/?continue='.urlencode(base_url().'teleworkwizard/telework_calculator/start'));
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
 		}
 		
 	
@@ -66,10 +66,7 @@ class Teleworkwizard extends CI_Controller {
 				
 
 		$this->form_validation->set_rules(array(
-			array('field'=>'mile', 'label'=>'mile', 'rules'=>'trim|required|xss_clean'),
-			array('field'=>'time', 'label'=>'time', 'rules'=>'trim|required|xss_clean'),
 			array('field'=>'choice[]', 'label'=>'choice[]', 'rules'=>'trim|required|xss_clean'),
-			array('field'=>'money', 'label'=>'money', 'rules'=>'trim|required|xss_clean')
 		));
 
 $a=array();
@@ -94,7 +91,7 @@ foreach ($this->input->post('choice') as $v)
 
 		if ($this->form_validation->run() == false) 
 		{
-				$this->load->view('telework_application', isset($data) ? $data : NULL);
+				$this->load->view('job', isset($data) ? $data : NULL);
 
 		}
 		else 
@@ -102,11 +99,11 @@ foreach ($this->input->post('choice') as $v)
 	
 			if($this->tp_model->self_tracker($a,$b,$c))
 				{
-				redirect('myTIMS');
+				echo "i got it wrong";
 				}
 			else
 				{
-				$this->load->view('telework_application', isset($data) ? $data : NULL);
+				redirect('');
 				}
 										
 		}

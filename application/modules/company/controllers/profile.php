@@ -16,7 +16,7 @@ class Profile extends CI_Controller {
 	 {
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('account/sign_in/?continue='.urlencode(base_url().'company/profile'));
+			redirect('sign_in/?continue='.urlencode(base_url().'company/profile'));
 		}
 		
 

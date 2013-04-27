@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -10,6 +10,8 @@
 <script src="resource/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 <script src="resource/js/menu-collapsed.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="resource/css/accordian.css" />
+<link rel="icon" href="resource/images/favicon.ico" />
+<link rel="shortcut icon" href="resource/images/favicon.ico" />
 
 <!--[if lt IE 8]>
 <style type="text/css">
@@ -38,7 +40,7 @@ li a {display:block;}
         <div class="savings_tracker">
             <ul id="menu">
             	<li><a href="#">Same as last</a></li>
-                <li><a  href="#" >Edit</a>
+                <li><a>Edit</a>
                     <ul>
                         <li>
                             <div class="savings_tracker_form">
@@ -61,7 +63,7 @@ li a {display:block;}
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="text2"><a href="#"><img src="resource/images/Submit.png" alt="" /></a></div>
+                                <div class="text2"><a href="#"><img src="resource/images/submit.png" alt="" /></a></div>
                             </div>
                         </li>
                     </ul>

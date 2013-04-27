@@ -1,4 +1,4 @@
-﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Profile extends CI_Controller {
 
@@ -15,25 +15,39 @@ class Profile extends CI_Controller {
 	 {
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('account/sign_in/?continue='.urlencode(base_url().'users/dashboard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
 		}
 		
 
 		
 		if ($this->authentication->is_signed_in())
 		{
-redirect('users/profile/lookup/'.$this->session->userdata('account_id'));
+			$account = $this->account_model->get_by_id($this->session->userdata('account_id'));
+			redirect('profile/'.$account->username);
 		}
 		
 	 }	
 	function lookup()
 	{
+		if ( ! $this->authentication->is_signed_in()) 
+		{
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+		}
+
 			if ($this->authentication->is_signed_in())
 		{
+			//get user location info start
 			$ipaddress = '209.183.238.119';
 			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
 			$data['location'] = json_decode($json);
-			$user_id = $this->uri->segment(4,$this->session->userdata('account_id'));
+			//get user location info end
+
+			// get user_id using username in url start 		
+			$username = $this->uri->segment(2);
+			$user_id = $this->user_model->userid_lookup($username);
+			$user_id = $user_id ['0']->id;
+			// get user_id using username in url end 
+
 			$data['account'] = $this->account_model->get_by_id($user_id);
 			$data['eligible_tracker'] = $this->tp_model->check_by_id($user_id);
 			$data['account_details'] = $this->account_details_model->get_by_account_id($user_id);
@@ -48,8 +62,15 @@ redirect('users/profile/lookup/'.$this->session->userdata('account_id'));
 
 	function follow()
 	{
-	$this->user_model->follow($this->input->post('loguser'),$this->input->post('pageuser'));
+			// get user_id using username in url start 		
+			$username = $this->input->post('pageuser');
+			$user_id = $this->user_model->userid_lookup($username);
+			$user_id = $user_id ['0']->id;
+			// get user_id using username in url end
+echo $this->input->post('loguser'),$user_id;
+	$this->user_model->follow($this->input->post('loguser'),$user_id);
 	} 
+	 
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

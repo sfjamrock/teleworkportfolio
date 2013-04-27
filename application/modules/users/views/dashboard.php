@@ -23,7 +23,7 @@ $(document).ready(function() {
 		data:{ 
 				message_wall: $('#message_wall').attr('value'),
 				loguser: <?php echo $this->session->userdata('account_id')?>,
-				pageuser: <?php echo $this->uri->segment(4,$this->session->userdata('account_id'))?>
+				pageuser: <?php echo $this->uri->segment(2,$account->username)?>
 		},
 		success: function(){
 			
@@ -54,18 +54,21 @@ $(document).ready(function() {
     <div class="details_holder">
     	<div class="innerpage_content">
 			<div class="employee_dashboard_box">
-            	<div class="main_img"><a href="<?php echo base_url("users/profile/lookup");?>/<?php echo $this->session->userdata('account_id')?>">
-								     <?php if (isset($account_details->picture)) : ?>
-					                 <img src="resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>" width="75" height="75"alt="" />
+            	<div class="main_img"><a href="<?php echo base_url("profile");?>/<?php echo $account->username?>">
+									 <?php if (empty($account->password) && empty($account_details->picture)) : ?>
+					                 <img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
+									 <?php elseif (empty($account->password) && isset($account_details->picture)) : ?>
+ 									 <img src="<?php echo $account_details->picture; ?>" width="75" height="75"alt="" />
+									 <?php elseif (isset($account_details->picture)) : ?>
+					                 <img src="resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" />
 									 <?php else : ?>
-					                 <img src="resource/images/img2.png" alt="" />
-					                 <?php endif; ?>
-									 </a></div>
+					                 <img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
+					                 <?php endif; ?>									 </a></div>
                 <div class="text_holder">
                 	<ul>
                     	<li class="title"><?php echo $account_details->firstname ?> <?php echo $account_details->lastname ?></li>
                     	<li class="text"><?php echo $location->city ?>, <?php echo $location->region_code ?></li>
-                        <li class="text">Employer:</li>
+                       <!-- <li class="text">Employer:</li>-->
                     </ul>
                     <div class="textbox"><form id="submit_wall"><input type="text"  id="message_wall" size="35" placeholder="Status"/>
                     <button type="submit">Post</button></form></div>
@@ -75,7 +78,7 @@ $(document).ready(function() {
          <!--   Start of Update Wall Script -->
 <?php foreach($wall_dashboard as $row): ?>
             <div class="employee_dashboard_box new_border">
-            	<div class="main_img"><a href="<?php echo base_url("users/profile/lookup");?>/<?php echo $row->userA;?>">
+            	<div class="main_img"><a href="<?php echo base_url("profile");?>/<?php echo $row->username;?>">
 				<?php if (isset($row->picture)) : ?>
 			    <img src="resource/user/profile/<?php echo $row->picture; ?>?t=<?php echo md5(time()); ?>" width="50" height="50"alt="" />
 				<?php else : ?>

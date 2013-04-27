@@ -1,4 +1,4 @@
-﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Policy extends CI_Controller {
 
@@ -15,7 +15,11 @@ class Policy extends CI_Controller {
 
 function index()
 	{
-		$this->load->view('policy');
+	if ($this->authentication->is_signed_in())
+		{
+			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
+		}
+		$this->load->view('policy', isset($data) ? $data : NULL);
 	}
 }
 

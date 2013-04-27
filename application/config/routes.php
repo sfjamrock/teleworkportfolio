@@ -40,7 +40,27 @@
 
 $route['default_controller'] = 'home';
 $route['404_override'] = '';
-$route['profile/(:num)'] = "profile/test/$1";
+$route['sign_up'] = "account/sign_up";
+$route['sign_in'] = "account/sign_in";
+$route['account_settings'] = "account/account_settings";
+$route['account_password'] = "account/account_password";
+$route['account_profile'] = "account/account_profile";
+$route['account_linked'] = "account/account_linked";
+
+$route['dashboard'] = "users/dashboard";
+$route['history'] = "users/history";
+$route['stats'] = "users/stats";
+$route['badges/(:any)'] = "users/badges/lookup";
+$route['follower/(:any)'] = "users/follower/lookup";
+$route['following/(:any)'] = "users/following/lookup";
+$route['profile/(:any)'] = "users/profile/lookup";
+$route['teleworker/(:any)'] = "users/teleworker/lookup";
+
+
+
+
+
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

@@ -60,7 +60,7 @@
                     	<div class="checkbox"><input name="sign_in_remember" id="sign_in_remember" type="checkbox" value="checked"  checked=" $this->input->post('sign_in_remember')"/></div>
                         <div class="checkbox_text">Remember Me / <a href="<?php echo base_url("account/forgot_password");?>">Forget Your Password?</a></div>
                     	<div class="checkbox">&nbsp;</div>
-                        <div class="checkbox_text">Don't have an account? <a href="<?php echo base_url("account/sign_up");?>">Sign up now</a></div>                        
+                        <div class="checkbox_text">Don't have an account? <a href="<?php echo base_url("sign_up");?>">Sign up now</a></div>                        
                     </div>
                 </div>
             </div>
@@ -68,7 +68,7 @@
             <?php echo form_close(); ?>
             <div class="social_icon">
             	<h1>Sign in with your account from:</h1>
-                <div class="img_holder"><a href="<?php echo base_url("account/connect_facebook");?>"><img src="resource/images/facebook.png" alt="" /></a> <a href="<?php echo base_url("account/connect_twitter");?>"><img src="resource/images/twitter.png" alt="" /></a> <a href="<?php echo base_url("account/connect_google");?>"><img src="resource/images/google.png" alt="" /></a> <a href="<?php echo base_url("account/connect_yahoo");?>"><img src="resource/images/yahoo.png" alt="" /></a> <a href="<?php echo base_url("account/connect_openid");?>"><img src="resource/images/openid.png" alt="" /></a> </div>
+                <div class="img_holder"><a href="<?php echo base_url("account/connect_facebook");?>"><img src="resource/images/facebook.png" alt="" /></a><!-- <a href="<?php echo base_url("account/connect_twitter");?>"><img src="resource/images/twitter.png" alt="" /></a> <a href="<?php echo base_url("account/connect_google");?>"><img src="resource/images/google.png" alt="" /></a> <a href="<?php echo base_url("account/connect_yahoo");?>"><img src="resource/images/yahoo.png" alt="" /></a> <a href="<?php echo base_url("account/connect_openid");?>"><img src="resource/images/openid.png" alt="" /></a> --></div>
             </div>
         </div>
     </div>

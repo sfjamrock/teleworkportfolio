@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
 * Preparing and getting response for latest feed items.

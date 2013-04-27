@@ -41,6 +41,14 @@ class Account_model extends CI_Model {
 	{
 		return $this->db->get_where('a3m_account', array('email' => $email))->row();
 	}
+
+
+	//check if username is exists or not
+	function check_if_username_exists($username)
+	{
+		return $this->db->get_where('a3m_account', array('username like' => '%'.$username.'%'))->result();
+		
+	}
 	
 	// --------------------------------------------------------------------
 	
@@ -66,7 +74,7 @@ class Account_model extends CI_Model {
 	 * @param string $hashed_password
 	 * @return int insert id
 	 */
-	function create($email = NULL, $password = NULL)
+	function create($email = NULL, $password = NULL,$username=NULL)
 	{
 		// Create password hash using phpass
 		if ($password !== NULL)
@@ -80,13 +88,12 @@ class Account_model extends CI_Model {
 		$this->db->insert('a3m_account', array(
 			'email' => $email, 
 			'password' => isset($hashed_password) ? $hashed_password : NULL, 
-			'createdon' => mdate('%Y-%m-%d %H:%i:%s', now())
+			'createdon' => mdate('%Y-%m-%d %H:%i:%s', now()),
+			'username'=>$username
 		));
 		
 		return $this->db->insert_id();
-	}
-	
-	// --------------------------------------------------------------------
+	}	// --------------------------------------------------------------------
 	
 	/**
 	 * Change account username

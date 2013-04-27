@@ -16,26 +16,39 @@ class Follower extends CI_Controller {
 	 {
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('account/sign_in/?continue='.urlencode(base_url().'users/dashboard'));
+			redirect('account/sign_in/?continue='.urlencode(base_url().'dashboard'));
 		}
 		
 
 		
 		if ($this->authentication->is_signed_in())
 		{
-redirect('users/follower/lookup/'.$this->session->userdata('account_id'));
+			$account = $this->account_model->get_by_id($this->session->userdata('account_id'));
+			redirect('users/follower/lookup/'.$account->username);
 		}
 		
 	 }	
 	 	 function lookup()
 	{
+		if ( ! $this->authentication->is_signed_in()) 
+		{
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+		}
+
 			if ($this->authentication->is_signed_in())
 		{
+			//get user location info start
 			$ipaddress = '209.183.238.119';
 			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
 			$data['location'] = json_decode($json);
+			//get user location info end
 
-			$userid = $this->uri->segment(4,$this->session->userdata('account_id'));
+			// get user_id using username in url start 		
+			$username = $this->uri->segment(2);
+			$user_id = $this->user_model->userid_lookup($username);
+			$userid = $user_id ['0']->id;
+			// get user_id using username in url end 
+
 			$data['telework_tracker'] = $this->tp_model->get_by_id($userid);
 			$data['account'] = $this->account_model->get_by_id($userid);
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);

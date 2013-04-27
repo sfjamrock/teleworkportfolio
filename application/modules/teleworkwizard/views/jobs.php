@@ -6,7 +6,7 @@
         <title>Profile </title>
 		<base href="<?php echo base_url(); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
-        <meta name="description" content="Telework Portfolio is a online base platform that aims to facilitating data drive conversation about telework between employees and managers" />
+        <meta name="description" content="Telework Portfolio's Self telework job evaluator helps you evaluate your ability to telework." />
         <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home" />
         <meta name="author" content="Telework Portfolio" />
         <link rel="shortcut icon" href="resource/images/favicon.ico" />
@@ -70,21 +70,23 @@ select: function( event, ui ) {
 					position: relative;
 				}
 			</style>
-	
 
 		<![endif]-->
     </head>
 <div id="main">
     <?php echo $this->load->view('header'); ?>
     <div class="details_holder">
-        <h2>Username's Job Evaluation</h2>
+        <h2>Self Teleworker Job Evaluation</h2>
         <div class="job_evaluator">Evaluate your telework eligibility by indicate Eligible, or Non-Eligible to each of the following task listed below according to your job title</div>
-        <div class="job_evaluator">
+             
+           <form id="formElem" name="formElem" action="teleworkwizard/SelfEvaluation" method="post">
+        
+			<div class="job_evaluator">
         	<div class="text1">Job Title:</div>
-        	<div class="text2"><input name="title" type="text" id="autocomplete"  size="50"/>
+        	<div class="text2"><input name="title" type="text" id="autocomplete"  size="100"/>
 </div>
             <div class="text1">Job Description:</div>
-        	<div class="text2"><p id="description"></p>
+        	<div class="text2"><textarea id="description" rows="5" cols="100" ></textarea>
 </div>
             <div class="text1">&nbsp;</div>
         	<div class="text2">
@@ -96,7 +98,11 @@ select: function( event, ui ) {
                 </div>
             </div>
             <div class="text1">&nbsp;</div>
-        	<div class="text2"><a href="#"><img src="resource/images/confirm.png" alt="" /></a></div>
+        	<div class="text3"><a href="#"><INPUT TYPE="image" SRC="resource/images/confirm.png" ALT="Submit Form" >
+</a></div>
+  </form>
+<img src="resource/images/seal.png" alt="" style="float:right">
+
         </div>
     </div>
     <?php echo $this->load->view('footer'); ?>

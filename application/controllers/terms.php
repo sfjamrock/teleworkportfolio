@@ -1,4 +1,4 @@
-﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Terms extends CI_Controller {
 
@@ -14,7 +14,11 @@ class Terms extends CI_Controller {
 	 }
 function index()
 	{
-		$this->load->view('terms');
+	if ($this->authentication->is_signed_in())
+		{
+			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
+		}
+		$this->load->view('terms', isset($data) ? $data : NULL);
 	}
 }
 /* End of file welcome.php */

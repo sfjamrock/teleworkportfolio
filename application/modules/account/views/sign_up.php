@@ -10,27 +10,27 @@
 <base href="<?php echo base_url(); ?>" />
 <link type="text/css" rel="stylesheet" href="resource/css/style.css" />
 </head>
-<body class="sign_up">
-<?php echo $this->load->view('header'); ?>
-<div id="content">
-    <div class="container_12">
-        <div class="grid_12">
-            <h2><?php echo anchor(current_url(), lang('sign_up_page_name')); ?></h2>
-        </div>
-        <div class="clear"></div>
-        <div class="grid_6">
-            <?php echo form_open(uri_string()); ?>
-            <?php echo form_fieldset(); ?>
-            <h3><?php echo lang('sign_up_heading'); ?></h3>
-            <div class="grid_2 alpha">
-                <?php echo form_label('Firstname'); ?>
-            </div>
-            <div class="grid_4 omega">
+<body>
+<div id="main">
+	<?php echo $this->load->view('header'); ?>
+    <div class="details_holder">
+    
+    	<div class="other_content">
+        	<div class="signin_holder">
+
+            	<h1><?php echo anchor(current_url(), lang('sign_up_page_name')); ?><br /><br /><span><?php echo lang('sign_up_heading'); ?>
+</span></h1>
+            <?php echo form_open(uri_string().($this->input->get('continue')?'/?continue='.urlencode($this->input->get('continue')):'')); ?>
+                <div class="signin_holder">
+
+		   <div class="text1">   <?php echo form_label('Firstname'); ?></div> 
+           <div class="text2">
                 <?php echo form_input(array(
                         'name' => 'sign_up_firstname',
                         'id' => 'sign_up_firstname',
                         'value' => set_value('sign_up_firstname'),
-                        'maxlength' => '24'
+                        'maxlength' => '24',
+						'size' => '35'
                     )); ?>
                 <?php echo form_error('sign_up_firstusername'); ?>
                 <?php if (isset($sign_up_firstname_error)) : ?>
@@ -38,15 +38,16 @@
                 <?php endif; ?>
             </div>
 
-            <div class="grid_2 alpha">
+            <div class="text1">
                 <?php echo form_label('Lastname'); ?>
             </div>
-            <div class="grid_4 omega">
+            <div class="text2">
                 <?php echo form_input(array(
                         'name' => 'sign_up_lastname',
                         'id' => 'sign_up_lastname',
                         'value' => set_value('sign_up_lastname'),
-                        'maxlength' => '24'
+                        'maxlength' => '24',
+						'size' => '35'
                     )); ?>
                 <?php echo form_error('sign_up_lastusername'); ?>
                 <?php if (isset($sign_up_lastname_error)) : ?>
@@ -55,76 +56,52 @@
             </div>
 
 
-
-
-            <div class="clear"></div>
-            <div class="grid_2 alpha">
-                <?php echo form_label(lang('sign_up_password'), 'sign_up_password'); ?>
-            </div>
-            <div class="grid_4 omega">
-                <?php echo form_password(array(
-                        'name' => 'sign_up_password',
-                        'id' => 'sign_up_password',
-                        'value' => set_value('sign_up_password')
-                    )); ?>
-                <?php echo form_error('sign_up_password'); ?>
-            </div>
-            <div class="clear"></div>
-            <div class="grid_2 alpha">
-                <?php echo form_label(lang('sign_up_email'), 'sign_up_email'); ?>
-            </div>
-            <div class="grid_4 omega">
-                <?php echo form_input(array(
+                	<div class="text1"><?php echo form_label(lang('sign_up_email'), 'sign_up_email'); ?>:</div>
+                	<div class="text2"> <?php echo form_input(array(
                         'name' => 'sign_up_email',
                         'id' => 'sign_up_email',
                         'value' => set_value('sign_up_email'),
-                        'maxlength' => '160'
+                        'maxlength' => '160',
+						'size' => '35'
                     )); ?>
                 <?php echo form_error('sign_up_email'); ?>
                 <?php if (isset($sign_up_email_error)) : ?>
                 <span class="field_error"><?php echo $sign_up_email_error; ?></span>
                 <?php endif; ?>
-            </div>
-            <div class="clear"></div>
-            <?php if (isset($recaptcha)) : ?>
-            <div class="prefix_2 grid_4 alpha omega">
-                <?php echo $recaptcha; ?>
-            </div>
-            <?php if (isset($sign_up_recaptcha_error)) : ?>
-            <div class="prefix_2 grid_4 alpha omega">
-                <span class="field_error"><?php echo $sign_up_recaptcha_error; ?></span>
-            </div>
-            <?php endif; ?>
-            <div class="clear"></div>
-            <?php endif; ?>
-            <div class="prefix_2 grid_4 alpha omega">
+                    </div>
+                    <div class="text1"><?php echo form_label(lang('sign_up_password'), 'sign_up_password'); ?>:</div>
+                	<div class="text2">  <?php echo form_password(array(
+                        'name' => 'sign_up_password',
+                        'id' => 'sign_up_password',
+                        'value' => set_value('sign_up_password'),
+						'size' => '35'
+                    )); ?>
+                <?php echo form_error('sign_up_password'); ?>
+                    </div>
+                    <div class="btn_holder"> 
                 <?php echo form_button(array(
                         'type' => 'submit',
                         'class' => 'button',
                         'content' => lang('sign_up_create_my_account')
                     )); ?>
+                     </div>
+                    <div class="text1">&nbsp;</div>
+                    <div class="text2">
+                    <div class="checkbox_text"><p><?php echo lang('sign_up_already_have_account'); ?> <?php echo anchor('sign_in', lang('sign_up_sign_in_now')); ?></p</a></div>                        
+                    </div>
+                </div>
             </div>
-            <div class="prefix_2 grid_4 alpha omega">
-                <p><?php echo lang('sign_up_already_have_account'); ?> <?php echo anchor('account/sign_in', lang('sign_up_sign_in_now')); ?></p>
-            </div>
-            <?php echo form_fieldset_close(); ?>
+
             <?php echo form_close(); ?>
+            <div class="social_icon">
+            	<h1>Sign up with your account from:</h1>
+                <div class="img_holder"><a href="<?php echo base_url("account/connect_facebook");?>"><img src="resource/images/facebook.png" alt="" /></a> <!--<a href="<?php echo base_url("account/connect_twitter");?>"><img src="resource/images/twitter.png" alt="" /></a> <a href="<?php echo base_url("account/connect_google");?>"><img src="resource/images/google.png" alt="" /></a> <a href="<?php echo base_url("account/connect_yahoo");?>"><img src="resource/images/yahoo.png" alt="" /></a> <a href="<?php echo base_url("account/connect_openid");?>"><img src="resource/images/openid.png" alt="" /></a>--> </div>
+            </div>
         </div>
-		 <?php if ($this->config->item('third_party_auth_providers')) : ?>
-		   <div class="grid_6">
-			 <h3><?php echo sprintf(lang('sign_up_third_party_heading')); ?></h3>
-			 <ul>
-			   <?php foreach($this->config->item('third_party_auth_providers') as $provider) : ?>
-			   <li class="third_party <?php echo $provider; ?>"><?php echo anchor('account/connect_'.$provider, lang('connect_'.$provider),
-				 array('title'=>sprintf(lang('sign_up_with'), lang('connect_'.$provider)))); ?></li>
-			   <?php endforeach; ?>
-			 </ul>
-			 <div class="clear"></div>
-		   </div>
-		 <?php endif; ?>
-        <div class="clear"></div>
     </div>
-</div>
+
+
+         
 <?php echo $this->load->view('footer'); ?>
 </body>
 </html>

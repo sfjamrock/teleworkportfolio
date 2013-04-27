@@ -6,3 +6,5 @@ RewriteRule ^(.*)$ /teleworkportfolio/index.php/$1 [L]
 
 
 
+
+

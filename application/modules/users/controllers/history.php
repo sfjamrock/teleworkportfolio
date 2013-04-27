@@ -1,4 +1,4 @@
-﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class History extends CI_Controller {
 
@@ -16,7 +16,7 @@ class History extends CI_Controller {
 	 {
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('account/sign_in/?continue='.urlencode(base_url().'users/dashboard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
 		}
 		
 
@@ -31,20 +31,7 @@ class History extends CI_Controller {
 			
 		}
 	 }	
-	function lookup()
-	{
-			if ($this->authentication->is_signed_in())
-		{
-			$user_id = $this->uri->segment(4,$this->session->userdata('account_id'));
-			$data['account'] = $this->account_model->get_by_id($user_id);
-			$data['telework_tracker'] = $this->tp_model->get_by_id($user_id);
-			$data['account_details'] = $this->account_details_model->get_by_account_id($user_id);
-			$this->load->view('history', isset($data) ? $data : NULL);
-		}
-		else
-		redirect('');
-
-	} 
+ 
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

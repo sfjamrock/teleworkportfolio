@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
 <title><?php echo $this->lang->line('website_title'); ?></title>
-<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="Telework Portfolio is a professional network that makes it easy for employees and employers to measure their telework ROI." />
 <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home, remote worker" />
@@ -32,13 +31,13 @@
     <div class="main_container">
       <div class="main_content">
         <div class="title">Connect with Teleworkers around you</div>
-        <div class="video_holder"><iframe width="560" height="330" src="http://www.youtube.com/embed/em9caQNP1Es" frameborder="0" allowfullscreen></iframe></div>
+        <div class="video_holder"><iframe width="560" height="330" src="http://www.youtube.com/embed/wDjA7QNFagI" frameborder="0" allowfullscreen></iframe></div>
       </div>
       <div class="sidebar">
-        <div class="title">Get Started - Its Free!</div>
+        <div class="title"><a href="<?php echo base_url("account/connect_facebook");?>"><img src="resource/images/fb-connect-button.png" alt=""  width="300"/></a></div>
         <div class="form_holder">
-		<form name="sign_up" action="account/sign_up" enctype="multipart/form-data" method="post">
-          <div class="text1">Registration take less than 2 minutes.</div>
+
+		<form name="sign_up" action="sign_up" enctype="multipart/form-data" method="post">
           <div class="text2">First Name:</div>
           <div class="text3">
                 <?php echo form_input(array(
@@ -99,6 +98,7 @@
         </div>
       </div>
     </div>
+<!--
     <div class="testimonials">
       <div class="title">Testimonials</div>
       <div class="testimonials_text_holder">
@@ -113,7 +113,7 @@
           <br />
           <strong>Name goes here...</strong></div>
       </div>
-    </div>
+    </div>-->
   </div>
   <?php echo $this->load->view('footer'); ?> </div>
 </body>

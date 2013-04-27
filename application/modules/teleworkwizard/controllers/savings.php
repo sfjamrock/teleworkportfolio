@@ -1,4 +1,4 @@
-﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Savings extends CI_Controller {
 	
@@ -17,19 +17,13 @@ class Savings extends CI_Controller {
 	{
  		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('account/sign_in/?continue='.urlencode(base_url().'teleworkwizard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
 		}
 		if ($this->authentication->is_signed_in())
 		{
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
 		}
 		
-/*		
-		$get_result = $this->tp_model->user_exist();
-			if(!$get_result){
-				 $this->tp_model->update_tracker();
-				redirect('myTIMS');
-			}else{ */
 				$this->load->view('savings_tracker', isset($data) ? $data : NULL);
 			
 

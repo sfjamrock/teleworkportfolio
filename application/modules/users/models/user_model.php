@@ -5,16 +5,40 @@ class User_model extends CI_Model {
 	// --------------------------------------------------------------------
 	function get_stats_list($user_id)
 	{
+		$sql = "SELECT job_title  FROM eligible_tracker where user_id='$user_id'";
+	    $query = $this->db->query($sql);
+		return $query->result();
+	}
+	function get_stats_list2($user_id)
+	{
 		$sql = "SELECT eligible_task_list  FROM eligible_tracker where user_id='$user_id'";
 	    $query = $this->db->query($sql);
 		return $query->result();
 	}
+
 	function get_task_list($task_id)
 	{
 		$sql = "SELECT onetsoc_code, task  FROM task_statements where task_id='$task_id'";
 	    $query = $this->db->query($sql);
 		return $query->result();
 	}
+	function get_description_task_list($title)
+	{
+		$sql = "SELECT title, description, task_id, task FROM occupation_data JOIN task_statements ON task_statements.onetsoc_code = occupation_data.onetsoc_code WHERE title = '$title' ";
+	    $query = $this->db->query($sql);
+		return $query->result();
+	}
+	function get_similar_user_occupation($title,$user_id)
+	{
+		$sql = "select username, account_id, picture, firstname, lastname, job_title, city, state 
+from a3m_account_details  
+JOIN eligible_tracker ON a3m_account_details.account_id = eligible_tracker.user_id
+join a3m_account on a3m_account_details.account_id = a3m_account.id where job_title = '$title' and account_id !=$user_id limit 3";
+	    $query = $this->db->query($sql);
+		return $query->result();
+	}
+
+
 
 	/**
 	 * Follow a user
@@ -66,7 +90,7 @@ class User_model extends CI_Model {
 	function update_wall($user_id)
 	{
 		
-		$sql = "SELECT  posted_on,message, firstname, lastname, picture, userA
+		$sql = "SELECT  posted_on,message, firstname, lastname, picture, userA,username
 				FROM users_activity
 				JOIN a3m_account
 				ON a3m_account.id=users_activity.userA 
@@ -82,12 +106,12 @@ class User_model extends CI_Model {
 /*return all user that are following a user*/
 	function follower($user_id)
 	{
-		$sql="SELECT firstname, lastname, picture, userA
+		$sql="SELECT firstname, lastname, picture, userA, username
 FROM follow
-JOIN telework.a3m_account
-ON telework.a3m_account.id=telework.follow.userA 
-join telework.a3m_account_details 
-on  telework.a3m_account_details.account_id=telework.follow.userA
+JOIN a3m_account
+ON a3m_account.id=follow.userA 
+join a3m_account_details 
+on  a3m_account_details.account_id=follow.userA
 WHERE userB = $user_id";
 		$query = $this->db->query($sql);
 		return $query->result();
@@ -96,12 +120,12 @@ WHERE userB = $user_id";
 /*return all users a user is following*/
 		function following($user_id)
 	{
-		$sql="SELECT firstname, lastname, picture, userA
+		$sql="SELECT firstname, lastname, picture, userA, username
 FROM follow
-JOIN telework.a3m_account
-ON telework.a3m_account.id=telework.follow.userB 
-join telework.a3m_account_details 
-on  telework.a3m_account_details.account_id=telework.follow.userB
+JOIN a3m_account
+ON a3m_account.id=follow.userB 
+join a3m_account_details 
+on  a3m_account_details.account_id=follow.userB
 WHERE userA = $user_id";
 		$query = $this->db->query($sql);
 		return $query->result();
@@ -109,11 +133,23 @@ WHERE userA = $user_id";
 	
 	function userid_lookup($username)
 	{
-$test=implode("",$username);
-	$query = $this->db->get_where('a3m_account', array('username' => $test));
-return $query->result();
-
+		$sql="SELECT id FROM a3m_account where username like '$username'";
+		$query = $this->db->query($sql);
+		return $query->result();
 	}
+	function userstats_lookup($user_id)
+	{
+		$sql="SELECT count(id)as num, sum(mile) as mile, sum(time) as time, sum(money)as money FROM telework_tracker where user_id = $user_id";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+	function userstats_chart($user_id)
+	{
+		$sql="SELECT count(user_id) as count, DAYNAME(date) as Day FROM telework_tracker where user_id = $user_id group by Day ORDER BY Day; ";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
 }
 
 

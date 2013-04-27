@@ -16,7 +16,7 @@ class Start extends CI_Controller {
 	 {
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('account/sign_in/?continue='.urlencode(base_url().'users/dashboard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
 		}
 		
 

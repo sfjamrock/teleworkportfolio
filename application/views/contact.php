@@ -7,6 +7,7 @@
 <meta name="description" content="Telework Portfolio is a professional network that makes it easy for employees and employers to measure their telework ROI." />
 <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home, remote worker" />
 <meta name="author" content="Telework Portfolio" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 <link rel="stylesheet" href="resource/css/style.css" media="screen" />
 <link rel="icon" href="resource/images/favicon.ico" />
 <link rel="shortcut icon" href="resource/images/favicon.ico" />
@@ -31,40 +32,47 @@
         <div class="main_container">
         	<div class="main_content">
             	<div class="title">Contact Us</div>
-                <div class="video_holder"><strong>We want to hear from you.</strong><br /><br />Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                <div class="video_holder"><strong>We want to hear from you.</strong><br /><br />If you would like more information about any of the services that Telework Portfolio offer, please contact us by using any of the following methods:</div>
                 <div class="contact_info">
                 	<h2>Contact Info Area:</h2>
                     <ul>
                     	<li>Full Name:</li>
-                        <li class="big">Name Goes Here.....</li>
-                        <li>Address:</li>
+                        <li class="big">Sean Fuller</li>
+                      <!--  <li>Address:</li>
                         <li class="big">Address Goes Here.....</li>
                         <li>Phone:</li>
                         <li class="big">Phone Goes Here.....</li>
                         <li>Fax:</li>
-                        <li class="big">Fax Goes Here.....</li>
+                        <li class="big">Fax Goes Here.....</li>-->
                         <li>Email:</li>
-                        <li class="big">Email Goes Here.....</li>
+                        <li class="big">sfuller@teleworkportfolio.com</li>
                     </ul>
                 </div>
                 <div class="follow_us">
-                	Follow Us:<br /><a href="http://www.facebook.com/TeleworkPortfolio" target="_blank"><img src="resource/images/facebook.png" alt="" /></a> <a href="#"><img src="resource/images/twitter.png" alt="" /></a> <a href="#"><img src="resource/images/google.png" alt="" /></a> <a href="#"><img src="resource/images/openid.png" alt="" /></a> <a href="#"><img src="resource/images/yahoo.png" alt="" /></a> 
+                	Follow Us:<br /><a href="http://www.facebook.com/TeleworkPortfolio" target="_blank"><img src="resource/images/facebook.png" alt="" /></a> <!--<a href="#"><img src="resource/images/twitter.png" alt="" /></a> <a href="#"><img src="resource/images/google.png" alt="" /></a> <a href="#"><img src="resource/images/openid.png" alt="" /></a> <a href="#"><img src="resource/images/yahoo.png" alt="" />--></a> 
                 </div>
             </div>
+<?php if ($this->session->flashdata('error')  != '');
+echo $this->session->flashdata('error');
+?>
+
             <div class="sidebar">
             	<div class="title">Leave us a Message</div>
                 <div class="form_holder">
+<form name="contact_us" action="contact_us/send_contact_us_info" enctype="multipart/form-data" method="post">
+
                 	<div class="text2">First Name:</div>
-                	<div class="text3"><input name="" type="text" size="28" /></div>
+                	<div class="text3"><input name="contact_us_firstname" id="contact_us_firstname" type="text" size="28" /></div>
                     <div class="text2">Last Name:</div>
-                	<div class="text3"><input name="" type="text" size="28" /></div>
+                	<div class="text3"><input name="contact_us_lastname" id="contact_us_lastname" type="text" size="28" /></div>
                     <div class="text2">Email:</div>
-                	<div class="text3"><input name="" type="text" size="28" /></div>
+                	<div class="text3"><input name="contact_us_email" id="contact_us_email" type="text" size="28" /></div>
                     <div class="text2">Comments:</div>
                 	<div class="text4">
-                	  <textarea name="" cols="25" rows="5"></textarea>
+                	  <textarea name="contact_us_comment" id="contact_us_comment" cols="25" rows="5"></textarea>
                	  </div>
-                    <div class="btn_holder"><a href="#"><img src="resource/images/send.png" alt="" /></a></div>
+                    <div class="btn_holder"><INPUT TYPE="image" SRC="resource/images/send.png" ALT="Submit Form"></div>
+				</form>
                 </div>
             </div>
         </div>

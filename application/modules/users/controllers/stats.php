@@ -1,4 +1,4 @@
-﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Stats extends CI_Controller {
 
@@ -16,7 +16,7 @@ class Stats extends CI_Controller {
 	 {
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('account/sign_in/?continue='.urlencode(base_url().'users/dashboard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
 		}
 		
 
@@ -24,6 +24,8 @@ class Stats extends CI_Controller {
 		if ($this->authentication->is_signed_in())
 		{
 			$userid=$this->session->userdata('account_id');
+			$data['check'] = $this->user_model->userstats_lookup($userid);
+			$data['chart'] = $this->user_model->userstats_chart($userid);
 			$data['telework_tracker'] = $this->tp_model->get_by_id($userid);
 			$data['account'] = $this->account_model->get_by_id($userid);
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
@@ -31,20 +33,6 @@ class Stats extends CI_Controller {
 			
 		}
 	 }	
-	function lookup()
-	{
-			if ($this->authentication->is_signed_in())
-		{
-			$user_id = $this->uri->segment(4,$this->session->userdata('account_id'));
-			$data['account'] = $this->account_model->get_by_id($user_id);
-			$data['telework_tracker'] = $this->tp_model->get_by_id($user_id);
-			$data['account_details'] = $this->account_details_model->get_by_account_id($user_id);
-			$this->load->view('stats', isset($data) ? $data : NULL);
-		}
-		else
-		redirect('');
-
-	} 
-}
+	}
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

@@ -7,34 +7,38 @@
             	<div class="textbox"><input name="" type="text" value="Search" /></div>
                 <div class="btn_holder"><a href="#"><img src="resource/images/serach-btn.png" alt="" /></a></div>
             </div>
-            <div class="top_btn">
-            	<ul >
-					<li><a href="#"><img src="resource/images/option.png" alt="" /></a> </li>
+       <div class="top_btn">
+                <div id="navigation">
+                    <ul>
+                        <li><a href=""><img src="resource/images/option.png" alt="" /></a>
+							<ul>
+                           <li><a href="<?php echo base_url("account_settings");?>">Account Settings</a></li>
+                           <li><a href="<?php echo base_url("badges");?>/<?php echo $this->uri->segment(2,$account->username);?>">Badges</a></li>
+                            <!-- <li><a href="<?php echo base_url("company/start");?>">Create Company Page</a></li>-->
+                           <li><a href="<?php echo base_url("teleworkwizard");?>">Job Evaluation</a></li>
 
-					<li><a href="#"><img src="resource/images/message.png" alt="" /></a> </li>
-			    	<li><a href="#"><img src="resource/images/alerts.png" alt="" /></a>
-                       <!-- <ul>
-                           <li><a href="<?php echo base_url("account/account_settings");?>">Account Settings</a></li>
-                           <li><a href="<?php echo base_url("users/badges");?>">Badges</a></li>
-                           <li><a href="<?php echo base_url("company/start");?>">Create Company Page</a></li>
+                           <li><a href="<?php echo base_url("profile");?>/<?php echo $this->uri->segment(2,$account->username);?>">Profile</a></li>
 
-                           <li><a href="<?php echo base_url("users/profile/lookup");?>/<?php echo $this->uri->segment(4,$this->session->userdata('account_id'));?>">Profile</a></li>
+                           <li><a href="<?php echo base_url("teleworker");?>/<?php echo $this->uri->segment(2,$account->username);?>">Teleworker</a></li>
+                           <li><a href="<?php echo base_url("stats");?>">Stats</a></li>
 
-                           <li><a href="<?php echo base_url("users/teleworker");?>">Teleworker</a></li>
-                           <li><a href="<?php echo base_url("users/stats");?>">Stats</a></li>
+                           <li><a href="<?php echo base_url("history");?>">History</a></li>
+            			   <li><a href="<?php echo base_url("account/sign_out");?>">Logout</a></li>
 
-                           <li><a href="<?php echo base_url("users/history");?>">History</a></li>
-            			   <li><a href="<?php echo base_url("sign_out");?>">Logout</a></li>
-
-            			   <li><a href="#">Help</a></li>
-                        </ul> -->
-                    </li>
-                </ul>
-			</div>  
+            			  <!-- <li><a href="#">Help</a></li>-->
+                        </ul>                        </li>
+                        <li><a href="#"><img src="resource/images/message.png" alt="" /></a>
+                        </li>
+                        <li><a href="#"><img src="resource/images/alerts.png" alt="" /></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+ 
 	   <?php else : ?>
 <!-- Homepage login  -->
     	<div class="login_box">
-			<form name="sign_up" action="account/sign_in" enctype="multipart/form-data" method="post">
+			<form name="sign_up" action="sign_in" enctype="multipart/form-data" method="post">
 			<div class="textbox"> 
 <!-- User Email login with error handling -->
 			   <?php echo form_input(array(
