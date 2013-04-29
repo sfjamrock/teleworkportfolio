@@ -49,6 +49,7 @@ $route['account_linked'] = "account/account_linked";
 
 $route['dashboard'] = "users/dashboard";
 $route['history'] = "users/history";
+$route['message'] = "users/message";
 $route['stats'] = "users/stats";
 $route['badges/(:any)'] = "users/badges/lookup";
 $route['follower/(:any)'] = "users/follower/lookup";

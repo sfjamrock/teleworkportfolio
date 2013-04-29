@@ -27,7 +27,7 @@
 
             			  <!-- <li><a href="#">Help</a></li>-->
                         </ul>                        </li>
-                        <li><a href="#"><img src="resource/images/message.png" alt="" /></a>
+                        <li><a href="<?php echo base_url("message");?>"><img src="resource/images/message.png" alt="" /></a>
                         </li>
                         <li><a href="#"><img src="resource/images/alerts.png" alt="" /></a>
                         </li>

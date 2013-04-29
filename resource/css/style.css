@@ -279,3 +279,30 @@ img{border:0;}
 .savings_tracker span.text2{display:block; float:left; width:890px; line-height:30px;}
 .savings_tracker ul.box{width:960px; margin:0; padding:0; font-size:15px; font-weight:bold;}
 .savings_tracker ul.box li{list-style:none; float:left; width:193px; background:#ccc; border:1px solid #666; text-align:center; margin:0 30px 0 0; padding:20px 0;}
+
+/*** Email-design-edits ***/
+.email_design_edits_navigation{ width:960px; float:left; font-size:14px; font-weight:bold; background:#091d2d; margin-bottom:15px;}
+.email_design_edits_navigation select{float:left; margin:2px 0 0 10px; background:#143a58; color:#fff; padding:6px 5px; font-size:14px; border:1px solid #ccc;}
+.email_design_edits_navigation a{color:#fff; text-decoration:none; padding:10px 20px 10px 20px; border-right:1px solid #fff; float:left}
+.email_design_edits_navigation a:hover{color:#000; text-decoration:none; background:#ccc;}
+
+.email_design_sidebar{width:260px; float:left; background:#eaeaea; border:1px solid #ccc; padding:19px;}
+.email_design_sidebar .search_holder{width:260px; float:left; padding:0 0 10px 0;}
+.email_design_sidebar .textbox{ width:209px; height:28px; float:left; background:url(../images/serach-box1.png) no-repeat 0 0; padding:7px 0 0 10px;}
+.email_design_sidebar .textbox input{border:0; font-size:14px; color:#333; width:220px; background:none;}
+.email_design_sidebar .btn_holder{width:41px; float:left;}
+.email_member_msg{width:260px; float:left; border-bottom:3px solid #333; padding:15px 0; line-height:18px;}
+.email_member_msg .img_holder{ width:90px; float:left;}
+.email_member_msg .text_holder{ width:170px; float:left;}
+.email_member_msg .text_holder span.date{float:right; font-weight:bold;}
+
+.email_design_main_content{ width:640px; float:left; padding:0 0 0 20px;}
+.email_design_main_content .user_details{width:600px; float:left; border:1px solid #ccc; padding:19px; margin-bottom:15px; line-height:18px;} 
+.email_design_main_content .user_details span.date{float:right; font-weight:bold; font-size:14px;}
+
+.leave_reply{widows:640px; float:left; float:left; border-top:3px solid #333; padding:15px 0 0 0;}
+.leave_reply .title{width:640px; float:left; font-size:17px; color:#333; text-transform:uppercase;} 
+.leave_reply .textbox{width:640px; float:left; padding:15px 0;}
+.leave_reply .textbox textarea{border:1px solid #ccc; background:#eaeaea; font-size:13px; font-family:Arial, Helvetica, sans-serif; padding:5px;}
+.leave_reply .btn_holder{width:640px; float:left;}
+.leave_reply .btn_holder span{float:right;}
