@@ -23,7 +23,7 @@ $(document).ready(function() {
 		data:{ 
 				message_wall: $('#message_wall').attr('value'),
 				loguser: <?php echo $this->session->userdata('account_id')?>,
-				pageuser: <?php echo $this->uri->segment(2,$account->username)?>
+				pageuser: "<?php echo $this->uri->segment(2,$account->username)?>"
 		},
 		success: function(){
 			

@@ -42,7 +42,13 @@ class Dashboard extends CI_Controller {
 		 $this->form_validation->set_rules(array(
 			array('field'=>'message_wall', 'rules'=>'trim')
 		));
-		 $message1 = $this->user_model->wall( $this->input->post('message_wall'),$this->input->post('loguser'),$this->input->post('pageuser'));
+			// get user_id using username in url start 		
+			$username = $this->input->post('pageuser');
+			$user_id = $this->user_model->userid_lookup($username);
+			$user_id = $user_id ['0']->id;
+			// get user_id using username in url end 
+
+		 $message1 = $this->user_model->wall( $this->input->post('message_wall'),$this->input->post('loguser'),$user_id);
 		 echo $message1;
 	 }
 	 	 
