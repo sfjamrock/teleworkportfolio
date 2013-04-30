@@ -22,10 +22,42 @@ class Savings extends CI_Controller {
 		if ($this->authentication->is_signed_in())
 		{
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
-		}
-		
+
+			$get_result = $this->tp_model->user_exist();
+			if(!$get_result){
+			$this->load->view('savings', isset($data) ? $data : NULL);
+			}
+			else
+			{
 				$this->load->view('savings_tracker', isset($data) ? $data : NULL);
+			}
+
+		}
 			
+
+	}
+	function saving_tracker()
+	{
+			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
+
+			$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+			$this->form_validation->set_rules(array(
+			array('field'=>'mile', 'label'=>'mile', 'rules'=>'trim|required|numeric|max_length[25]|xss_clean'),
+			array('field'=>'time', 'label'=>'time', 'rules'=>'trim|required|numeric|max_length[20]|xss_clean'),
+			array('field'=>'money', 'label'=>'money', 'rules'=>'trim|required|numeric|max_length[20]|xss_clean')
+			));
+		// Run form validation
+		if ($this->form_validation->run() === TRUE) 
+		{
+			$this->tp_model->start_tracker();
+			redirect('dashboard');
+		}
+		else
+		{
+			$this->load->view('savings', isset($data) ? $data : NULL);
+		}
+
+		
 
 	}
 }
