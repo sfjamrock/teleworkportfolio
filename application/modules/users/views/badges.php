@@ -38,15 +38,14 @@
     	<div class="innerpage_content">
         	<div class="main_box_container">
             	<div class="img_holder"><a href="<?php echo base_url("users/profile/lookup");?>/<?php echo $this->uri->segment(4,$account->username);?>">  
-									 <?php if (empty($account->password) && empty($account_details->picture)) : ?>
-					                 <img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
-									 <?php elseif (empty($account->password) && isset($account_details->picture)) : ?>
- 									 <img src="<?php echo $account_details->picture; ?>"  width="75" height="75"alt="" />
-									 <?php elseif (isset($account_details->picture)) : ?>
-					                 <img src="resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" />
-									 <?php else : ?>
-					                 <img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
-					                 <?php endif; ?>	</a></div>
+					<?php if (strpos($account_details->picture, "http://") === 0) :?>
+					<img src="<?php echo $account_details->picture; ?>" width="75" height="75"alt="" />
+					<?php elseif (isset($account_details->picture)) : ?>
+					<img src="resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" /> 
+					<?php else : ?>
+					<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
+					<?php endif; ?>
+	</a></div>
                 <div class="text_holder"><?php echo $account_details->firstname ?>'s Telework Badges<br /><br />These are the core badges dreamt up by the members of the Teleworkportfolio team, for things like regular teleworking from home or teleworking on the go to teleworking at your neighborhood coffee shop.</div>
             </div>
             <div class="badges_shadetabs">

@@ -54,14 +54,15 @@
             </div>
             <div class="text2">
                 <p>
-					<?php if (empty($account->password) && isset($account_details->picture)) : ?>
- 					<img src="<?php echo $account_details->picture; ?>" alt="" />
-                    <?php elseif (isset($account_details->picture)) : ?>
-                    <img src="resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>" alt="" />
+					<?php if (strpos($account_details->picture, "http://") === 0) :?>
+					<img src="<?php echo $account_details->picture; ?>" width="75" height="75"alt="" />
                     <?php echo anchor('account/account_profile/index/delete', lang('profile_delete_picture')); ?>
-                    <?php else : ?>
-                    <img src="resource/img/default-picture.gif" alt="" />
-                    <?php endif; ?>
+					<?php elseif (isset($account_details->picture)) : ?>
+					<img src="resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" /> 
+                    <?php echo anchor('account/account_profile/index/delete', lang('profile_delete_picture')); ?>
+					<?php else : ?>
+					<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
+					<?php endif; ?>
                 </p>
 
                 <?php echo form_upload(array(

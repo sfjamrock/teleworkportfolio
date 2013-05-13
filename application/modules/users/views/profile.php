@@ -78,15 +78,14 @@ $(document).ready(function() {
     	<div class="innerpage_content">
         	<div class="employee_dashboard_box">
             	<div class="main_img"><a href="<?php echo base_url("profile");?>/<?php echo $account->username?>">
-									 <?php if (empty($account->password) && empty($account_details->picture)) : ?>
-					                 <img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
-									 <?php elseif (empty($account->password) && isset($account_details->picture)) : ?>
- 									 <img src="<?php echo $account_details->picture; ?>" width="75" height="75"alt="" />
-									 <?php elseif (isset($account_details->picture)) : ?>
-					                 <img src="resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" />
-									 <?php else : ?>
-					                 <img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
-					                 <?php endif; ?>									 </a></div>
+					<?php if (strpos($account_details->picture, "http://") === 0) :?>
+					<img src="<?php echo $account_details->picture; ?>" width="75" height="75"alt="" />
+					<?php elseif (isset($account_details->picture)) : ?>
+					<img src="resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" /> 
+					<?php else : ?>
+					<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
+					<?php endif; ?>
+									 </a></div>
                 <div class="text_holder">
                 	<ul>
                     	<li class="title"><?php echo $account_details->firstname ?> <?php echo $account_details->lastname ?></li>
@@ -125,11 +124,13 @@ Tester
 
             <div class="employee_dashboard_box new_border">
             	<div class="main_img"><a href="<?php echo base_url("users/profile/lookup");?>/<?php echo $row->username;?>">
-			    <?php if (isset($row->picture)) : ?>
-			    <img src="resource/user/profile/<?php echo $row->picture; ?>?t=<?php echo md5(time()); ?>" width="50" height="50"alt="" />
-				<?php else : ?>
-				<img src="resource/images/img2.png" alt="" />
-				<?php endif; ?>
+					<?php if (strpos($row->picture, "http://") === 0) :?>
+					<img src="<?php echo $row->picture; ?>" width="75" height="75"alt="" />
+					<?php elseif (isset($row->picture)) : ?>
+					<img src="resource/user/profile/<?php echo $row->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" /> 
+					<?php else : ?>
+					<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
+					<?php endif; ?>
 			    </a></div>
                 <div class="profile_text">
                     <div class="text2"><?php echo $row->firstname; ?> <?php echo $row->lastname; ?></div>
