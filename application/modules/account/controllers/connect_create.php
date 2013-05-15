@@ -81,7 +81,7 @@ body{margin:0; padding:0; background:#cccccc;}
 </head><body>
 <table width='980' border='0' align='center' cellpadding='0' cellspacing='0' style='font-family:Arial, Helvetica, sans-serif; font-size:15px; color:#333333; background:#fff;'>
   <tr>
-    <td><img src='www.teleworkportfolio.com/resource/images/emal-header.png' alt='header' width='980' height='200' /></td>
+    <td><a href='http://www.teleworkportfolio.com' target='_blank'><img src='http://www.teleworkportfolio.com/resource/images/emal-header.png' alt='header' width='980' height='200' /></a></td>
   </tr>
   <tr>
     <td><table width='980' border='0' cellspacing='0' cellpadding='0'>
