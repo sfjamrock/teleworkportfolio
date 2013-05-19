@@ -56,7 +56,7 @@ $(document).ready(function() {
 			<div class="employee_dashboard_box">
             	<div class="main_img"><a href="<?php echo base_url("profile");?>/<?php echo $account->username?>">
 					<?php if (strpos($account_details->picture, "http://") === 0) :?>
-					<img src="<?php echo $account_details->picture; ?>" width="75" height="75"alt="" />
+					<img src="<?php echo $account_details->picture; ?>" width="90" height="110"alt="" />
 					<?php elseif (isset($account_details->picture)) : ?>
 					<img src="resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" /> 
 					<?php else : ?>
@@ -72,7 +72,13 @@ $(document).ready(function() {
                     <div class="textbox"><form id="submit_wall"><input type="text"  id="message_wall" size="35" placeholder="Status"/>
                     <button type="submit">Post</button></form></div>
                 </div>
-                <div class="member_image"><a href="<?php echo base_url("teleworkwizard/savings");?>"><img src="resource/images/member.png" alt="" /></a></div>
+                <div class="member_image">
+<?php if( !$this->tp_model->check_by_id($account->id)) :?>
+<a href="<?php echo base_url("teleworkwizard");?>"><img src="resource/images/Green-button.png" alt="Getting started" width="120"/>
+<?php else : ?>
+<a href="<?php echo base_url("teleworkwizard/savings");?>"><img src="resource/images/Check-In.png" alt="Telework Savings check in" width="120"/>
+<?php endif; ?>
+</a></div>
             </div>
          <!--   Start of Update Wall Script -->
 <?php foreach($wall_dashboard as $row): ?>
