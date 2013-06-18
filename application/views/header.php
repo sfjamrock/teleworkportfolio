@@ -13,7 +13,7 @@
                         <li><a href=""><img src="resource/images/option.png" alt="" /></a>
 							<ul>
                            <li><a href="<?php echo base_url("account_settings");?>">Account Settings</a></li>
-                           <li><a href="<?php echo base_url("badges");?>/<?php echo $this->uri->segment(2,$account->username);?>">Badges</a></li>
+                           <!--<li><a href="<?php echo base_url("badges");?>/<?php echo $this->uri->segment(2,$account->username);?>">Badges</a></li>-->
                             <!-- <li><a href="<?php echo base_url("company/start");?>">Create Company Page</a></li>-->
                            <li><a href="<?php echo base_url("teleworkwizard");?>">Job Evaluation</a></li>
 

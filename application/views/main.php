@@ -98,22 +98,29 @@
         </div>
       </div>
     </div>
-<!--
+
     <div class="testimonials">
-      <div class="title">Testimonials</div>
+      <div class="title">Teleworker Testimonials</div>
       <div class="testimonials_text_holder">
-        <div class="text_holder">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an un<br />
+        <div class="text_holder"><img src="http://2.bp.blogspot.com/-rHYe2xmQVyQ/UZVK1UJW-uI/AAAAAAAAAc0/4_3fmW6-jHY/s1600/scarf.jpg" height="55px" width="60px" style="float:left; margin:0px 10px 0px 0px" > 
+			When it comes to teleworking, I love the ability to match my human 
+			daily rhythms to my work productivity. I am naturally a morning 
+			person and I think it's such a waste of time to start my day and 
+			face a hideous commute...<br />
+          <br />
+          <br />
+          <a href="http://teleworkportfolio.blogspot.com/2013/06/why-i-love-teleworking-with-rashid.html" target="_blank">
+				<strong> Read more about Rashid Darden</strong></a></div>
+        <div class="text_holder"><img src="http://m.c.lnkd.licdn.com/mpr/mpr/shrink_200_200/p/3/000/1c2/0a4/0ea6c3c.jpg" height="55px" width="60px" style="float:left; margin:0px 10px 0px 0px" > 
+		Less distractions / Able to produce more work / Not having to face traffic....<br />
           <br />
           <br />
           <br />
-          <strong>Name goes here...</strong></div>
-        <div class="text_holder">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an un<br />
-          <br />
-          <br />
-          <br />
-          <strong>Name goes here...</strong></div>
+		  <br />
+          <a href="http://teleworkportfolio.blogspot.com/2013/06/why-i-love-teleworking-with-graham.html" target="_blank">
+		<strong>Read more about Graham Farinha</strong></a></div>
       </div>
-    </div>-->
+    </div>
   </div>
   <?php echo $this->load->view('footer'); ?> </div>
 </body>

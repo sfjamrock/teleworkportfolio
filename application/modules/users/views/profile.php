@@ -103,13 +103,13 @@ $(document).ready(function() {
 <?php if ($this->session->flashdata('error')  != '');
 echo $this->session->flashdata('error');
 ?>
-            <div class="eployee_profile_content">
+  <!--          <div class="eployee_profile_content">
             	<ul>
                 	<li><a href="<?php echo base_url("badges");?>/<?php echo $this->uri->segment(2);?>">
 						<img src="resource/badges/Alpha.png" alt="" weight="75" height="75"/></a></li>
                     <li><a href="<?php echo base_url("badges");?>/<?php echo $this->uri->segment(2);?>">
 						<img src="resource/badges/Beta.png" alt="" weight="75" height="75" /></a></li>                </ul>
-            </div>
+            </div>-->
             <div class="chart_box bg_none">
 
                 <?php $this->load->view('analytics');?>

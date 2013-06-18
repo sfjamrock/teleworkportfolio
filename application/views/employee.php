@@ -30,8 +30,7 @@
     <div class="details_holder">
         <div class="company_beenefits">
         	<div class="title">Employee Benefit</div>
-         <!--   <div class="video_holder"><a href="#"><img src="resource/images/video1.png" alt="" /></a></div>-->
-            <div class="benefit_text">
+         	<div class="video_holder"><a href="#"><img src="resource/images/emp_balance.jpg" alt="" height="285" width="360"/></a></div>            <div class="benefit_text">
             	<div class="text_holder"><strong>Save Time and Money with Less Traveling</strong><br />Not only would an individual save on gas by telecommuting, but they are saving on maintenance costs, toll fees, tickets, and public transportation costs. Employees working from home can save hours a week by not commuting. A telecommuter can also save on that one hour extra day care cost they’ve been paying. </div>
             	<div class="text_holder"><strong>Better Work-Life Balance</strong><br />Employees can easily adjust their working hours around their life, with the exceptions of deadlines and meetings. Teleworking can reduce an employee taking personal and sick days because they are more flexible with their schedule.</div>
             	<div class="text_holder"><strong>Greater Work Opportunities</strong><br />Those in rural areas may be limited in their work opportunities. Driving 50+ miles one way is just not economically feasible for some, and takes away from their personal life. There are more opportunities for advancement if someone can work from home. An employee can live hundreds of miles away and have their dream job. </div>
