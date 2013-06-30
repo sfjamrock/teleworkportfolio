@@ -9,12 +9,15 @@ class Iptest extends CI_Controller {
 		$this->load->helper(array('language', 'url', 'form', 'account/ssl'));
 		$this->load->config('account/account');
         $this->load->library(array('account/authentication', 'form_validation'));
-		$this->load->model(array('account/account_model', 'account/account_details_model'));
+		$this->load->model(array('account/account_model', 'account/account_details_model','test_model'));
 		$this->load->language(array('general', 'account/account_profile'));
 	 }
 function index()
 	{
-		$this->load->view('iplookup');
+		$rows = $this->test_model->map_users();
+	    $data['mapchallenge'] = $rows ;
+		$this->load->view('mapchallenge', isset($data) ? $data : NULL);
+
 	}
 }
 /* End of file welcome.php */
