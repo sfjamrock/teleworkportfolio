@@ -30,6 +30,7 @@ li a {display:block;}
 <span class="text1">Time: </span> <span class="text2">in this field the total time traveled to and from work on a average day<br /></span>
 <span class="text1">Money: </span> <span class="text2">Enter in this field the average amount sent at work on a average day. Click to see example<br /></span>
         </div>
+<p> We have you at <?php echo $location->city ?>, <?php echo $location->region_code ?></p>
         <div class="savings_tracker">
         	<ul class="box">
             	<li>Miles</li>

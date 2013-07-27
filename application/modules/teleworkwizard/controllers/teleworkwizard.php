@@ -24,12 +24,6 @@ class Teleworkwizard extends CI_Controller {
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
 		}
 		
-/*		
-		$get_result = $this->tp_model->user_exist();
-			if(!$get_result){
-				 $this->tp_model->update_tracker();
-				redirect('myTIMS');
-			}else{ */
 				$this->load->view('jobs', isset($data) ? $data : NULL);
 			
 

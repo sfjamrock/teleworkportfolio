@@ -23,13 +23,11 @@ var locations = [
   function initialize() {
 
     var myOptions = {
-      center: new google.maps.LatLng(-33.9, 151.2),
       zoom: 10,
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
     };
-    var map = new google.maps.Map(document.getElementById("default"),
-        myOptions);
+    var map = new google.maps.Map(document.getElementById("default"),myOptions);
 
     setMarkers(map,locations)
 
@@ -39,36 +37,34 @@ var locations = [
 
   function setMarkers(map,locations){
 
-      var marker, i
+      	var marker, i
+		for (i = 0; i < locations.length; i++)
+			 {  
+				 var loan = locations[i][0]
+				 var lat = locations[i][1]
+				 var long = locations[i][2]
+				 var add =  locations[i][3]
+				
+				 latlngset = new google.maps.LatLng(lat, long);
+					
+				 var marker = new google.maps.Marker({ map: map, title: loan , position: latlngset });
+				 
+				 map.setCenter(marker.getPosition())
+				
+				 var content = "User " + add +  '</h3>' + " was last sighted at " + loan    
+				
+				 var infowindow = new google.maps.InfoWindow()
+				
+				google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+					        return function() {
+					           infowindow.setContent(content);
+					           infowindow.open(map,marker);
+					};
 
-for (i = 0; i < locations.length; i++)
- {  
-
- var loan = locations[i][0]
- var lat = locations[i][1]
- var long = locations[i][2]
- var add =  locations[i][3]
-
- latlngset = new google.maps.LatLng(lat, long);
-
-  var marker = new google.maps.Marker({  
-          map: map, title: loan , position: latlngset  
-        });
-        map.setCenter(marker.getPosition())
-
-
-        var content = "User " + add +  '</h3>' + " was last sighted at " + loan    
-
-  var infowindow = new google.maps.InfoWindow()
-
-google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
-        return function() {
-           infowindow.setContent(content);
-           infowindow.open(map,marker);
-        };
-    })(marker,content,infowindow)); 
-
-  }
+				    })(marker,content,infowindow)); 
+			
+  				}
+    map.fitBounds(bounds);
   }
 
   </script>

@@ -28,10 +28,12 @@
  <?php echo $this->load->view('header'); ?>
   <div class="details_holder">
     <div class="benefit_buttons"><a href="<?php echo base_url("employee");?>"><img src="resource/images/benefit1.png" alt="" /></a> <a href="<?php echo base_url("business");?>"><img src="resource/images/benefit2.png" alt="" /></a> </div>
+<div style="clear:both"></div><br/>
+<h1 style="font-size:xx-large;text-align:center; color:#095189">Welcome to Telework Portfolio <br/> <strong>The only web analytics tool for companies and employees to track and manage their telework saving.</strong></h1>
     <div class="main_container">
       <div class="main_content">
-        <div class="title">Connect with Teleworkers around you</div>
-        <div class="video_holder"><iframe width="560" height="330" src="http://www.youtube.com/embed/wDjA7QNFagI" frameborder="0" allowfullscreen></iframe></div>
+       <!--<div class="title">Where Teleworkers meet</div>-->
+        <div class="video_holder"><iframe width="600" height="370" src="http://www.youtube.com/embed/wDjA7QNFagI" frameborder="0" allowfullscreen></iframe></div>
       </div>
       <div class="sidebar">
         <div class="title"><a href="<?php echo base_url("account/connect_facebook");?>"><img src="resource/images/fb-connect-button.png" alt=""  width="300"/></a></div>
@@ -100,7 +102,7 @@
     </div>
 
     <div class="testimonials">
-      <div class="title">Teleworker Testimonials</div>
+      <div class="title">Featured Teleworkers</div>
       <div class="testimonials_text_holder">
         <div class="text_holder"><img src="http://2.bp.blogspot.com/-rHYe2xmQVyQ/UZVK1UJW-uI/AAAAAAAAAc0/4_3fmW6-jHY/s1600/scarf.jpg" height="55px" width="60px" style="float:left; margin:0px 10px 0px 0px" > 
 			When it comes to teleworking, I love the ability to match my human 

@@ -12,56 +12,7 @@
         <link rel="shortcut icon" href="resource/images/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="resource/css/style.css" />
 
-	<script>
-		$(function(){
-			if (($.browser.msie) && ($.browser.version < '9.0')) {
-			$('.flexslider').flexslider({
-				animation: "slide",
-				slideshow: true,
-				slideshowSpeed: 7000,
-				animationDuration: 600,
-				prevText: "Previous",
-				nextText: "Next",
-				controlNav: true,
-			})	 } else {
-			$('.flexslider').flexslider({
-				animation: "fade",
-				slideshow: true,
-				slideshowSpeed: 7000,
-				animationDuration: 600,
-				prevText: "Previous",
-				nextText: "Next",
-				controlNav: true,
-			});	 } 
-			
-			$('#carousel').elastislide({
-				speed		: 450,
-				easing		: '',
-				imageW		: 140,
-				margin		: 30,
-				border		: 0,
-				minItems	: 1,
-				current		: 0
-			});
-		})
-	</script>
-
-		<script type="text/javascript" src="resource/js/modernizr.custom.04022.js"></script>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>
-		<!--[if lt IE 9]>
-			<style>
-				.content{
-					height: auto;
-					margin: 0;
-				}
-				.content div {
-					position: relative;
-				}
-			</style>
-	
-
-		<![endif]-->
-    </head>
+	</head>
     <body>
 
 <body>
@@ -70,24 +21,26 @@
     	   
     <div class="details_holder">
     	<div class="innerpage_content">
-        	<div class="main_box_container">
-            	<div class="img_holder"><a href="#"><img src="resource/images/img2.png" alt="" /></a></div>
+ 			<div class="employee_dashboard_box">
+            	<div class="main_img"><img src="resource/images/img2.png" alt="" /></div>
                 <div class="text_holder">
                 	<ul>
-                    	<li class="text1">Employee:</li>
-                    	<li class="text2">
-                        	<div class="name">Employee Name</div>
-                            <div class="btn_holder"><a href="#"><img src="resource/images/join-now1.png" alt="" /></a> <a href="#"><img src="resource/images/follow.png" alt="" /></a> </div>
-                        </li>
-                        <li class="text1">Location:</li>
-                        <li class="text2">Employee Location</li>
-                        <li class="text1">Subscription:</li>
-                        <li class="text2">Subscription Status</li>
+                    	<li class="title"><?php echo $company->cusername?></li>
+                    	<li class="text"><?php echo $company->city?>, <?php echo $company->state?></li>
                     </ul>
-                    <div class="textbox"><input name="" type="text" value="Status/Post" size="50" /></div>
+                    <div class="textbox"><form id="submit_wall"><input type="text"  id="message_wall" size="35" placeholder="Post"/>
+                    <button type="submit">Post</button></form></div>
                 </div>
+                <div class="member_image">
+					<form action="company/profile/join" method="post"><input type="submit" id="join" name="company"value="<?php echo $this->uri->segment(1)?>"
+    style="background-image: url(resource/images/join-now1.png); border: solid 0px #000000; width: 70px; height: 32px; font-size: 0.1px;" />
+</form></div>
             </div>
-            <div class="badgs">Badges</div>
+<?php if ($this->session->flashdata('join')  != '');
+echo $this->session->flashdata('join');
+?>
+
+            <!--<div class="badgs">Badges</div>-->
             <div class="chart_box">
             	<div class="text1">Active Teleworker<br /><img src="resource/images/cir.png" alt="" /></div>
                 <div class="text2">
@@ -111,9 +64,9 @@
             </div>
         </div>
         <div class="innerpage_sidebar">
+        	<div class="btn_holder"><a href="#"><img src="resource/images/telework-statistics.png" alt="" /></a></div>
             <div class="btn_holder"><a href="#"><img src="resource/images/following.png" alt="" /></a></div>
             <div class="btn_holder"><a href="#"><img src="resource/images/followers.png" alt="" /></a></div>
-            <div class="btn_holder"><a href="#"><img src="resource/images/add.png" alt="" /></a></div>
         </div>
     </div>
    <?php echo $this->load->view('footer'); ?>

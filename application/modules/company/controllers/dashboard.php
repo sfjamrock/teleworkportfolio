@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller {
 	   $this->load->helper(array('language', 'url', 'form', 'account/ssl'));
 		$this->load->config('account/account');
         $this->load->library(array('account/authentication', 'form_validation'));
-		$this->load->model(array('account/account_model', 'account/account_details_model', 'teleworkwizard/tp_model','user_model'));
+		$this->load->model(array('account/account_model', 'account/account_details_model', 'teleworkwizard/tp_model','users/user_model'));
 		$this->load->language(array('general', 'account/account_profile'));
 	 }
 	 

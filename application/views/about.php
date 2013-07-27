@@ -35,7 +35,7 @@
 <i>
 Do you want to work from home more? Telework Portfolio gives you the 
 tool you need to find out if telework is right for you. </i></i><br><br>
-Telework Portfolio is online community of teleworkers and telework friendly companies. We offer companies business intelligence tools for there telework programs.  
+Telework Portfolio offers web analytics tool for companies and employees to track and manage their telework saving.  
 <h3>MISSION</h3>
 
 To make telework a SMART option for companies and employees.  

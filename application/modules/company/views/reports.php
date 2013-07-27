@@ -7,31 +7,123 @@
 <link href="resource/css/style.css" rel="stylesheet" type="text/css" />
 <link href="resource/css/tabcontent.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="resource/js/tabcontent.js"></script>
+<style type="text/css"> 
+  html { height: 100% }
+  body { height: 50%; margin: 0; padding: 0 }
+  #map_canvas { height: 100% }
+</style>
+<script type="text/javascript"
+  src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZQjI-dh8LgP2X8O-7LH0e2_fLomCDKKw&sensor=false">
+</script>
+<script type="text/javascript">
+//    setTimeout(function () {
+  //     window.location.reload();
+    //}, 1000);
 
-</head><body>
+var locations = [
+		<?php foreach($map as $row): ?>
+  			['<?php echo $row->city; ?>, <?php echo $row->state; ?>', <?php echo $row->latitude; ?>, <?php echo $row->longitude; ?>, <?php echo $row->user_id; ?>,
+			 '<?php echo $row->firstname; ?> <?php echo $row->lastname; ?>',
+//<a href="<?php echo base_url("profile");?>/<?php echo $row->username?>">
+//<?php if (strpos($row->picture, "http://") === 0) :?>
+//<img src="<?php echo $row->picture; ?>" width="75" height="75"alt="" />
+				//	<?php elseif (isset($row->picture)) : ?>
+					//<img src="resource/user/profile/<?php echo $row->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" />
+					//<?php else : ?>
+					//'<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />'
+					//<?php endif; ?>	</a>
+
+
+
+
+
+],
+        <?php endforeach; ?>
+  ];
+
+  function initialize() {
+
+    var myOptions = {
+      center: new google.maps.LatLng(38.9, -77.2),
+      zoom: 7,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+
+    };
+    var map = new google.maps.Map(document.getElementById("default"),
+        myOptions);
+
+    setMarkers(map,locations)
+
+  }
+
+
+
+  function setMarkers(map,locations){
+
+      var marker, i
+
+for (i = 0; i < locations.length; i++)
+ {  
+
+ var loan = locations[i][0]
+ var lat = locations[i][1]
+ var long = locations[i][2]
+ var add =  locations[i][3]
+var name =  locations[i][4]
+var pic =  locations[i][5]
+
+
+ latlngset = new google.maps.LatLng(lat, long);
+
+  var marker = new google.maps.Marker({  
+          map: map, title: loan , position: latlngset  
+        });
+        map.setCenter(marker.getPosition())
+
+
+        var content =  name +  '</h3>' + " was last sighted at " + loan    
+
+  var infowindow = new google.maps.InfoWindow()
+
+google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+        return function() {
+           infowindow.setContent(content);
+           infowindow.open(map,marker);
+        };
+    })(marker,content,infowindow)); 
+
+  }
+  }
+
+  </script>
+
+</head><body onload="initialize()">
 <div id="main">
     <?php echo $this->load->view('header'); ?>
     <div class="details_holder">
     	<div class="innerpage_content">
-        	<div class="main_box_container">
-            	<div class="img_holder"><a href="#"><img src="resource/images/img2.png" alt="" /></a></div>
+ 			<div class="employee_dashboard_box">
+            	<div class="main_img"><a href="#"><img src="resource/images/img2.png" alt="" /></a></div>
                 <div class="text_holder">
                 	<ul>
-                    	<li class="text1">Employee:</li>
-                    	<li class="text2">
-                        	<div class="name">Employee Name</div>
-                            <div class="btn_holder"><a href="#"><img src="resource/images/subscription-status.png" alt="" /></a> </div>
-                        </li>
-                        <li class="text1">Location:</li>
-                        <li class="text2">Location</li>
+                    	<li class="title"><?php echo $company->cusername?></li>
+                    	<li class="text"><?php echo $company->city?>, <?php echo $company->state?></li>
                     </ul>
                 </div>
+                <div class="member_image">
+				<a href="#"><img src="resource/images/subscription-status.png" alt="" /></a></div>
             </div>
-        </div>
+
+        	        </div>
         <div class="innerpage_sidebar">
+        	<!--<div class="btn_holder"><a href="#"><img src="resource/images/telework-statistics.png" alt="" /></a></div>-->
             <div class="btn_holder"><a href="#"><img src="resource/images/followers.png" alt="" /></a></div>
             <div class="btn_holder"><a href="#"><img src="resource/images/following.png" alt="" /></a></div>
         </div>
+<?php if ($this->session->flashdata('enroll')  != '');
+echo $this->session->flashdata('enroll');
+?>
+
         <div class="main_tabholder">
             <div class="shadetabs">
                 <ul id="countrytabs">
@@ -45,262 +137,23 @@
             </div>
             <div class="tab_content none">
                 <div id="country1" class="tabcontent">
-                	<h1 class="heading">Active Teleworkers</h1>
-                	<div class="leader_container">
-                    	<div class="member_details">
-                        	<div class="member_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="member_text">Employee: <br /><br />Location:</div>
-                        </div>
-                        <div class="member_details">
-                        	<div class="member_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="member_text">Employee: <br /><br />Location:</div>
-                        </div>
-                        <div class="member_details">
-                        	<div class="member_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="member_text">Employee: <br /><br />Location:</div>
-                        </div>
-                        <div class="member_details">
-                        	<div class="member_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="member_text">Employee: <br /><br />Location:</div>
-                        </div>
-                        <div class="member_details">
-                        	<div class="member_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="member_text">Employee: <br /><br />Location:</div>
-                        </div>
-                    </div>
-                    <div class="leader_map"><a href="#"><img src="resource/images/map.png" alt="" /></a></div>
-                    <div class="leader_details">
-                    	<div class="table_header">
-                        	<div class="text1">Leader Board</div>
-                        	<div class="text2"># of Check-In for the last 60 days</div>
-                        </div>
-                        <div class="table_row">
-                        	<div class="text1">#1</div>
-                        	<div class="text2"><a href="#"><img src="resource/images/small_thumb.png" alt="" /></a></div>
-                            <div class="text3">User Name</div>
-                            <div class="text4">24</div>
-                        </div>
-                        <div class="table_row">
-                        	<div class="text1">#1</div>
-                        	<div class="text2"><a href="#"><img src="resource/images/small_thumb.png" alt="" /></a></div>
-                            <div class="text3">User Name</div>
-                            <div class="text4">24</div>
-                        </div>
-                        <div class="table_row">
-                        	<div class="text1">#1</div>
-                        	<div class="text2"><a href="#"><img src="resource/images/small_thumb.png" alt="" /></a></div>
-                            <div class="text3">User Name</div>
-                            <div class="text4">24</div>
-                        </div>
-                    </div>
+                	 <?php echo $this->load->view('leaders'); ?>
                 </div>
                 <div id="country2" class="tabcontent">
-                	<h1 class="heading">Company Saving</h1>
-                    <div class="savings_container">
-                    	<ul>
-                        	<li>
-                            	<div class="text1"><a href="#">Real Estate</a></div>
-                                <div class="text2">25</div>
-                            </li>
-                            <li>
-                            	<div class="text1"><a href="#">Productivity</a></div>
-                                <div class="text2">25</div>
-                            </li>
-                            <li>
-                            	<div class="text1"><a href="#">Turnover</a></div>
-                                <div class="text2">25</div>
-                            </li>
-                            <li>
-                            	<div class="text1"><a href="#">Healthcare</a></div>
-                                <div class="text2">25</div>
-                            </li>
-                            <br clear="all" />
-                            <li>
-                            	<div class="text1"><a href="#">Unscheduled<br />Absences</a></div>
-                                <div class="text2">25</div>
-                            </li>
-                            <li>
-                            	<div class="text1"><a href="#">Office Building<br />Electricity</a></div>
-                                <div class="text2">25</div>
-                            </li>
-                            <li>
-                            	<div class="text1"><a href="#">Information<br />Technology</a></div>
-                                <div class="text2">25</div>
-                            </li>
-                        </ul>
-                    </div>
+                 	 <?php echo $this->load->view('savings'); ?>               	
                 </div>
                 <div id="country3" class="tabcontent">
-                	<div class="equipment_list">
-                    	<div class="member_details">
-                        	<div class="member_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="member_text"><strong>Name:</strong> Name goes here...<br /><br /><strong>Detartment:</strong> Department:</div>
-                        </div>
-                        <div class="list_title">Equipment List</div>
-                        <div class="text_holder">
-                        	<ul>
-                            	<li><strong>Date Issued</strong><br />3/12/2013</li>
-                                <li><strong>Item</strong><br />Laptop</li>
-                                <li><strong>Description</strong><br />300HDD, 4GB</li>
-                                <li><strong>Manufacturer</strong><br />Dell</li>
-                                <li><strong>Model</strong><br />latitude d600</li>
-                                <li><strong>Model #</strong><br />447753</li>
-                                <li><strong>Condition</strong><br />25468</li>
-                                <li><strong>Appraised</strong><br />New</li>
-                                <li><strong>Value</strong><br />$100</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="equipment_list">
-                    	<div class="member_details">
-                        	<div class="member_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="member_text"><strong>Name:</strong> Name goes here...<br /><br /><strong>Detartment:</strong> Department:</div>
-                        </div>
-                        <div class="list_title">Equipment List</div>
-                        <div class="text_holder">
-                        	<ul>
-                            	<li><strong>Date Issued</strong><br />3/12/2013</li>
-                                <li><strong>Item</strong><br />Laptop</li>
-                                <li><strong>Description</strong><br />300HDD, 4GB</li>
-                                <li><strong>Manufacturer</strong><br />Dell</li>
-                                <li><strong>Model</strong><br />latitude d600</li>
-                                <li><strong>Model #</strong><br />447753</li>
-                                <li><strong>Condition</strong><br />25468</li>
-                                <li><strong>Appraised</strong><br />New</li>
-                                <li><strong>Value</strong><br />$100</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="equipment_list">
-                    	<div class="member_details">
-                        	<div class="member_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="member_text"><strong>Name:</strong> Name goes here...<br /><br /><strong>Detartment:</strong> Department:</div>
-                        </div>
-                        <div class="list_title">Equipment List</div>
-                        <div class="text_holder">
-                        	<ul>
-                            	<li><strong>Date Issued</strong><br />3/12/2013</li>
-                                <li><strong>Item</strong><br />Laptop</li>
-                                <li><strong>Description</strong><br />300HDD, 4GB</li>
-                                <li><strong>Manufacturer</strong><br />Dell</li>
-                                <li><strong>Model</strong><br />latitude d600</li>
-                                <li><strong>Model #</strong><br />447753</li>
-                                <li><strong>Condition</strong><br />25468</li>
-                                <li><strong>Appraised</strong><br />New</li>
-                                <li><strong>Value</strong><br />$100</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                	 <?php echo $this->load->view('inventory'); ?>
+                </div>                    
                 <div id="country4" class="tabcontent">
-                	<div class="savings_container">
-                    	<ul>
-                        	<li>
-                            	<div class="text1">Active<br />telworkers</div>
-                                <div class="text2">25</div>
-                            </li>
-                            <li>
-                            	<div class="text1">Number of<br />teleworker</div>
-                                <div class="text2">25</div>
-                            </li>
-                            <li>
-                            	<div class="text1">Number of<br />Check-ins</div>
-                                <div class="text2">25</div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="analytics_chart">Day<br /><a href="#"><img src="resource/images/chart.png" alt="" /></a></div>
-                    <div class="analytics_chart">City<br /><a href="#"><img src="resource/images/chart.png" alt="" /></a></div>
+                	 <?php echo $this->load->view('analytics'); ?>
                 </div>
                 <div id="country5" class="tabcontent">
-                	<h1 class="heading">Avaliable Hotelling Space</h1>
-                    <div class="hotelling_space">
-                    	<ul>
-                        	<li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li class="nospace">A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li>A65</li>
-                            <li class="nospace">A65</li>
-                        </ul>
-                    </div>
-                    <h1 class="heading">Reserved Users List</h1>
-                    <div class="hotel_reserve">
-                    	<div class="table_header">
-                        	<div class="text1">Assignee</div>
-                            <div class="text2">Office Location</div>
-                            <div class="text3">Date & Time</div>
-                        </div>
-                        <div class="table_row">
-                        	<div class="photo"><img src="resource/images/small_thumb.png" alt="" /></div>
-                        	<div class="reserver1">User name</div>
-                            <div class="reserver2">B52</div>
-                            <div class="reserver3">Aug 23, 2013 9-6pm</div>
-                        </div>
-                        <div class="table_row">
-                        	<div class="photo"><img src="resource/images/small_thumb.png" alt="" /></div>
-                        	<div class="reserver1">User name</div>
-                            <div class="reserver2">B52</div>
-                            <div class="reserver3">Aug 23, 2013 9-6pm</div>
-                        </div>
-                        <div class="table_row">
-                        	<div class="photo"><img src="resource/images/small_thumb.png" alt="" /></div>
-                        	<div class="reserver1">User name</div>
-                            <div class="reserver2">B52</div>
-                            <div class="reserver3">Aug 23, 2013 9-6pm</div>
-                        </div>
-                    </div>
+                	 <?php echo $this->load->view('hotel'); ?>               	
                 </div>
                 <div id="country6" class="tabcontent">
-                    <div class="teleworker_container">
-                        <h1 class="heading">Request Enrollment</h1>
-                        <div class="teleworker_details">
-                            <div class="worker_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="worker_text">Username: <br /><br />Department:</div>
-                            <div class="worker_btn"><a href="#"><img src="resource/images/accept.png" alt="" /></a> <a href="#"><img src="resource/images/reject.png" alt="" /></a> </div>
-                        </div>
-                        <div class="teleworker_details">
-                            <div class="worker_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="worker_text">Username: <br /><br />Department:</div>
-                            <div class="worker_btn"><a href="#"><img src="resource/images/accept.png" alt="" /></a> <a href="#"><img src="resource/images/reject.png" alt="" /></a> </div>
-                        </div>
-                        <div class="teleworker_details">
-                            <div class="worker_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="worker_text">Username: <br /><br />Department:</div>
-                            <div class="worker_btn"><a href="#"><img src="resource/images/accept.png" alt="" /></a> <a href="#"><img src="resource/images/reject.png" alt="" /></a> </div>
-                        </div>
-                    </div>
-                    <div class="teleworker_container right">
-                        <h1 class="heading">Enrolled Employee</h1>
-                        <div class="teleworker_details">
-                            <div class="worker_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="worker_text">Username: <br /><br />Department:</div>
-                            <div class="worker_btn"><a href="#"><img src="resource/images/accept.png" alt="" /></a> <a href="#"><img src="resource/images/reject.png" alt="" /></a> </div>
-                        </div>
-                        <div class="teleworker_details">
-                            <div class="worker_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="worker_text">Username: <br /><br />Department:</div>
-                            <div class="worker_btn"><a href="#"><img src="resource/images/accept.png" alt="" /></a> <a href="#"><img src="resource/images/reject.png" alt="" /></a> </div>
-                        </div>
-                        <div class="teleworker_details">
-                            <div class="worker_img"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="worker_text">Username: <br /><br />Department:</div>
-                            <div class="worker_btn"><a href="#"><img src="resource/images/accept.png" alt="" /></a> <a href="#"><img src="resource/images/reject.png" alt="" /></a> </div>
-                        </div>
-                    </div>
-                </div>
+                	 <?php echo $this->load->view('teleworker'); ?>
+                </div>    
             </div>  
         </div>
     </div>
@@ -311,6 +164,9 @@
 	countries.setselectedClassTarget("link") //"link" or "linkparent"
 	countries.init()
 </script>
+
+
+</div>
 
 
 </body></html>

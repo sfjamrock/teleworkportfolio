@@ -36,23 +36,17 @@ class Profile extends CI_Controller {
 
 			if ($this->authentication->is_signed_in())
 		{
-			//get user location info start
-			$ipaddress = '209.183.238.119';
-			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
-			$data['location'] = json_decode($json);
-			//get user location info end
 
 			// get user_id using username in url start 		
 			$username = $this->uri->segment(2);
 			$user_id = $this->user_model->userid_lookup($username);
 			$user_id = $user_id ['0']->id;
 			// get user_id using username in url end 
-
+			$data['employer'] = $this->user_model->employer_lookup($user_id);
 			$data['account'] = $this->account_model->get_by_id($user_id);
 			$data['eligible_tracker'] = $this->tp_model->check_by_id($user_id);
 			$data['account_details'] = $this->account_details_model->get_by_account_id($user_id);
-			$rows = $this->user_model->update_wall( $user_id);
-	     	$data['wall_dashboard'] = $rows ;
+	     	$data['wall_dashboard'] = $this->user_model->update_wall( $user_id);
 			$this->load->view('profile', isset($data) ? $data : NULL);
 		}
 		else

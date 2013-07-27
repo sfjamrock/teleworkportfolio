@@ -12,61 +12,7 @@
         <link rel="shortcut icon" href="resource/images/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="resource/css/style.css" />
         <script src="resource/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$("form#submit_wall").submit(function (){
-
-	$.ajax({
-		type: "POST",
-		url:"<?php echo site_url('users/dashboard/update_status'); ?>",
-		data:{ 
-				message_wall: $('#message_wall').attr('value'),
-				loguser: <?php echo $this->session->userdata('account_id')?>,
-				pageuser: <?php echo $this->uri->segment(4,$this->session->userdata('account_id'))?>
-		},
-		success: function(){
-		
-		}
-	});
-	return false;	
-	});
-});
-</script>
-<script type="text/javascript">
-$(document).ready(function() {
-	$("form#follow").submit(function (){
-
-	$.ajax({
-		type: "POST",
-		url:"<?php echo site_url('users/profile/follow'); ?>",
-		data:{ 
-				loguser: <?php echo $this->session->userdata('account_id')?>,
-				pageuser: <?php echo $this->uri->segment(4,$this->session->userdata('account_id'))?>
-		},
-		success: function(){
-			alert('finish');
-		}
-	});
-	return false;	
-	});
-});
-</script>
-
 		<script type="text/javascript" src="resource/js/modernizr.custom.04022.js"></script>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>
-		<!--[if lt IE 9]>
-			<style>
-				.content{
-					height: auto;
-					margin: 0;
-				}
-				.content div {
-					position: relative;
-				}
-			</style>
-	
-
-		<![endif]-->
     </head>
     <body>
 
@@ -76,40 +22,22 @@ $(document).ready(function() {
 <div class="details_holder">
     	<div class="innerpage_content">
         	<div class="heading">History</div>
-            <div class="employee_status_title"><span>Enter Range Information</span> <span class="date">April 2013</span></div>
-   	  		<div class="history_details">
-            	<div class="text1">Location: </div>
-                <div class="text2">Date and Time: </div>
-                <div class="text3">Miles: </div>
-                <div class="text4">Money: </div>
-                <div class="text5">Time: </div>
-            </div>
-            <div class="history_details">
-            	<div class="text1">Location: </div>
-                <div class="text2">Date and Time: </div>
-                <div class="text3">Miles: </div>
-                <div class="text4">Money: </div>
-                <div class="text5">Time: </div>
-            </div>
-            <div class="history_details">
-            	<div class="text1">Location: </div>
-                <div class="text2">Date and Time: </div>
-                <div class="text3">Miles: </div>
-                <div class="text4">Money: </div>
-                <div class="text5">Time: </div>
-            </div>
-            <div class="history_details">
-            	<div class="text1">Location: </div>
-                <div class="text2">Date and Time: </div>
-                <div class="text3">Miles: </div>
-                <div class="text4">Money: </div>
-                <div class="text5">Time: </div>
-            </div>
+            <!--<div class="employee_status_title"><span>Enter Range Information</span> <span class="date">April 2013</span></div>-->
+			<?php foreach($history as $history): ?>
+	   	  		<div class="history_details">
+	            	<div class="text1"><?php echo $history->city?>, <?php echo $history->state?></div>
+	                <div class="text2"><?php echo $history->date1?></div>
+	                <div class="text3">Miles: <?php echo $history->mile?></div>
+	                <div class="text4">Money: <?php echo $history->money?></div>
+	                <div class="text5">Time: <?php echo $history->time?></div>
+	            </div>
+ 			<?php endforeach; ?>
+
         </div>
             <div class="innerpage_sidebar">
 <?php echo $this->load->view('sidebar'); ?>
         </div>
-
+</div>
    <?php echo $this->load->view('footer'); ?>
 
     </body>

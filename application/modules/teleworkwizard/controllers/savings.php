@@ -21,7 +21,22 @@ class Savings extends CI_Controller {
 		}
 		if ($this->authentication->is_signed_in())
 		{
+
+			//get user location info start
+			$ipaddress = '209.183.238.119';
+			//$ipaddress =$_SERVER["REMOTE_ADDR"];
+			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
+			$data['location'] = json_decode($json);
+			//get user location info end
+
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
+
+			if( $this->tp_model->Check_if_user_checkin_today($this->session->userdata('account_id')))
+			{		
+						$error = 'You have already checkin today, Return tomorrow to record your telework saving ';
+						$this->session->set_flashdata('error',$error);
+						redirect('dashboard');
+			}
 
 			$get_result = $this->tp_model->user_exist();
 			if(!$get_result){

@@ -30,6 +30,8 @@ li a {display:block;}
 <span class="text1">Time: </span> <span class="text2">in this field the total time traveled to and from work on a average day<br /></span>
 <span class="text1">Money: </span> <span class="text2">Enter in this field the average amount sent at work on a average day. Click to see example<br /></span>
         </div>
+<p> We have you at <?php echo $location->city ?>, <?php echo $location->region_code ?>. Please enter your saving for todays checking</p>
+
         <div class="savings_tracker">
                             <div class="savings_tracker_form">
                     <form id="saving" name="saving" action="teleworkwizard/savings/saving_tracker" method="post">
@@ -40,7 +42,10 @@ li a {display:block;}
                                 <div class="text1">Money:</div>
                                 <div class="text2"><input name="money"  id="money" type="text" value="<?php echo set_value('money'); ?>"/></div>
                                 <div class="text1">&nbsp;</div>
-                               
+                               	<input type="hidden" name="city" id="city" value="<?php echo $location->city ?>"/>
+								<input type="hidden" name="state" id="state" value="<?php echo $location->region_code ?>"/>
+								<input type="hidden" name="latitude" id="latitude" value="<?php echo $location->latitude ?>"/>
+								<input type="hidden" name="longitude" id="longitude" value="<?php echo $location->longitude ?>"/>
                                 <div class="text3"><INPUT TYPE="image" SRC="resource/images/submit.png" ALT="Submit Form" ></div>
                     </form>
         </div></div>

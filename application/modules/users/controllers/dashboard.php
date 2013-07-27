@@ -23,12 +23,9 @@ class Dashboard extends CI_Controller {
 		if ($this->authentication->is_signed_in())
 		{
 
-			$ipaddress = '209.183.238.119';
-			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
-			$data['location'] = json_decode($json);
-
 			$userid=$this->session->userdata('account_id');
 			$data['telework_tracker'] = $this->tp_model->get_by_id($userid);
+			$data['employer'] = $this->user_model->employer_lookup($userid);
 			$data['account'] = $this->account_model->get_by_id($userid);
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
 			$rows = $this->user_model->update_wall( $userid);

@@ -33,20 +33,6 @@ $(document).ready(function() {
 	});
 });
 </script>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>
-		<!--[if lt IE 9]>
-			<style>
-				.content{
-					height: auto;
-					margin: 0;
-				}
-				.content div {
-					position: relative;
-				}
-			</style>
-	
-
-		<![endif]-->
     </head>
 <body>
 <div id="main">
@@ -66,8 +52,10 @@ $(document).ready(function() {
                 <div class="text_holder">
                 	<ul>
                     	<li class="title"><?php echo $account_details->firstname ?> <?php echo $account_details->lastname ?></li>
-                    	<li class="text"><?php echo $location->city ?>, <?php echo $location->region_code ?></li>
-                       <!-- <li class="text">Employer:</li>-->
+                    	<li class="text"><?php echo $account_details->city ?>, <?php echo $account_details->state ?></li>
+                       	<?php if( $employer ) :?>
+							<li class="text">Employer: <a href="<?php echo base_url("");?><?php echo $employer->cusername?>"><?php echo $employer->name?></li>
+						<?php endif; ?>
                     </ul>
                     <div class="textbox"><form id="submit_wall"><input type="text"  id="message_wall" size="35" placeholder="Status"/>
                     <button type="submit">Post</button></form></div>
@@ -79,7 +67,12 @@ $(document).ready(function() {
 <a href="<?php echo base_url("teleworkwizard/savings");?>"><img src="resource/images/Check-In.png" alt="Telework Savings check in" width="120"/>
 <?php endif; ?>
 </a></div>
+
             </div>
+<?php if ($this->session->flashdata('error')  != '');
+echo $this->session->flashdata('error');
+?>
+
          <!--   Start of Update Wall Script -->
 <?php foreach($wall_dashboard as $row): ?>
             <div class="employee_dashboard_box new_border">

@@ -102,7 +102,6 @@
         	<div class="btn_holder"><a href="#"><img src="resource/images/telework-statistics.png" alt="" /></a></div>
             <div class="btn_holder"><a href="#"><img src="resource/images/following.png" alt="" /></a></div>
             <div class="btn_holder"><a href="#"><img src="resource/images/followers.png" alt="" /></a></div>
-            <div class="btn_holder"><a href="#"><img src="resource/images/add.png" alt="" /></a></div>
         </div>
     </div>
     <?php print_r($this->session->all_userdata()); ?>

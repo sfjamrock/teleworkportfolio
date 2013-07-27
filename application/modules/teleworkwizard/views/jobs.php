@@ -88,7 +88,7 @@ select: function( event, ui ) {
             <div class="text1">Job Description:</div>
         	<div class="text2"><textarea id="description" rows="5" cols="100" ></textarea>
 </div>
-            <div class="text1">&nbsp;</div>
+            <div class="text1">Task List</div>
         	<div class="text2">
             	<div class="text_holder">
              

@@ -3,7 +3,7 @@
 <head>
 		<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-        <title>Dashboard -Telework Portfolio</title>
+        <title>Create Company Page - Telework Portfolio</title>
 		<base href="<?php echo base_url(); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
         <meta name="description" content="Telework Portfolio is a online base platform that aims to facilitating data drive conversation about telework between employees and managers" />
@@ -68,26 +68,30 @@
 <div class="details_holder">
         <h1>Create Company Page</h1>
         <div class="company_setup_text">Create a Company page to Start Tracking and Managing your Teleworkers<br /><br />Select your company entity<br /><br />
+
+                    <form id="create" name="create" action="company/start/create" method="post">
+<?php echo validation_errors(); ?> 
         	<ul>
-            	<li><input name="" type="radio" value="" /><br />Business</li>
-                <li><input name="" type="radio" value="" /><br />Non-profit</li>
-                <li><input name="" type="radio" value="" /><br />Government</li>
-                <li class="nospace"><input name="" type="radio" value="" /><br />Schools</li>
+            	<li><input name="check" type="radio" value="1" checked="checked" /><br />Business</li>
+                <li><input name="check" type="radio" value="2" /><br />Non-profit</li>
+                <li><input name="check" type="radio" value="3" /><br />Government</li>
+                <li class="nospace"><input name="check" type="radio" value="4" /><br />Schools</li>
             </ul>
         </div>
         <div class="company_setup_text">
         	<div class="title">Company Information</div>
         	<div class="text1">Company Name</div>
-            <div class="text2"><input name="" type="text" size="75" value="Company Name" /></div>
+            <div class="text2"><input name="cname" type="text" size="75" placeholder="Company Name" /></div>
             <div class="text1">Address</div>
-            <div class="text2"><input name="" type="text" size="45" value="Street Address" /> &nbsp; <input name="" type="text" size="23" value="Suite#" /></div>
+            <div class="text2"><input name="caddress1" type="text" size="45" placeholder="Street Address" /> &nbsp; <input name="caddress2" type="text" size="23" placeholder="Suite#" /></div>
             <div class="text1">&nbsp;</div>
-            <div class="text2"><input name="" type="text" size="20" value="City " /> &nbsp; <input name="" type="text" size="25" value="State Providence" /> &nbsp; <input name="" type="text" size="15" value="Postal Code" /></div>
+            <div class="text2"><input name="city" type="text" size="20" placeholder="City " /> &nbsp; <input name="state" type="text" size="25" placeholder="State Providence" /> &nbsp; <input name="zip" type="text" size="15" placeholder="Postal Code" /></div>
             <div class="text1">Contact Number</div>
-            <div class="text2"><input name="" type="text" size="75" value="Phone Number" /></div>
+            <div class="text2"><input name="phone" type="text" size="75" placeholder="Phone Number" /></div>
             <div class="text1">&nbsp;</div>
-            <div class="text2"><a href="#"><img src="resource/images/get-started.png" alt="" /></a></div>
+            <div class="text2"><INPUT TYPE="image" SRC="resource/images/get-started.png" ALT="Submit Form" ></div>
         </div>
+</form>
     </div>
     <?php echo $this->load->view('footer'); ?>
 </body></html>

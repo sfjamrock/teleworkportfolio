@@ -25,6 +25,7 @@ class History extends CI_Controller {
 		{
 			$userid=$this->session->userdata('account_id');
 			$data['telework_tracker'] = $this->tp_model->get_by_id($userid);
+			$data['history'] = $this->user_model->history($userid);
 			$data['account'] = $this->account_model->get_by_id($userid);
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
 			$this->load->view('history', isset($data) ? $data : NULL);

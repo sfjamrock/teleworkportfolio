@@ -18,6 +18,14 @@ function GetDescription($term)
 	    $query = $this->db->query($sql);
  		return $query->result();
 }
+function Check_if_user_checkin_today($user_id)
+{
+		$sql = "SELECT id FROM telework_tracker
+				where user_id = $user_id and DATE(date) = DATE(NOW())";
+	    $query = $this->db->query($sql);
+ 		return $query->result();
+}
+
 function GetTask($term)
 {
 		$sql = "SELECT task_id,task FROM occupation_data JOIN task_statements ON task_statements.onetsoc_code = occupation_data.onetsoc_code WHERE title LIKE '$term'";
@@ -46,6 +54,10 @@ $data = array(
 				'time' => $this->input->post('time'),
 				'money' => $this->input->post('money'),
 				'user_id' => $this->session->userdata('account_id'),
+				'city' => $this->input->post('city'),
+				'state' => $this->input->post('state'),
+				'latitude' => $this->input->post('latitude'),
+				'longitude' => $this->input->post('longitude'),
 				'date' => mdate('%Y-%m-%d %H:%i:%s', now())
 				);
 $query = $this->db->insert('telework_tracker',$data);

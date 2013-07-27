@@ -3,12 +3,37 @@
 class User_model extends CI_Model {
 	
 	// --------------------------------------------------------------------
+	function employer_lookup($user_id)
+	{
+		$sql = "select name, cusername
+				from company
+				join telework_requests
+				on telework_requests.cid=company.cid
+				where user_status = 1 and user_id = $user_id
+				group by user_id";
+
+	    $query = $this->db->query($sql);
+		return $query->row();
+
+	}
+
 	function get_stats_list($user_id)
 	{
 		$sql = "SELECT job_title  FROM eligible_tracker where user_id='$user_id'";
 	    $query = $this->db->query($sql);
 		return $query->result();
 	}
+function history ($user_id)
+{
+		$sql = "select user_id, money,time, mile, city, state,DATE_FORMAT(date,'%b %d %Y %h:%i %p') as date1
+		        from telework_tracker
+		        where user_id='$user_id'
+        		order by date DESC
+		        limit 20";
+	    $query = $this->db->query($sql);
+		return $query->result();
+
+}
 	function get_stats_list2($user_id)
 	{
 		$sql = "SELECT eligible_task_list  FROM eligible_tracker where user_id='$user_id'";
@@ -145,7 +170,7 @@ WHERE userA = $user_id";
 	}
 	function userstats_chart($user_id)
 	{
-		$sql="SELECT count(user_id) as count, DAYNAME(date) as Day FROM telework_tracker where user_id = $user_id group by Day ORDER BY Day; ";
+		$sql="SELECT count(user_id) as count, DAYNAME(date) as Day FROM telework_tracker where user_id = $user_id group by Day ORDER BY Day";
 		$query = $this->db->query($sql);
 		return $query->result();
 	}

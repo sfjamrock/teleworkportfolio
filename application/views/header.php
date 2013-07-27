@@ -17,9 +17,9 @@
                             <!-- <li><a href="<?php echo base_url("company/start");?>">Create Company Page</a></li>-->
                            <li><a href="<?php echo base_url("teleworkwizard");?>">Job Evaluation</a></li>
 
-                           <li><a href="<?php echo base_url("profile");?>/<?php echo $this->uri->segment(2,$account->username);?>">Profile</a></li>
+                           <!--<li><a href="<?php echo base_url("profile");?>/<?php echo $this->uri->segment(2,$account->username);?>">Profile</a></li>
 
-                           <li><a href="<?php echo base_url("teleworker");?>/<?php echo $this->uri->segment(2,$account->username);?>">Teleworker</a></li>
+                           <li><a href="<?php echo base_url("teleworker");?>/<?php echo $this->uri->segment(2,$account->username);?>">Teleworker</a></li>-->
                            <li><a href="<?php echo base_url("stats");?>">Stats</a></li>
 
                            <li><a href="<?php echo base_url("history");?>">History</a></li>
@@ -65,7 +65,7 @@
 			 	</div>
 	            <div class="btn_holder"><INPUT TYPE="image" SRC="resource/images/login.png" ALT="Submit Form"></div>
 	            <div class="checkbox"><input name="sign_in_remember" id="sign_in_remember" type="checkbox" value="checked"  checked=" $this->input->post('sign_in_remember')"/></div>
-	            <div class="checkbox_text">Remember me  |  <a href="<?php echo base_url("account/forgot_password");?>">Forget Password?</a></div>
+	            <div class="checkbox_text">Remember me  |  <a href="<?php echo base_url("forgot_password");?>">Forget Password?</a></div>
 			</form>
  		<?php endif; ?>
       </div>

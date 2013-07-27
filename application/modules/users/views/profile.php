@@ -52,21 +52,6 @@ $(document).ready(function() {
 });
 </script>
 
-		<script type="text/javascript" src="resource/js/modernizr.custom.04022.js"></script>
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700,300,300italic' rel='stylesheet' type='text/css'>
-		<!--[if lt IE 9]>
-			<style>
-				.content{
-					height: auto;
-					margin: 0;
-				}
-				.content div {
-					position: relative;
-				}
-			</style>
-	
-
-		<![endif]-->
     </head>
     <body>
 
@@ -89,8 +74,10 @@ $(document).ready(function() {
                 <div class="text_holder">
                 	<ul>
                     	<li class="title"><?php echo $account_details->firstname ?> <?php echo $account_details->lastname ?></li>
-                    	<li class="text"><?php echo $location->city ?>, <?php echo $location->region_code ?></li>
-                        <li class="text">Employee:</li>
+                    	<li class="text"><?php echo $account_details->city ?>, <?php echo $account_details->state ?></li>
+                       	<?php if( $employer ) :?>
+							<li class="text">Employer: <a href="<?php echo base_url("");?><?php echo $employer->cusername?>"><?php echo $employer->name?></a></li>
+						<?php endif; ?>
                     </ul>
                     <div class="textbox"><form id="submit_wall"><input type="text"  id="message_wall" size="35" placeholder="Post"/>
                     <button type="submit">Post</button></form></div>

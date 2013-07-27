@@ -39,13 +39,24 @@
 */
 
 $route['default_controller'] = 'home';
-$route['404_override'] = '';
+$route['404_override'] = 'home';
 $route['sign_up'] = "account/sign_up";
 $route['sign_in'] = "account/sign_in";
+$route['forgot_password'] = "account/forgot_password";
 $route['account_settings'] = "account/account_settings";
 $route['account_password'] = "account/account_password";
 $route['account_profile'] = "account/account_profile";
 $route['account_linked'] = "account/account_linked";
+$route['account/sign_out'] = "account/sign_out";
+$route['company/profile/join'] = "company/profile/join";
+$route['iptest'] = "iptest";
+$route['business'] = "business";
+$route['employee'] = "employee";
+$route['terms'] = "terms";
+$route['contact_us'] = "contact_us";
+$route['about_us'] = "about_us";
+$route['policy'] = "policy";
+
 
 $route['dashboard'] = "users/dashboard";
 $route['history'] = "users/history";
@@ -56,8 +67,22 @@ $route['follower/(:any)'] = "users/follower/lookup";
 $route['following/(:any)'] = "users/following/lookup";
 $route['profile/(:any)'] = "users/profile/lookup";
 $route['teleworker/(:any)'] = "users/teleworker/lookup";
+$route['teleworkwizard'] = "teleworkwizard";
+$route['users/dashboard/update_status'] = "users/dashboard/update_status";
+$route['company/analytics/accept'] = "company/analytics/accept";
+$route['company/analytics/reject'] = "company/analytics/reject";
+$route['teleworkwizard/savings'] = "teleworkwizard/savings";
+$route['teleworkwizard/savings/saving_tracker'] = "teleworkwizard/savings/saving_tracker";
+$route['teleworkwizard/suggestions'] = "teleworkwizard/suggestions";
+$route['teleworkwizard/GetJobEvaluation'] = "teleworkwizard/GetJobEvaluation";
 
 
+
+
+$route['start'] = "company/start";
+$route['(:any)/analytics'] = "company/analytics";
+$route['(:any)/dashboard'] = "company/dashboard";
+$route['(:any)'] = "company/profile/lookup";
 
 
 
