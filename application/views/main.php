@@ -29,7 +29,7 @@
   <div class="details_holder">
     <div class="benefit_buttons"><a href="<?php echo base_url("employee");?>"><img src="resource/images/benefit1.png" alt="" /></a> <a href="<?php echo base_url("business");?>"><img src="resource/images/benefit2.png" alt="" /></a> </div>
 <div style="clear:both"></div><br/>
-<h1 style="font-size:xx-large;text-align:center; color:#095189">Welcome to Telework Portfolio <br/> <strong>The only web analytics tool for companies and employees to track and manage their telework saving.</strong></h1>
+<h1 style="font-size:xx-large;text-align:center; color:#095189">Welcome to Telework Portfolio <br/> <strong>The only web analytics tool for companies to track, manage and measure the effectiveness of their telework program.</strong></h1>
     <div class="main_container">
       <div class="main_content">
        <!--<div class="title">Where Teleworkers meet</div>-->

@@ -30,10 +30,14 @@
     <div class="details_holder">
         <div class="company_beenefits">
         	<div class="title">Employee Benefit</div>
-         	<div class="video_holder"><a href="#"><img src="resource/images/emp_balance.jpg" alt="" height="285" width="360"/></a></div>            <div class="benefit_text">
-            	<div class="text_holder"><strong>Save Time and Money with Less Traveling</strong><br />Not only would an individual save on gas by telecommuting, but they are saving on maintenance costs, toll fees, tickets, and public transportation costs. Employees working from home can save hours a week by not commuting. A telecommuter can also save on that one hour extra day care cost they’ve been paying. </div>
-            	<div class="text_holder"><strong>Better Work-Life Balance</strong><br />Employees can easily adjust their working hours around their life, with the exceptions of deadlines and meetings. Teleworking can reduce an employee taking personal and sick days because they are more flexible with their schedule.</div>
-            	<div class="text_holder"><strong>Greater Work Opportunities</strong><br />Those in rural areas may be limited in their work opportunities. Driving 50+ miles one way is just not economically feasible for some, and takes away from their personal life. There are more opportunities for advancement if someone can work from home. An employee can live hundreds of miles away and have their dream job. </div>
+<div style="clear:both"></div><br/>
+<h1 style="font-size:xx-large;text-align:center; color:#095189">Enrolling and tracking your teleworkers as never been easier</strong></h1><div style="clear:both"></div><br/><br/>
+
+         	<div class="video_holder"><a href="#"><img src="resource/images/emp_balance.jpg" alt="" height="380" width="360"/></a></div>            <div class="benefit_text">
+            	            	<div class="text_holder" ><img src="resource/images/Check-In.png" alt="Telework Savings check in" height="120" width="120" align="left" style="margin:0px 10px 0 10px"/><strong>Check-in and Save</strong><br /><br/>Our Telework Check-in process simplifies the process of recording employees’ telework days, thus reducing the burden on HR and managers to track these days and helps reduce the time employees spent getting acclimated to the new telework arrangement. </div>   
+            	<div class="text_holder" ><img src="resource/images/seal.png" alt="Job Evaluator" height="100" width="120" align="left" style="margin:0px 10px 0 10px"/><strong>Job Self-Evaluator</strong><br /><br/>Our job self-evaluation system uses industry standard tools used by HR professional, allowing you to evaluate your own job functions to see which one are suitable for teleworking and which is not.</div>  
+            	<div class="text_holder" ><img src="resource/images/Green-button.png" alt="Job Evaluator" height="120" width="120" align="left" style="margin:0px 10px 0 10px"/><strong>Signing up for  telework has never been easier</strong><br /><br/>Simply go to your company page and press <img src="resource/images/join-now1.png" alt="Job Evaluator" style="margin:0px 5px 0 5px;vertical-align: middle"/> to get on your way to telecommuting. </div>          
+
             
 </div>
       <!--      <div class="thumb_images">

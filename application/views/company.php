@@ -31,14 +31,25 @@
     <div class="details_holder">
         <div class="company_beenefits">
         	<div class="title">Company Benefit</div>
-           <div class="video_holder"><a href="#"><img src="resource/images/flex.jpg" alt="" height="380" width="360" /></a></div>
-            <div class="benefit_text">
-            	<div class="text_holder"><strong>It’s better for the Environment</strong><br />It’s an environmental issue with so many commuters on the road. By reducing the number of employees traveling into work, companies can help with environmental issues. Fewer greenhouse emulsions are being released with fewer employees driving and taking the bus. </div>
-            	<div class="text_holder"><strong>Less Congestion on the Roads Improves Business Shipment and Receiving Rates</strong><br />The 2012 <a href="http://www.shrm.org/hrdisciplines/technology/articles/pages/study-examines-benefits-of-telework.aspx">Urban Mobility Report study</a> released February 2013 by the Texas A&M Transportation Institute states, “The cost of congestion is more than $120 billion, nearly $820 for every commuter in the U.S.”  Commuting employees are wasting time and money. This is affecting businesses that depend on shipments being received on time. Instead, their drivers, UPS, and FedEx drivers are held up as well in the congestion. </div>
-            	<div class="text_holder"><strong>More Productive Employees</strong><br />By reducing time on the road and worries of getting home by a certain time to maintain family life, employees can focus more on their duties and be more productive workers. </div>
-            <div class="text_holder"><strong>Increases a Company’s Bottom Line</strong><br />It also helps cut a company’s cost directly, affecting the bottom line. By increasing telecommute positions; a company can cut back on their real estate space, ultimately cutting back on additional equipment, supplies and utility costs. </div>
-            
 
+<div style="clear:both"></div><br/>
+<h1 style="font-size:xx-large;text-align:center; color:#095189">Creating a SMART telework program just got simpler</strong></h1><div style="clear:both"></div><br/><br/>
+
+           <div class="video_holder"><a href="#"><img src="resource/images/htt-2.jpg" alt="" height="270" width="360" style="margin:0px 0px 10px 0px" /><img src="resource/images/t2222.jpg" alt="" height="270" width="360" /></a></div>
+            <div class="benefit_text">
+            	<div class="text_holder" ><img src="resource/images/success.jpg" alt="Telework Savings check in" height="120" width="120" align="left" style="margin:0px 10px 0 10px"/><strong>Track and Measure Telework Savings</strong><br /><br/>Know your return on investment each time your employees’ telework. Our tools automate the process of tracking and measuring your companies ROI so you know the true value of your telework program. </div> 
+
+				<div class="text_holder" ><img src="resource/images/enroll.jpg" alt="Telework Savings check in" height="120" width="120" align="left" style="margin:0px 10px 0 10px"/><strong>Telework enrollment made easy</strong><br /><br/>We simplified the enrollment process so your managers and employees are on the same page from day one. </div> 
+
+
+				<div class="text_holder" ><img src="resource/images/img2.png" alt="Telework Evangelist" height="120" width="120" align="left" style="margin:0px 10px 0 10px"/><strong>Telework Evangelist</strong><br /><br/>Know who are your top teleworker, our tools let you know who is contribute to the success for your telework program so you can reward them for their effort.</div> 
+
+
+				<div class="text_holder" ><img src="resource/images/smart.jpg" alt="Telework Savings check in" height="120" width="120" align="left" style="margin:0px 10px 0 10px"/><strong>Smarter telework programs</strong><br /><br/>Create the best telework program for your company by using employee engagement data to increase profits, improve the telework experience and identify and eliminate potential issue before they affect your program. See how our telework analytics make your telework program the best it can be.</div> 
+
+
+
+ 
             </div>
   <!--          <div class="thumb_images">
             	<ul>

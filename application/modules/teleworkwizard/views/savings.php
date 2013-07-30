@@ -13,14 +13,75 @@
 <link rel="icon" href="resource/images/favicon.ico" />
 <link rel="shortcut icon" href="resource/images/favicon.ico" />
 
-<!--[if lt IE 8]>
-<style type="text/css">
-li a {display:inline-block;}
-li a {display:block;}
+<style type="text/css"> 
+  html { height: 100% }
+  body { height: 50%; margin: 0; padding: 0 }
+  #map_canvas { height: 100% }
 </style>
-<![endif]-->
+<script type="text/javascript"
+  src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZQjI-dh8LgP2X8O-7LH0e2_fLomCDKKw&sensor=false">
+</script>
+<script type="text/javascript">
+//    setTimeout(function () {
+  //     window.location.reload();
+    //}, 1000);
 
-</head><body>
+var locations = ['<?php echo $location->city ?>, <?php echo $location->region_code ?>',<?php echo $location->latitude ?>,<?php echo $location->longitude ?> ];
+
+  function initialize() {
+
+    var myOptions = {
+      center: new google.maps.LatLng(38.9, -77.2),
+      zoom: 7,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+
+    };
+    var map = new google.maps.Map(document.getElementById("default"),
+        myOptions);
+
+    setMarkers(map,locations)
+
+  }
+
+
+
+  function setMarkers(map,locations){
+
+      var marker, i
+
+for (i = 0; i < locations.length; i++)
+ {  
+
+ var loan = locations[i][0]
+ var lat = locations[i][1]
+ var long = locations[i][2]
+
+
+ latlngset = new google.maps.LatLng(lat, long);
+
+  var marker = new google.maps.Marker({  
+          map: map, title: loan , position: latlngset  
+        });
+        map.setCenter(marker.getPosition())
+
+
+        var content =    '</h3>' + " We have you at " + loan    
+
+  var infowindow = new google.maps.InfoWindow()
+
+google.maps.event.addListener(marker,'click', (function(marker,content,infowindow){ 
+        return function() {
+           infowindow.setContent(content);
+           infowindow.open(map,marker);
+        };
+    })(marker,content,infowindow)); 
+
+  }
+  }
+
+  </script>
+
+</head><body onload="initialize()">
 <div id="main">
     <?php echo $this->load->view('header'); ?>
     <div class="details_holder">
@@ -30,8 +91,9 @@ li a {display:block;}
 <span class="text1">Time: </span> <span class="text2">in this field the total time traveled to and from work on a average day<br /></span>
 <span class="text1">Money: </span> <span class="text2">Enter in this field the average amount sent at work on a average day. Click to see example<br /></span>
         </div>
+<div class="leader_map" id="default" style="width:100%; height:100%"></div>
 <p> We have you at <?php echo $location->city ?>, <?php echo $location->region_code ?>. Please enter your saving for todays checking</p>
-
+ 
         <div class="savings_tracker">
                             <div class="savings_tracker_form">
                     <form id="saving" name="saving" action="teleworkwizard/savings/saving_tracker" method="post">

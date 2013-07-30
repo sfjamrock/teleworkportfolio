@@ -19,7 +19,8 @@
 //    setTimeout(function () {
   //     window.location.reload();
     //}, 1000);
-
+// Enable the visual refresh
+google.maps.visualRefresh = true;
 var locations = [
 		<?php foreach($map as $row): ?>
   			['<?php echo $row->city; ?>, <?php echo $row->state; ?>', <?php echo $row->latitude; ?>, <?php echo $row->longitude; ?>, <?php echo $row->user_id; ?>,
