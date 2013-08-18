@@ -8,7 +8,7 @@ class Message extends CI_Controller {
 		$this->load->helper(array('language', 'url', 'form', 'account/ssl'));
 		$this->load->config('account/account');
         $this->load->library(array('account/authentication', 'form_validation'));
-		$this->load->model(array('account/account_model', 'account/account_details_model', 'teleworkwizard/tp_model','user_model'));
+		$this->load->model(array('account/account_model', 'account/account_details_model', 'teleworkwizard/tp_model','user_model','message_model'));
 		$this->load->language(array('general', 'account/account_profile'));
 	 }
 	 
@@ -42,8 +42,8 @@ class Message extends CI_Controller {
 			$data['telework_tracker'] = $this->tp_model->get_by_id($userid);
 			$data['account'] = $this->account_model->get_by_id($userid);
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
-			$data['conversation_by_id']=$this->account_model->conversation_by_id($sender_id);
-			$data['conversations']=$this->account_model->conversations(); 
+			$data['conversation_by_id']=$this->message_model->conversation_by_id($sender_id);
+			$data['conversations']=$this->message_model->conversations(); 
 			$data['userid']=$userid;
 			
 			$this->load->view('message', isset($data) ? $data : NULL);

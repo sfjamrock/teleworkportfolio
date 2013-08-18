@@ -8,7 +8,7 @@ class Profile extends CI_Controller {
 		$this->load->helper(array('language', 'url', 'form', 'account/ssl'));
 		$this->load->config('account/account');
         $this->load->library(array('account/authentication', 'form_validation'));
-		$this->load->model(array('account/account_model', 'account/account_details_model', 'user_model', 'teleworkwizard/tp_model'));
+		$this->load->model(array('account/account_model', 'account/account_details_model', 'company/company_model','user_model', 'teleworkwizard/tp_model'));
 		$this->load->language(array('general', 'account/account_profile'));
 	 }
 	 function index()

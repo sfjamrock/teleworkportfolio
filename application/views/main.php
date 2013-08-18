@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="description" content="Telework Portfolio is a professional network that makes it easy for employees and employers to measure their telework ROI." />
 <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home, remote worker" />
+<!-- SmartAddon.com Verification --> 
+<meta name="smartaddon-verification" content="3b219f3b7e193f60d4373862942e52c1" />
 <meta name="author" content="Telework Portfolio" />
 <link rel="stylesheet" href="resource/css/style.css" media="screen" />
 <link rel="icon" href="resource/images/favicon.ico" />
@@ -29,14 +31,16 @@
   <div class="details_holder">
     <div class="benefit_buttons"><a href="<?php echo base_url("employee");?>"><img src="resource/images/benefit1.png" alt="" /></a> <a href="<?php echo base_url("business");?>"><img src="resource/images/benefit2.png" alt="" /></a> </div>
 <div style="clear:both"></div><br/>
-<h1 style="font-size:xx-large;text-align:center; color:#095189">Welcome to Telework Portfolio <br/> <strong>The only web analytics tool for companies to track, manage and measure the effectiveness of their telework program.</strong></h1>
+<h1 style="font-size:xx-large;text-align:center; color:#095189">Welcome to Telework Portfolio <br/> <strong>The telework analytics system for companies and 
+employees to evaluate the effectiveness of their telework program.</strong></h1><div style="clear:both"></div><br/>
+
     <div class="main_container">
       <div class="main_content">
        <!--<div class="title">Where Teleworkers meet</div>-->
         <div class="video_holder"><iframe width="600" height="370" src="http://www.youtube.com/embed/wDjA7QNFagI" frameborder="0" allowfullscreen></iframe></div>
       </div>
       <div class="sidebar">
-        <div class="title"><a href="<?php echo base_url("account/connect_facebook");?>"><img src="resource/images/fb-connect-button.png" alt=""  width="300"/></a></div>
+        <div class="title">Get Started - Its Free</div>
         <div class="form_holder">
 
 		<form name="sign_up" action="sign_up" enctype="multipart/form-data" method="post">
@@ -94,9 +98,10 @@
                 <?php echo form_error('sign_up_password'); ?>
 
           </div>
-          <div class="text1">By Joining Telework Portfolio, you agree to our's Terms and Privacy Policy.</div>
-          <div class="btn_holder"><INPUT TYPE="image" SRC="resource/images/join-now.png" ALT="Submit Form"></div>
+          <div class="text1">By Joining Telework Portfolio, you agree to our's <a href="<?php echo base_url("terms");?>" style="text-decoration: none">Terms</a> and <a href="<?php echo base_url("policy");?>" style="text-decoration: none">Privacy Policy</a>.</div>
+          <div class="btn_holder"><INPUT TYPE="image" SRC="resource/images/join-now.png" ALT="Submit Form"></div><div style="clear:both"></div><br/>
           </form>
+			OR Login: <a href="<?php echo base_url("connect_facebook");?>"><img src="resource/images/circle_facebook.png" alt=""  height="40" width="40"style="margin:0px 5px 0 5px;vertical-align: middle"/></a> <a href="<?php echo base_url("connect_google");?>"><img src="resource/images/google_circle.png" alt=""  height="40" width="40"style="margin:0px 5px 0 5px;vertical-align: middle"/></a>
         </div>
       </div>
     </div>

@@ -2,9 +2,9 @@
 
 class Company_model extends CI_Model {
 
-	function manager_lookup($cid,$user_id)
+	function manager_lookup($user_id)
 	{
-		$sql="SELECT manager_id FROM company where cid = $cid and manager_id=$user_id";
+		$sql="SELECT * FROM company where manager_id=$user_id";
 		$query = $this->db->query($sql);
 		return $query->result();
 	}

@@ -44,7 +44,7 @@
                 <div class="text_holder">
                 	<ul>
                     	<li class="title"><?php echo $account_details->firstname ?> <?php echo $account_details->lastname ?></li>
-                    	<li class="text"><?php echo $location->city ?>, <?php echo $location->region_code ?></li>
+                    	<li class="text"><?php echo $account_details->city ?>, <?php echo $account_details->state ?></li>
                         <li class="text">Employee:</li>
                     </ul>
                   </div>

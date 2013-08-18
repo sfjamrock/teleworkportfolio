@@ -14,7 +14,15 @@
 							<ul>
                            <li><a href="<?php echo base_url("account_settings");?>">Account Settings</a></li>
 
-                            <!-- <li><a href="<?php echo base_url("company/start");?>">Create Company Page</a></li>-->
+                           <li><a href="<?php echo base_url("start");?>">Create Company Page</a></li>
+
+
+<?php if($test1=$this->company_model->manager_lookup($this->session->userdata('account_id'))) :?>
+<?php foreach($test1 as $row): ?>
+  <li><a href="<?php echo htmlspecialchars(base_url("").$row->cusername.'/analytics');?>"><?php echo $row->cusername; ?> Analytics</a></li>
+ <li><a href="<?php echo htmlspecialchars(base_url("").$row->cusername);?>"><?php echo $row->cusername; ?> Profile</a></li>
+<?php endforeach; ?>
+<?php endif; ?>
                            <li><a href="<?php echo base_url("teleworkwizard");?>">Job Evaluation</a></li>
 
                            <li><a href="<?php echo base_url("stats");?>">Stats</a></li>

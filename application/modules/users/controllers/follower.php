@@ -37,11 +37,6 @@ class Follower extends CI_Controller {
 
 			if ($this->authentication->is_signed_in())
 		{
-			//get user location info start
-			$ipaddress = '209.183.238.119';
-			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
-			$data['location'] = json_decode($json);
-			//get user location info end
 
 			// get user_id using username in url start 		
 			$username = $this->uri->segment(2);

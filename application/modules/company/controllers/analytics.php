@@ -29,7 +29,7 @@ class Analytics extends CI_Controller {
 			$cid = $cid ['0']->cid;
 			// get user_id using username in url end 
 			// get user access rights to analytics start
-			if (!$this->company_model->manager_lookup($cid,$this->session->userdata('account_id')))
+			if (!$this->company_model->manager_lookup($this->session->userdata('account_id')))
 			{
 				redirect($cusername);
 			}

@@ -25,6 +25,7 @@ $(document).ready(function() {
 				pageuser: "<?php echo $this->uri->segment(2)?>"
 		},
 		success: function(){
+				window.location.reload();
 		
 		}
 	});

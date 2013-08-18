@@ -23,8 +23,8 @@ class Savings extends CI_Controller {
 		{
 
 			//get user location info start
-			$ipaddress = '209.183.238.119';
-			//$ipaddress =$_SERVER["REMOTE_ADDR"];
+			//$ipaddress = '209.183.238.119';
+			$ipaddress =$_SERVER["REMOTE_ADDR"];
 			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
 			$data['location'] = json_decode($json);
 			//get user location info end
@@ -44,7 +44,7 @@ class Savings extends CI_Controller {
 			}
 			else
 			{
-				$this->load->view('savings_tracker', isset($data) ? $data : NULL);
+				$this->load->view('savings', isset($data) ? $data : NULL);
 			}
 
 		}

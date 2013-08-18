@@ -26,7 +26,7 @@ $(document).ready(function() {
 				pageuser: "<?php echo $this->uri->segment(2,$account->username)?>"
 		},
 		success: function(){
-			
+			window.location.reload();
 		}
 	});
 	return false;	
@@ -54,7 +54,7 @@ $(document).ready(function() {
                     	<li class="title"><?php echo $account_details->firstname ?> <?php echo $account_details->lastname ?></li>
                     	<li class="text"><?php echo $account_details->city ?>, <?php echo $account_details->state ?></li>
                        	<?php if( $employer ) :?>
-							<li class="text">Employer: <a href="<?php echo base_url("");?><?php echo $employer->cusername?>"><?php echo $employer->name?></li>
+							<li class="text">Employer: <a href="<?php echo base_url("");?><?php echo $employer->cusername?>"><?php echo $employer->name?></a></li>
 						<?php endif; ?>
                     </ul>
                     <div class="textbox"><form id="submit_wall"><input type="text"  id="message_wall" size="35" placeholder="Status"/>

@@ -67,14 +67,7 @@ function attach_file()
 {
 	max-height:500px;
 	overflow-y:scroll;
-	overflow-x:hidden;
 	width:280px;
-}
-.message_contents
-{
-	max-height:500px;
-	overflow-y:scroll;
-	overflow-x:hidden;
 }
 </style>
 <div id="main">
@@ -92,10 +85,10 @@ function attach_file()
             	<?php foreach($conversations as $sender){ ?>
                 <?php if(!isset($listed[$sender->username])){ $listed[$sender->username]='1';?>
                 	
-                	<a href="<?php echo base_url().'message?user='.$sender->username?>">
+                	<a href="<?php echo base_url().'message?user='.$sender->user_id?>">
                         <div class="email_member_msg">
                             <div class="img_holder"><img src="resource/images/img2.png" alt="" /></div>
-                            <div class="text_holder"><?php echo $sender->username ?> <span class="date"><?php echo date('H:i:s A',strtotime($sender->date_time)); ?></span><br /><?php if(($sender->is_unread==1)&&($sender->receiver_id==$userid)){echo "<p style='color:green'><b>";}echo $sender->content; if($sender->is_unread==1){echo "</p></b>";} ?></div>
+                            <div class="text_holder"><?php echo $sender->username ?> <span class="date"><?php echo date('d/m/Y H:i:s',strtotime($sender->date_time)); ?></span><br /><?php if(($sender->is_unread==1)&&($sender->receiver_id==$userid)){echo "<p style='color:green'><b>";}echo $sender->content; if($sender->is_unread==1){echo "</p></b>";} ?></div>
                         </div>
                     </a>
                 <?php }?>
@@ -103,10 +96,9 @@ function attach_file()
         </div>
         </div>
         <div class="email_design_main_content">
-        <div class="message_contents">
         <?php if((count($conversation_by_id))>0){ ?> 
         	<?php foreach($conversation_by_id as $message){ ?>
-        	<div class="user_details"><?php if($message->sender_id==$userid){echo "Me";}else{echo $message->username;} ?> <span class="date">Date: <?php echo date('H:i:s A',strtotime($message->date_time)) ?></span><br /><br /><?php echo $message->content; ?> 
+        	<div class="user_details"><?php if($message->sender_id==$userid){echo "Me";}else{echo $message->username;} ?> <span class="date">Date: <?php echo date('d/m/Y H:i:s',strtotime($message->date_time)) ?></span><br /><br /><?php echo $message->content; ?> 
             <?php if($message->attached_file!=''){ ?>
             <br /><br />Attached File:<br /><br />
             <a href="<?php echo 'resource/uploads/'.$message->attached_file ?>" target="_blank"><?php echo $message->attached_file ?></a>
@@ -116,7 +108,7 @@ function attach_file()
 		<?php }else{?>
         	<div class="user_details">No Conversation to display </div>
         <?php }?>
-        </div>
+        
             <div class="leave_reply">
             	<div class="title">Leave a Replay</div>
                 <form id="reply_form" action="<?php echo base_url().'message?user='.@$_GET['user'] ?>" method="post" enctype="multipart/form-data">
@@ -128,7 +120,7 @@ function attach_file()
                     <div class="spacer10"></div>
                     </div>
                     
-                    <div class="btn_holder"><a href="javascript:void(0)" onClick="attach_file()"><img src="resource/images/attached-file.png" alt="" /></a> <span><a href="javascript:void(0)" onClick="return reply();"><img src="resource/images/replay-now.png" alt="" /></a></span></div>
+                    <div class="btn_holder"><a href="javascript:void(0)" onClick="attach_file()"><img src="resource/images/attached-file.png" alt="" /></a> <span><a href="javascript:void(0)" onClick="return reply();"><img src="resource/images/reply-now.png" alt="" /></a></span></div>
                     <input type="submit" name="submit" id="submit" style="display:none">
                     
                 </form>
