@@ -60,7 +60,8 @@ $route['terms'] = "terms";
 $route['contact_us'] = "contact_us";
 $route['about_us'] = "about_us";
 $route['policy'] = "policy";
-
+$route['users/profile/follow'] = "users/profile/follow";
+$route['teleworkwizard/SelfEvaluation'] = "teleworkwizard/SelfEvaluation";
 
 $route['dashboard'] = "users/dashboard";
 $route['history'] = "users/history";

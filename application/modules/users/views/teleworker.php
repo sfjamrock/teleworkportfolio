@@ -74,11 +74,15 @@
             	<ul>
 <?php foreach ($similar as $row):?>
                 	<li><a href="<?php echo base_url("profile");?>/<?php echo $row->username?>">
-<?php if (isset($account_details->picture)) : ?>
-					                 <img src="resource/user/profile/<?php echo $row->picture; ?>?t=<?php echo md5(time()); ?>" width="75" height="75"alt="" />
-									 <?php else : ?>
-					                 <img src="resource/images/img2.png" alt="" />
-					                 <?php endif; ?>
+
+
+<?php if (strpos($row->picture, "http://") === 0) :?>
+					<img src="<?php echo $row->picture; ?>" width="75" height="75"alt="" />
+					<?php elseif (isset($row->picture)) : ?>
+					<img src="resource/user/profile/<?php echo $row->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" /> 
+					<?php else : ?>
+					<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
+					<?php endif; ?>
 </a> <?php echo $row->firstname?> <?php echo $row->lastname?><br /><?php echo $row->job_title?><br /><?php echo $row->city?>, <?php echo $row->state?></li>
 <?php endforeach ;?>
                 </ul>
