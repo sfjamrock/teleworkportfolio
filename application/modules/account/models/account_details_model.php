@@ -24,7 +24,7 @@ class Account_details_model extends CI_Model {
 	 * @param array $attributes
 	 * @return void
 	 */
-	function update($account_id, $firstname, $lastname, $attributes = array())
+	function update($account_id, $attributes = array())
 	{
 			
 		if (isset($attributes['fullname'])) if (strlen($attributes['fullname']) > 160) $attributes['fullname'] = substr($attributes['fullname'], 0, 160);
@@ -115,8 +115,8 @@ class Account_details_model extends CI_Model {
 			$location = json_decode($json);
 
 			$attributes['account_id'] = $account_id;
-			$attributes['firstname'] =$firstname;
-			$attributes['lastname'] =$lastname;
+			$attributes['firstname'] =$this->input->post('sign_up_firstname');
+			$attributes['lastname'] = $this->input->post('sign_up_lastname');
 			$attributes['city'] =$location->city;;
 			$attributes['state'] =$location->region_code;
 

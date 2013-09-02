@@ -86,7 +86,7 @@ class Sign_up extends CI_Controller {
 			 	$user_id = $this->account_model->create( $this->input->post('sign_up_email'), $this->input->post('sign_up_password'),$username);
 				
 				// Add user details (auto detected country, language, timezone, city , state)
-				$this->account_details_model->update($user_id,$this->input->post('sign_up_firstname'), $this->input->post('sign_up_lastname'));
+				$this->account_details_model->update($user_id);
 				
 
  //send welcome email email. 
