@@ -23,8 +23,9 @@ class Savings extends CI_Controller {
 		{
 
 			//get user location info start
-			//$ipaddress = '209.183.238.119';
+			
 			$ipaddress =$_SERVER["REMOTE_ADDR"];
+			//$ipaddress = '209.183.238.119';
 			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
 			$data['location'] = json_decode($json);
 			//get user location info end

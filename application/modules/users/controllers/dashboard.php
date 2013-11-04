@@ -24,6 +24,8 @@ class Dashboard extends CI_Controller {
 		{
 
 			$userid=$this->session->userdata('account_id');
+			$data['check'] = $this->user_model->userstats_lookup($userid);
+			$data['chart'] = $this->user_model->userstats_chart($userid);
 			$data['telework_tracker'] = $this->tp_model->get_by_id($userid);
 			$data['employer'] = $this->user_model->employer_lookup($userid);
 			$data['account'] = $this->account_model->get_by_id($userid);

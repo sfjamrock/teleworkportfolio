@@ -97,6 +97,46 @@ class Analytics extends CI_Controller {
 			$url = htmlspecialchars($_POST["company"]).'/analytics';
 			redirect($url);
 	} 
+	function lookup()
+	{
+		if ( ! $this->authentication->is_signed_in()) 
+		{
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+		}
+
+			if ($this->authentication->is_signed_in())
+		{
+			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
+
+			// get user_id using username in url start 		
+			$cusername = $this->uri->segment(1);
+			$cid = $this->company_model->cid_lookup($cusername);
+			$cid = $cid ['0']->cid;
+			// get user_id using username in url end 
+
+			
+			$data['company'] = $this->company_model->company_lookup($cid);
+			//$rows = $this->user_model->update_wall( $user_id);
+	     	//$data['wall_dashboard'] = $rows ;
+			$this->load->view('profile', isset($data) ? $data : NULL);
+		}
+		else
+		redirect('');
+
+	} 
+	function join()
+	{
+			// get user_id using username in url start 		
+			$cusername = $_POST["company"];
+			$cid = $this->company_model->cid_lookup($cusername);
+			$cid = $cid ['0']->cid;
+			// get user_id using username in url end
+	
+			$this->company_model->join($cid,$this->session->userdata('account_id'));
+			$this->session->set_flashdata('join', 'Thanks for applying, you will be notified once your application as been approve.');
+			redirect($_POST["company"]);
+	} 
+
 
 }
 /* End of file welcome.php */

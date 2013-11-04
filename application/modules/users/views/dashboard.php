@@ -57,7 +57,7 @@ $(document).ready(function() {
 							<li class="text">Employer: <a href="<?php echo base_url("");?><?php echo $employer->cusername?>"><?php echo $employer->name?></a></li>
 						<?php endif; ?>
                     </ul>
-                    <div class="textbox"><form id="submit_wall"><input type="text"  id="message_wall" size="35" placeholder="Status"/>
+                    <div class="textbox"><form id="submit_wall"><input type="text"  id="message_wall" size="30" placeholder="Status"/>
                     <button type="submit">Post</button></form></div>
                 </div>
                 <div class="member_image">
@@ -72,6 +72,22 @@ $(document).ready(function() {
 <?php if ($this->session->flashdata('error')  != '');
 echo $this->session->flashdata('error');
 ?>
+
+<!-- Start of User Stats area -->
+<div class="employee_status_details">
+            	<ul>
+                	<li># of Check-in<br /><br /><span><?php echo $check['0']->num ?></span></li>
+                    <li>Money Saved<br /><br /><span>$<?php echo $check['0']->money ?></span></li>
+                    <li>Time Saved<br /><br /><span><?php echo $check['0']->time ?> minutes</span></li>
+                    <li class="nospace">Distance Saved<br /><br /><span><?php echo $check['0']->mile ?> miles</span></li>
+                </ul>
+            </div>
+            <div class="employee_status_title"><strong>Distributed by Days of the week</strong></div>
+            
+   	  		<div class="chart_box">
+                 <?php $this->load->view('stat_chart');?>
+            </div>
+<!-- End of User Stats area -->
 
          <!--   Start of Update Wall Script -->
 <?php foreach($wall_dashboard as $row): ?>

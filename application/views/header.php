@@ -1,6 +1,7 @@
-<div class="header">
-<div class="logo"><a href="<?php echo base_url("");?>"><img src="resource/images/logo.png" alt="" /></a></div>
 	<?php if ($this->authentication->is_signed_in()) : ?>
+
+<div class="header">
+<div class="logo"><a href="<?php echo base_url("");?>"><img src="resource/images/logo.png" alt="" height="100" width="200"/></a></div>
 <!-- Log in users menu -->
 		<div class="header_content">
         	<div class="search_holder">
@@ -10,7 +11,7 @@
        <div class="top_btn">
                 <div id="navigation">
                     <ul>
-                        <li><a href=""><img src="resource/images/option.png" alt="" /></a>
+                        <li><img src="resource/images/option.png" alt="" />
 							<ul>
                            <li><a href="<?php echo base_url("account_settings");?>">Account Settings</a></li>
 
@@ -41,11 +42,25 @@
             </div>
  
 	   <?php else : ?>
-<!-- Homepage login  -->
+
+<div class="header">
+ <div class="logo"><a href="<?php echo base_url("");?>"><img src="resource/images/logo.png" alt="" height="100" width="200"/></a></div>    	<div class="header_content">
+        	
+            <div class="top_btn">  <div id="navigation">
+<li><a href="<?php echo base_url("sign_up");?>"><img src="resource/images/btn-signup.png" alt="" /></a></li>
+<li><a href="<?php echo base_url("sign_in");?>"><img src="resource/images/btn-login.png" alt="" /></a></li>
+ 
+</div>
+</div>
+
+<!-- Homepage login  
     	<div class="login_box">
+
+                          
+
 			<form name="sign_up" action="sign_in" enctype="multipart/form-data" method="post">
 			<div class="textbox"> 
-<!-- User Email login with error handling -->
+<!-- User Email login with error handling 
 			   <?php echo form_input(array(
                         'name' => 'sign_in_username_email',
                         'id' => 'sign_in_username_email',
@@ -58,7 +73,7 @@
                 <span class="field_error"><?php echo $sign_in_username_email_error; ?></span>
                 <?php endif; ?>
 			</div>
-<!-- User password login with error handling -->
+<!-- User password login with error handling 
 	        	<div class="textbox"> <?php echo form_password(array(
                         'name' => 'sign_in_password',
                         'id' => 'sign_in_password',
@@ -71,7 +86,7 @@
 	            <div class="btn_holder"><INPUT TYPE="image" SRC="resource/images/login.png" ALT="Submit Form"></div>
 	            <div class="checkbox"><input name="sign_in_remember" id="sign_in_remember" type="checkbox" value="checked"  checked=" $this->input->post('sign_in_remember')"/></div>
 	            <div class="checkbox_text">Remember me  |  <a href="<?php echo base_url("forgot_password");?>">Forget Password?</a></div>
-			</form>
+			</form>-->
  		<?php endif; ?>
       </div>
 </div>
