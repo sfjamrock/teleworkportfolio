@@ -18,9 +18,8 @@
  <?php echo $this->load->view('header'); ?>
  <div class="details_holder">
     	<div class="banner_holder">
-        	<h1>Share Your Telework Experience</h1><br /><br />Teleworkers coming together to share the benefits of teleworking<br />with their neighbors<br /><br /><br />Signup with:<br /><br /><a href="#"><img src="resource/images/banner-btn1.png" alt="" /></a><br /><a href="#"><img src="resource/images/banner-btn2.png" alt="" /></a><br /><input name="" type="text" value="Email" />
-        </div>
-        <div class="search_within">Search within: <select name="" width="350" style="width: 350px">
+        	<h1>Share Your Telework Experience</h1><br /><br />Teleworkers coming together to share the benefits of teleworking<br />with their neighbors<br /><br /><br />Signup with:<br /><br /><a href="<?php echo base_url("connect_facebook");?>"><img src="resource/images/banner-btn1.png" alt="" /></a><br /><a href="<?php echo base_url("connect_google");?>"><img src="resource/images/banner-btn2.png" alt="" /></a><br /><!--<a href="<?php echo base_url("sign_up");?>"><img src="resource/images/banner-btn2.png" alt="" /></a>  -->      </div>
+     <!--   <div class="search_within">Search within: <select name="" width="350" style="width: 350px">
 <option>Alabama</option>	
 <option>Alaska</option>	
 <option>Arizona</option>	
@@ -78,14 +77,19 @@
 <select name="" width="350" style="width: 350px">
 <option>Job Category</option>
 
-</select></div>
+</select></div>-->
         <div class="group_container">
         	<ul>
-            	<li><img src="resource/images/img4.jpg" alt="" /><br /><h3><strong>Group 1 Name</strong><br /># of teleworker</h3></li>
+				<?php foreach($group as $row): ?>
+				<li><a href="<?php echo base_url("$row->cusername");?>"><img src=" <?php echo $row->picture; ?>" alt="" /><br /><h3><strong><?php echo $row->name; ?> </strong><br />							<?php echo $row->members; ?> teleworker</h3></a></li>	
+		        <?php endforeach; ?>
+
                 <li><img src="resource/images/img4.jpg" alt="" /><br /><h3><strong>Group 1 Name</strong><br /># of teleworker</h3></li>
                 <li><img src="resource/images/img4.jpg" alt="" /><br /><h3><strong>Group 1 Name</strong><br /># of teleworker</h3></li>
                 <li><img src="resource/images/img4.jpg" alt="" /><br /><h3><strong>Group 1 Name</strong><br /># of teleworker</h3></li>
-                <li class="nospace"><img src="resource/images/img4.jpg" alt="" /><br /><h3><strong>Group 1 Name</strong><br /># of teleworker</h3></li>
+                <li class="nospace"><img src="resource/images/img4.jpg" alt="" /><br /><h3><strong>Group 1 Name</strong><br /># of teleworker</h3></li><div style="clear:both"></div><br/>
+
+
             </ul>
         </div>
     </div>

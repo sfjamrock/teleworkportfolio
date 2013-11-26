@@ -1,12 +1,13 @@
 <h1 class="heading">Avaliable Hotelling Space</h1>
                     <div class="hotelling_space">
                     	<ul>
+							
 							<?php $i=1 ?>
-							<?php foreach($space as $space): ?>
+							<?php foreach($space as $space1): ?>
     							<?php if($i==9) : ?>
-									<li class="nospace"><?php echo $space->office?></li>
+									<li class="nospace"><?php echo $space1->office?></li>
 								<?php else : ?>
-									<li><?php echo $space->office?></li>
+									<li><?php echo $space1->office?></li>
 							    <?php endif; ?>
 								<?php $i++ ?>
 	 					  	<?php endforeach; ?>

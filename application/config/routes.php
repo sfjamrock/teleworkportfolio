@@ -63,6 +63,7 @@ $route['contact_us'] = "contact_us";
 $route['about_us'] = "about_us";
 $route['policy'] = "policy";
 $route['sendmail'] = "sendmail";
+$route['find'] = "find";
 
 $route['users/profile/follow'] = "users/profile/follow";
 $route['teleworkwizard/SelfEvaluation'] = "teleworkwizard/SelfEvaluation";

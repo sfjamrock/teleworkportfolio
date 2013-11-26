@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 
-class Home extends CI_Controller {
+class Find extends CI_Controller {
 
 	 function __construct()
 	 {
@@ -13,10 +13,6 @@ class Home extends CI_Controller {
 	 }
 	function index()
 	{
-	if ($this->authentication->is_signed_in())
-		{
-			redirect('dashboard');
-		}
 		$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
 		$data['group'] = $this->main_model->user_groups();
 		$this->load->view('main', isset($data) ? $data : NULL);

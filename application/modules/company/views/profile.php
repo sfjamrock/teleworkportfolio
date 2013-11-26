@@ -21,7 +21,7 @@
     <?php echo $this->load->view('header'); ?>
     <div class="details_holder">
     	<div class="discussion_group_details">
-        	<div class="img_holder"><a href="<?php echo base_url("");?>/<?php echo $company->cusername?>">
+        	<div class="img_holder"><a href="<?php echo base_url("");?><?php echo $company->cusername?>">
 					<?php if (strpos($company->picture, "http://") === 0) :?>
 					<img src="<?php echo $company->picture; ?>" width="115" height="115"alt="" />
 					<?php elseif (isset($company->picture)) : ?>
@@ -31,7 +31,12 @@
 					<?php endif; ?></a>
 			</div>
             <div class="text_holder"><strong><?php echo $company->cusername?></strong><br /><br /><?php echo $company->city?>, <?php echo $company->state?></div>
-            <div class="btn_holder"><a href="#"><img src="resource/images/btn-member.png" alt="" /></a> &nbsp; <a href="#"><img src="resource/images/btn-message-admin.png" alt="" /></a></div>
+            <div class="btn_holder">
+   <form action="company/profile/join" method="post"><input type="submit" id="join" name="company"value="<?php echo $this->uri->segment(1)?>"
+  style="background-image: url(resource/images/join-now1.png); border: solid 0px #000000; width: 70px; height: 32px; font-size: 0.1px;" />
+  </form>
+
+ &nbsp; <a href="#"><img src="resource/images/btn-message-admin.png" alt="" /></a></div>
         </div>
     	<div class="main_tabholder">
             <div class="shadetabs">
