@@ -1,5 +1,5 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!DOCTYPE html >
+<html >
 <head>
 		<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -11,8 +11,28 @@
         <meta name="author" content="Telework Portfolio" />
         <link rel="shortcut icon" href="resource/images/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="resource/css/style.css" />
+		<link href="resource/css/tabcontent.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="resource/js/tabcontent.js"></script>
         <script src="resource/js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="resource/js/modernizr.custom.04022.js"></script>
+<script type="text/javascript" src="resource/js/jquery-latest.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){	
+	//Set default open/close settings
+	$('.acc_container').hide(); //Hide/close all containers
+	//  $('.acc_trigger:first').addClass('active').next().show(); //Add "active" class to first trigger, then show/open the immediate next container
+	
+	//On Click
+	$('.acc_trigger').click(function(){
+		if( $(this).next().is(':hidden') ) { //If immediate next container is closed...
+			$('.acc_trigger').removeClass('active').next().slideUp(); //Remove all .acc_trigger classes and slide up the immediate next container
+			$(this).toggleClass('active').next().slideDown(); //Add .acc_trigger class to clicked trigger and slide down the immediate next container
+		}
+		return false; //Prevent the browser jump to the link anchor
+	});
+	
+	});
+</script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("form#submit_wall").submit(function (){
@@ -38,84 +58,82 @@ $(document).ready(function() {
 <div id="main">
     <?php echo $this->load->view('header'); ?>   
     <div class="details_holder">
-    	<div class="innerpage_content">
-			<div class="employee_dashboard_box">
-            	<div class="main_img"><a href="<?php echo base_url("profile");?>/<?php echo $account->username?>">
+    	<div class="tms_mockup_member">
+        	<div class="img_holder"><a href="<?php echo base_url("profile");?>/<?php echo $account->username?>">
 					<?php if (strpos($account_details->picture, "http://") === 0) :?>
-					<img src="<?php echo $account_details->picture; ?>" width="90" height="110"alt="" />
+					<img src="<?php echo $account_details->picture; ?>" width="75" height="75"alt="" />
 					<?php elseif (isset($account_details->picture)) : ?>
 					<img src="resource/user/profile/<?php echo $account_details->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" /> 
 					<?php else : ?>
 					<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
 					<?php endif; ?>
-					</a></div>
-                <div class="text_holder">
-                	<ul>
-                    	<li class="title"><?php echo $account_details->firstname ?> <?php echo $account_details->lastname ?></li>
-                    	<li class="text"><?php echo $account_details->city ?>, <?php echo $account_details->state ?></li>
-                       	<?php if( $employer ) :?>
-							<li class="text">Employer: <a href="<?php echo base_url("");?><?php echo $employer->cusername?>"><?php echo $employer->name?></a></li>
+									 </a></div>
+            <div class="text_holder"><strong><?php echo $account_details->firstname ?> <?php echo $account_details->lastname ?>
+				</strong><br /><br /><?php echo $account_details->city ?>, <?php echo $account_details->state ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             
+           	<?php if( $employer ) :?>
+							<a href="<?php echo base_url("");?><?php echo $employer->cusername?>"><?php echo $employer->name?></a>
 						<?php endif; ?>
-                    </ul>
-                    <div class="textbox"><form id="submit_wall"><input type="text"  id="message_wall" size="30" placeholder="Status"/>
-                    <button type="submit">Post</button></form></div>
-                </div>
-                <div class="member_image">
-<?php if( !$this->tp_model->check_by_id($account->id)) :?>
-<a href="<?php echo base_url("teleworkwizard");?>"><img src="resource/images/Green-button.png" alt="Getting started" width="120"/>
-<?php else : ?>
-<a href="<?php echo base_url("teleworkwizard/savings");?>"><img src="resource/images/Check-In.png" alt="Telework Savings check in" width="120"/>
-<?php endif; ?>
-</a></div>
-
-            </div>
-<?php if ($this->session->flashdata('error')  != '');
-echo $this->session->flashdata('error');
-?>
-
-<!-- Start of User Stats area -->
-<div class="employee_status_details">
-            	<ul>
-                	<li># of Check-in<br /><br /><span><?php echo $check['0']->num ?></span></li>
-                    <li>Money Saved<br /><br /><span>$<?php echo $check['0']->money ?></span></li>
-                    <li>Time Saved<br /><br /><span><?php echo $check['0']->time ?> minutes</span></li>
-                    <li class="nospace">Distance Saved<br /><br /><span><?php echo $check['0']->mile ?> miles</span></li>
+</div>
+            <div class="btn_holder"><a href="#"><img src="resource/images/Check-In.png" alt="Telework Savings check in" width="80"></a></div>
+        </div>
+        <br clear="all" /><br />
+        <div class="main_tabholder">
+            <div class="new_shadetabs">
+                <ul id="countrytabs">
+                    <li><a href="#" rel="country1" class="selected">Open Tickets</a></li>
+                    <li><a href="#" rel="country2">Closed Tickets</a></li>
+                    <li><a href="#" rel="country3">Stats</a></li>
                 </ul>
             </div>
-            <div class="employee_status_title"><strong>Distributed by Days of the week</strong></div>
-            
-   	  		<div class="chart_box">
-                 <?php $this->load->view('stat_chart');?>
-            </div>
-<!-- End of User Stats area -->
+            <div class="new_tab_content">
+            	<div class="tab_table_header">
+                	<div class="text1">Tid</div>
+                    <div class="text2">Subject</div>
+                    <div class="text3">Status</div>
+                    <div class="text3">Issued</div>
+                    <div class="text3">Requester</div>
+                    <div class="text3">Priority</div>
+                    <div class="text4">Category</div>
+                </div>
+                <div id="country1" class="tabcontent">
+                
+                <?php if ($task == NULL) 
+					echo "hello world";
+				?>   
+                <?php foreach($task as $row): ?>
+                    <h2 class="acc_trigger">
+                    	<a href="#">
+							<div class="text1">12</div>
+                            <div class="text2"><?php echo $row->subject; ?></div>
+                            <div class="text3"><?php if ($row->status == 0) echo "In Progress"; ?></div>
+                            <div class="text3"><?php echo date("Y-m-d",strtotime($row->assigned_date)); ?></div>
+                            <div class="text3"><?php echo $row->from_email; ?></div>
+                            <div class="text3"><?php if ($row->priority == 0) echo "Normal";?></div>
+                            <div class="text4"><?php if ($row->category == 0) echo "Default"; ?></div>                        </a>
+                    </h2>
+                    <div class="acc_container">
+                    	<div class="text_holder"><h3><?php echo $row->from_email; ?> <span><?php echo date("Y-m-d",strtotime($row->assigned_date)); ?></span></h3><iframe srcdoc="<?php echo htmlspecialchars($row->email_body); ?>" width="100%"  frameborder="0"></iframe></div>
 
-         <!--   Start of Update Wall Script -->
-<?php foreach($wall_dashboard as $row): ?>
-            <div class="employee_dashboard_box new_border">
-            	<div class="main_img"><a href="<?php echo base_url("profile");?>/<?php echo $row->username;?>">
 
-					<?php if (strpos($row->picture, "http://") === 0) :?>
-					<img src="<?php echo $row->picture; ?>" width="75" height="75"alt="" />
-					<?php elseif (isset($row->picture)) : ?>
-					<img src="resource/user/profile/<?php echo $row->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" /> 
-					<?php else : ?>
-					<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
-					<?php endif; ?>
-
-				</a></div>
-                <div class="text_holder"><strong><?php echo $row->firstname; ?> <?php echo $row->lastname; ?><br /><?php echo $row->message; ?><br />Comment | 
-					<?php  echo $row->posted_on; ?> days</strong></div>
-            </div>
-  
- 
-                <?php endforeach; ?>
-                         <!--   End of Update Wall Script -->
+                        <div class="text_holder"><strong>Total Time Spent:1hr</strong> <a href="#"><img src="resource/images/close-ticket.png" alt="" /></a></div>
+                    </div>
+ 			<?php endforeach; ?>
+                 
+                </div>
+                <div id="country2" class="tabcontent"><strong>Closed Tickets - Content</strong></div>
+                <div id="country3" class="tabcontent"><strong>Stats - Content</strong></div>
+            </div>  
         </div>
-<?php echo $this->load->view('sidebar'); ?>
     </div>
-
+   		
 
     <?php echo $this->load->view('footer'); ?>
+<script type="text/javascript">
+	var countries=new ddtabcontent("countrytabs")
+	countries.setpersist(true)
+	countries.setselectedClassTarget("link") //"link" or "linkparent"
+	countries.init()
+</script>
 </body></html>
 
 

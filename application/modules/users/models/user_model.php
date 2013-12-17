@@ -3,6 +3,22 @@
 class User_model extends CI_Model {
 	
 	// --------------------------------------------------------------------
+	function task_lookup($user_id)
+	{
+
+		$sql1 = "SELECT email FROM telework.a3m_account where id = $user_id";
+		$query = $this->db->query($sql1);
+		$sql2 = $query->row()->email;
+		$sql = "SELECT * 
+				FROM telework.task_email
+				where to_email like '%$sql2%'
+				order by assigned_date DESC";
+
+	    $query = $this->db->query($sql);
+		return $query->result();
+
+
+	}
 	function employer_lookup($user_id)
 	{
 		$sql = "select name, cusername

@@ -28,5 +28,25 @@ class Main_model extends CI_Model {
 	    $query = $this->db->query($sql);
 		return $query->result();
 	}
+	function taskemail($subject,$from,$to,$date,$message)
+	{
+	// Add emails to task email list
+		
+		$this->db->insert('task_email', array(
+			'subject' => $subject, 
+			'from_email' => $from,
+			'to_email' => $to,
+			'assigned_date'=>$date,
+			'email_body'=>$message,
+			'status'=> 0,
+			'priority'=> 0,
+			'category'=> 0,
+
+			'created_date'=> mdate('%Y-%m-%d %H:%i:%s', now())
+
+		));
+
+
+	}
 
 }

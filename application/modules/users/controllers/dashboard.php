@@ -32,6 +32,8 @@ class Dashboard extends CI_Controller {
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
 			$rows = $this->user_model->update_wall( $userid);
 	     	$data['wall_dashboard'] = $rows ;
+			$rows = $this->user_model->task_lookup( $userid);
+	     	$data['task'] = $rows ;
 			$this->load->view('dashboard', isset($data) ? $data : NULL);
 			
 		}

@@ -5,7 +5,7 @@
 <!-- Log in users menu -->
 		<div class="header_content">
         	<div class="search_holder">
-            	<div class="textbox"><input name="" type="text" value="Search" /></div>
+            <div class="textbox"><input name="" type="text" value="Search" /></div>
                 <div class="btn_holder"><a href="#"><img src="resource/images/serach-btn.png" alt="" /></a></div>
             </div>
        <div class="top_btn">

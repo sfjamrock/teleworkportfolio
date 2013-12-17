@@ -51,7 +51,7 @@ $route['connect_google'] = "account/connect_google";
 $route['account_password'] = "account/account_password";
 $route['account_profile'] = "account/account_profile";
 $route['account/account_profile'] = "account/account_profile";
-
+$route['email'] = "email";
 $route['account_linked'] = "account/account_linked";
 $route['account/sign_out'] = "account/sign_out";
 $route['company/profile/join'] = "company/profile/join";
