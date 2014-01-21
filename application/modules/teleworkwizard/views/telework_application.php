@@ -11,7 +11,6 @@
 <meta name="author" content="Telework Portfolio" />
 
 	<link rel="stylesheet" href="resource/css/style.css" media="screen" />
-	<link rel="stylesheet" href="resource/css/style2.css" media="screen"/>
 	<link rel="icon" href="resource/resource/images/favicon.ico" />
 	<link rel="shortcut icon" href="resource/resource/images/favicon.ico" />
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css" />

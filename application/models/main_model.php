@@ -28,6 +28,10 @@ class Main_model extends CI_Model {
 	    $query = $this->db->query($sql);
 		return $query->result();
 	}
+	function product_access()
+	{
+	
+	}
 	function taskemail($subject,$from,$to,$date,$message)
 	{
 	// Add emails to task email list

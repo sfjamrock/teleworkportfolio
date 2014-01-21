@@ -10,7 +10,7 @@
         <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home" />
         <meta name="author" content="Telework Portfolio" />
         <link rel="shortcut icon" href="resource/images/favicon.ico" />
-		<link rel="stylesheet" type="text/css" href="resource/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="resource/css/style2.css" />
         <script src="resource/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {

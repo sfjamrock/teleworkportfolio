@@ -9,7 +9,7 @@
 <meta name="author" content="Telework Portfolio" />
 <base href="<?php echo base_url(); ?>" />
 <link rel="shortcut icon" href="resource/resource/images/favicon.ico" />
-<link type="text/css" rel="stylesheet" href="resource/css/style.css" />
+<link type="text/css" rel="stylesheet" href="resource/css/style2.css" />
 </head>
 <body>
 <?php echo $this->load->view('header'); ?>

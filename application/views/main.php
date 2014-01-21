@@ -8,6 +8,8 @@
 <!-- SmartAddon.com Verification --> 
 <meta name="smartaddon-verification" content="3b219f3b7e193f60d4373862942e52c1" />
 <meta name="author" content="Telework Portfolio" />
+<link rel="stylesheet" href="resource/css/style2.css" media="screen" />
+
 <link rel="stylesheet" href="resource/css/style.css" media="screen" />
 <link rel="icon" href="resource/images/favicon.ico" />
 <link rel="shortcut icon" href="resource/images/favicon.ico" />
@@ -18,7 +20,7 @@
  <?php echo $this->load->view('header'); ?>
  <div class="details_holder">
     	<div class="banner_holder">
-        	<h1>Share Your Telework Experience</h1><br /><br />Teleworkers coming together to share the benefits of teleworking<br />with their neighbors<br /><br /><br />Signup with:<br /><br /><a href="<?php echo base_url("connect_facebook");?>"><img src="resource/images/banner-btn1.png" alt="" /></a><br /><a href="<?php echo base_url("connect_google");?>"><img src="resource/images/banner-btn2.png" alt="" /></a><br /><!--<a href="<?php echo base_url("sign_up");?>"><img src="resource/images/banner-btn2.png" alt="" /></a>  -->      </div>
+        	<h1>Move Faster, Work Smarter</h1><br /><br />Our Software helps your team better track and<br />manage their workload like never before.<br /><br /><br />Signup with:<br /><br /><a href="<?php echo base_url("connect_facebook");?>"><img src="resource/images/banner-btn1.png" alt="" /></a><br /><a href="<?php echo base_url("connect_google");?>"><img src="resource/images/banner-btn2.png" alt="" /></a><br /><!--<a href="<?php echo base_url("sign_up");?>"><img src="resource/images/banner-btn2.png" alt="" /></a>  -->      </div>
      <!--   <div class="search_within">Search within: <select name="" width="350" style="width: 350px">
 <option>Alabama</option>	
 <option>Alaska</option>	
@@ -78,20 +80,11 @@
 <option>Job Category</option>
 
 </select></div>-->
-        <div class="group_container">
-        	<ul>
-				<?php foreach($group as $row): ?>
-				<li><a href="<?php echo base_url("$row->cusername");?>"><img src=" <?php echo $row->picture; ?>" alt="" /><br /><h3><strong><?php echo $row->name; ?> </strong><br />							<?php echo $row->members; ?> teleworker</h3></a></li>	
-		        <?php endforeach; ?>
-
-                <li><img src="resource/images/img4.jpg" alt="" /><br /><h3><strong>Group 1 Name</strong><br /># of teleworker</h3></li>
-                <li><img src="resource/images/img4.jpg" alt="" /><br /><h3><strong>Group 1 Name</strong><br /># of teleworker</h3></li>
-                <li><img src="resource/images/img4.jpg" alt="" /><br /><h3><strong>Group 1 Name</strong><br /># of teleworker</h3></li>
-                <li class="nospace"><img src="resource/images/img4.jpg" alt="" /><br /><h3><strong>Group 1 Name</strong><br /># of teleworker</h3></li><div style="clear:both"></div><br/>
-
-
-            </ul>
+<div class="task_portfolio">
+        	<div class="img_holder"><img src="resource/images/img6.jpg" alt="" /></div>
+            <div class="text_holder"><h1>Task Portfolio</h1><br /><br /><br />Capture and organize issues, assign work, and follow team activity. Task Portfolio helps teams get the job done.<br /><br /><br /> <a href="#">&lt; Learn More&gt; </a> </div>
         </div>
+        
     </div>
 
   <?php echo $this->load->view('footer'); ?> </div>

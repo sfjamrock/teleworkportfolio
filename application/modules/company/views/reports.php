@@ -116,11 +116,6 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
             </div>
 
         	        </div>
-        <div class="innerpage_sidebar">
-        	<!--<div class="btn_holder"><a href="#"><img src="resource/images/telework-statistics.png" alt="" /></a></div>-->
-            <div class="btn_holder"><a href="#"><img src="resource/images/followers.png" alt="" /></a></div>
-            <div class="btn_holder"><a href="#"><img src="resource/images/following.png" alt="" /></a></div>
-        </div>
 <?php if ($this->session->flashdata('enroll')  != '');
 echo $this->session->flashdata('enroll');
 ?>
@@ -128,12 +123,8 @@ echo $this->session->flashdata('enroll');
         <div class="main_tabholder">
             <div class="shadetabs">
                 <ul id="countrytabs">
-                    <li><a href="#" rel="country1" class="selected">Leaders</a></li>
-                    <li><a href="#" rel="country2">Savings</a></li>
-                    <li><a href="#" rel="country3">Equipment</a></li>
-                    <li><a href="#" rel="country4">Analytics</a></li>
-                    <li><a href="#" rel="country5">Hotelling</a></li>
-                    <li><a href="#" rel="country6">Teleworker</a></li>
+                    <li><a href="#" rel="country1" class="selected">Clock-In Employees</a></li>
+
                 </ul>
             </div>
             <div class="tab_content none">

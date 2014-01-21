@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 		<meta charset="UTF-8" />
@@ -10,7 +10,7 @@
         <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home" />
         <meta name="author" content="Telework Portfolio" />
         <link rel="shortcut icon" href="resource/images/favicon.ico" />
-		<link rel="stylesheet" type="text/css" href="resource/css/style.css" />
+		<link rel="stylesheet" type="text/css" href="resource/css/style2.css" />
 
 	<script>
 		$(function(){

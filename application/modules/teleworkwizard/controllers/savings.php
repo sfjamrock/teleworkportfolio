@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Savings extends CI_Controller {
 	
@@ -9,7 +9,7 @@ class Savings extends CI_Controller {
 		$this->load->library('upload');
 		$this->load->helper(array('language', 'url', 'form', 'account/ssl','date'));
         $this->load->library(array('account/authentication'));
-		$this->load->model(array('account/account_model','tp_model'));
+		$this->load->model(array('account/account_model','tp_model', 'account/account_details_model'));
 		$this->lang->load(array('general'));
 	}
 
@@ -24,13 +24,15 @@ class Savings extends CI_Controller {
 
 			//get user location info start
 			
-			$ipaddress =$_SERVER["REMOTE_ADDR"];
+			//$ipaddress =$_SERVER["REMOTE_ADDR"];
 			//$ipaddress = '209.183.238.119';
-			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
-			$data['location'] = json_decode($json);
+			//$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
+			//$data['location'] = json_decode($json);
 			//get user location info end
+			$userid=$this->session->userdata('account_id');
+			$data['account'] = $this->account_model->get_by_id($userid);
+			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
 
-			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
 
 			if( $this->tp_model->Check_if_user_checkin_today($this->session->userdata('account_id')))
 			{		
@@ -54,7 +56,10 @@ class Savings extends CI_Controller {
 	}
 	function saving_tracker()
 	{
-			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
+			$userid=$this->session->userdata('account_id');
+			$data['account'] = $this->account_model->get_by_id($userid);
+			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
+
 
 			$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 			$this->form_validation->set_rules(array(

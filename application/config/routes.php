@@ -52,6 +52,7 @@ $route['account_password'] = "account/account_password";
 $route['account_profile'] = "account/account_profile";
 $route['account/account_profile'] = "account/account_profile";
 $route['email'] = "email";
+$route['tickets'] = "users/tickets";
 $route['account_linked'] = "account/account_linked";
 $route['account/sign_out'] = "account/sign_out";
 $route['company/profile/join'] = "company/profile/join";
@@ -64,7 +65,7 @@ $route['about_us'] = "about_us";
 $route['policy'] = "policy";
 $route['sendmail'] = "sendmail";
 $route['find'] = "find";
-
+$route['users/dashboard/close_ticket'] = "users/dashboard/close_ticket";
 $route['users/profile/follow'] = "users/profile/follow";
 $route['teleworkwizard/SelfEvaluation'] = "teleworkwizard/SelfEvaluation";
 

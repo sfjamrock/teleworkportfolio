@@ -11,19 +11,26 @@ class Email extends CI_Controller {
 		$this->load->model(array('main_model'));
 		$this->load->language(array('general', 'account/account_profile'));
 	 }
+
+		       
+
  function index()
 	 {
                     
-		           /* connect to gmail */
+		    /* connect to gmail */
 		$hostname = '{imap.gmail.com:993/imap/ssl}INBOX';
-		$username = 'sean.e.fuller@gmail.com';
+		$username = 'tasks@teleworkportfolio.com';
 		$password = 'sfjamhome';
-		
+
 		/* try to connect */
 		$inbox = imap_open($hostname,$username,$password) or die('Cannot connect to Gmail: ' . imap_last_error());
+
+
 		
 		/* grab emails */
-		$emails = imap_search($inbox,'FROM "vitamindster@gmail.com"');
+		$date = date ( "d M Y" );
+		echo $date;
+		$emails = imap_search($inbox, "SINCE \"$date\"",SE_UID);
 		
 		/* if emails are returned, cycle through each... */
 		if($emails) 
@@ -37,32 +44,30 @@ class Email extends CI_Controller {
 			foreach($emails as $email_number) 
 			{
 				
-
-//$struct = imap_fetchstructure($inbox,$email_number);
-//print_r($struct);
 				/* get information specific to this email */
 				$overview = imap_fetch_overview($inbox,$email_number,0);
 				$message = imap_fetchbody($inbox,$email_number,2);
-	   			 if ($message == "") { // no attachments is the usual cause of this
-	      		  $message = imap_fetchbody($inbox, $email_number, 1);
-	   				 }				
+			
 				/* output the email header information */
 				$output.= '<div class="toggler '.($overview[0]->seen ? 'read' : 'unread').'">';
 				$output.= '<span class="subject">'.$overview[0]->subject.'</span> ';
 				$output.= '<span class="from">'.$overview[0]->from.'</span>';
 				$output.= '<span class="from">'.$overview[0]->to.'</span>';
 				$output.= '<span class="date">on '.$overview[0]->date.'</span>';
-				$output.= '</div>';
+				$output.= '<span class="UID"> '.$overview[0]->uid.'</span>';
 
-				$this->main_model->taskemail($overview[0]->subject,$overview[0]->from,$overview[0]->to,date("Y-m-d H:i:s",strtotime($overview[0]->date)),trim( utf8_encode( quoted_printable_decode($message))));
+				$output.= '</div>';
+				$message = trim( utf8_encode( quoted_printable_decode($message)));
+				$this->main_model->taskemail($overview[0]->subject,$overview[0]->from,$overview[0]->to,date("Y-m-d H:i:s",strtotime($overview[0]->date)),$message);
 
 				/* output the email body*/
-				$output.= '<div class="body">'.trim( utf8_encode( quoted_printable_decode($message))).'</div>'; 
+				$output.= '<div class="body">'.$message.'</div>'; 
 			}
 			
 			echo $output;
 				
 		} 
- 
+		//sleep(90);
+ 		//return $this->index();
      }
 }

@@ -7,7 +7,7 @@
 <meta name="description" content="Telework Portfolio is a professional network that makes it easy for employees and employers to measure their telework ROI." />
 <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home, remote worker" />
 <meta name="author" content="Telework Portfolio" />
-<link rel="stylesheet" href="resource/css/style.css" media="screen" />
+<link rel="stylesheet" href="resource/css/style2.css" media="screen" />
 <link rel="icon" href="resource/images/favicon.ico" />
 <link rel="shortcut icon" href="resource/images/favicon.ico" />
 
