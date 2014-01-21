@@ -99,3 +99,57 @@ h1.heading{width:100%; float:left; margin:0; padding:0 0 10px 0; font-size:25px;
 .teleworker_details .worker_text{ width:150px; float:left; font-size:13px;}
 .teleworker_details .worker_btn{ width:200px; float:left; text-align:right;}
 .teleworker_details .worker_btn img{margin:0 0 0 10px;}
+
+/*** discussion mockup ***/
+.discussion_mockup_main{ width:690px; float:left;}
+.discussion_post{width:100%; float:left; border-bottom:5px solid #ccc; padding:0 0 20px 0;}
+.discussion_post .img_holder{ width:100px; float:left;}
+.discussion_post .img_holder img{width:80px; border:1px solid #ccc;}
+.discussion_post .text_holder{ width:590px; float:left;}
+.discussion_post .text_holder textarea{border:1px solid #ccc; padding:10px; width:570px; font-size:15px; color:#666; font-family:Arial, Helvetica, sans-serif; margin-bottom:10px;}
+.discussion_post .text_holder input.btn_style{ float:right; border:0; background:url(../images/post-now.png) no-repeat 0 0; width:109px; height:33px; cursor:pointer; text-indent:-999px;}
+.discussion_mockup_add{ width:215px; float:left; padding:0 0 0 15px;}
+
+.discussion_post_details{width:100%; float:left; padding:20px 0;}
+.discussion_post_details .img_holder{ width:100px; float:left;}
+.discussion_post_details .img_holder img{width:80px; border:1px solid #ccc;}
+.discussion_post_details .post_content{ width:590px; float:left;}
+.discussion_post_details .post_content .text_holder{width:100%; float:left; padding:0 0 20px 0;}
+.discussion_post_details .post_content .text_holder a{color:#0a1f30; text-decoration:none; margin:0 0 0 10px; text-transform:uppercase; font-weight:bold;} 
+.discussion_post_details .post_content .text_holder strong{font-size:15px;}
+.discussion_post_details .post_content .posted_content{width:570px; float:left; border:1px solid #ccc; padding:9px; background:#fff;}
+.discussion_post_details .post_content .posted_content img{float:left; border:1px solid #ccc; margin:0 15px 15px 0; width:80px;}
+.discussion_post_details .post_content .posted_content strong{font-size:15px;}
+
+.new_shadetabs{ width:958px; float:left; margin-bottom:5px; font-weight:bold; background:#0083ce; height:38px; border:1px solid #ccc; font-size:15px; text-transform:uppercase;}
+.new_shadetabs ul{ width:958px; margin:0; padding:0;}
+.new_shadetabs li{float:left; list-style:none; width:auto;}
+.new_shadetabs li a{ color:#fff; text-decoration:none;border-right:1px solid #fff; display:block; float:left; height:28px; padding:10px 20px 0 20px;}
+.new_shadetabs li a:hover{ color:#fff; text-decoration:none; background:#0a2132;}
+.new_shadetabs li a.selected{ /*selected main tab style */background:#0a2132; color:#fff; height:28px; padding:10px 20px 0 20px;}
+
+.new_tab_content{width:958px; background:#fff; border:1px solid #ccc; margin-top:0px; float:left; font-size:14px; color:#333;}
+.tab_table_header{width:958px; float:left; background:#666; font-size:13px; color:#fff; text-align:center; font-weight:bold; text-transform:uppercase; line-height:25px;}
+.tab_table_header .text1{ width:49px; float:left; border-right:1px solid #fff; padding:5px 0;}
+.tab_table_header .text2{ width:309px; float:left; border-right:1px solid #fff; padding:5px 0;}
+.tab_table_header .text3{ width:119px; float:left; border-right:1px solid #fff; padding:5px 0;}
+.tab_table_header .text4{ width:118px; float:left; padding:5px 0;}
+
+h2.acc_trigger .text1{ width:49px; float:left; border-right:1px solid #ccc; padding:5px 0;}
+h2.acc_trigger .text2{ width:300px; float:left; border-right:1px solid #ccc; padding:5px 0 5px 9px; text-align:left;}
+h2.acc_trigger .text3{ width:119px; float:left; border-right:1px solid #ccc; padding:5px 0;}
+h2.acc_trigger .text4{ width:118px; float:left; padding:5px 0;}
+
+h2.acc_trigger {width:958px; float:left; font-size:13px; color:#333; text-align:center; border:0; border-bottom:1px solid #ccc; padding:0; line-height:25px;}
+h2.acc_trigger:hover{background:#e8e8e8;}
+h2.acc_trigger a {color:#333;text-decoration:none;display:block; width:100%;}
+h2.acc_trigger a:hover {color:#000; background:#e8e8e8}
+h2.active {color:#000; background:#e8e8e8;}
+
+.acc_container{width:910px; float:left;overflow:hidden; background:#fff; border:1px solid #ccc; box-shadow:5px 5px 5px #ccc; padding:0 14px; line-height:18px; font-size:12px;}
+.acc_container h3{ font-size:15px; color:#04131f;}
+.acc_container h3 span{float:right;}
+.acc_container img{float:right;}
+.acc_container .text_holder{width:100%; float:left; border-bottom:1px solid #ccc; padding:10px 0;}
+.acc_container .text_holder strong{font-size:15px;}
+

@@ -3,6 +3,79 @@
 class User_model extends CI_Model {
 	
 	// --------------------------------------------------------------------
+
+	function close_ticket()
+	{
+		// Close Open Tickets
+		
+
+			$attributes['status'] = 2;
+
+
+			$this->db->where('TID', $this->input->post('TID'));
+			$this->db->update('task_email', $attributes);
+
+	}
+	
+	function create_ticket($user_id)
+	{
+
+		$sql1 = "SELECT email FROM a3m_account where id = $user_id";
+		$query = $this->db->query($sql1);
+		$sql2 = $query->row()->email;
+		// Add emails to task email list
+		
+		$this->db->insert('task_email', array(
+			'subject' => $this->input->post('subject'), 
+			'from_email' => $sql2,
+			'to_email' => $this->input->post('to'),
+			'assigned_date'=>mdate('%Y-%m-%d %H:%i:%s', now()),
+			'email_body'=>$this->input->post('message'),
+			'status'=> $this->input->post('status'),
+			'priority'=> $this->input->post('priority'),
+			'category'=> $this->input->post('category'),
+
+			'created_date'=> mdate('%Y-%m-%d %H:%i:%s', now())
+
+		));
+
+
+	}
+
+	function task_lookup($user_id)
+	{
+
+		$sql1 = "SELECT email FROM a3m_account where id = $user_id";
+		$query = $this->db->query($sql1);
+		$sql2 = $query->row()->email;
+		$sql = "SELECT * 
+				FROM task_email
+				where (to_email like '%$sql2%' or from_email like '%$sql2%') AND NOT subject like 'Re:%'
+				order by assigned_date DESC";
+
+	    $query = $this->db->query($sql);
+		return $query->result();
+
+
+	}
+	function task_lookup_more($user_id)
+	{
+
+		$sql1 = "SELECT email FROM a3m_account where id = $user_id";
+		$query = $this->db->query($sql1);
+		$sql2 = $query->row()->email;
+		$sql = "SELECT * 
+				FROM task_email
+				where to_email like '%$sql2%' or from_email like '%$sql2%'
+				order by assigned_date DESC";
+
+	    $query = $this->db->query($sql);
+		return $query->result();
+
+
+	}
+
+	
 	function employer_lookup($user_id)
 	{
 		$sql = "select name, cusername
@@ -34,6 +107,19 @@ function history ($user_id)
 		return $query->result();
 
 }
+function timesheet ($user_id)
+{
+		$sql = "select user_id, DATE_FORMAT(date,'%m/%d/%Y') as date1, DATE_FORMAT(date,'%W') as date2
+
+		        from telework_tracker
+		        where user_id='$user_id'
+        		order by date DESC
+		        limit 20";
+	    $query = $this->db->query($sql);
+		return $query->result();
+
+}
+
 	function get_stats_list2($user_id)
 	{
 		$sql = "SELECT eligible_task_list  FROM eligible_tracker where user_id='$user_id'";

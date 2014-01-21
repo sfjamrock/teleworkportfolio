@@ -24,12 +24,21 @@ class Dashboard extends CI_Controller {
 		{
 
 			$userid=$this->session->userdata('account_id');
+			$data['check'] = $this->user_model->userstats_lookup($userid);
+			$data['chart'] = $this->user_model->userstats_chart($userid);
 			$data['telework_tracker'] = $this->tp_model->get_by_id($userid);
 			$data['employer'] = $this->user_model->employer_lookup($userid);
 			$data['account'] = $this->account_model->get_by_id($userid);
+			$data['timesheet'] = $this->user_model->timesheet($userid);
+
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
 			$rows = $this->user_model->update_wall( $userid);
 	     	$data['wall_dashboard'] = $rows ;
+			$rows = $this->user_model->task_lookup( $userid);
+	     	$data['task'] = $rows ;
+			$rows = $this->user_model->task_lookup_more( $userid);
+	     	$data['task2'] = $rows ;
+
 			$this->load->view('dashboard', isset($data) ? $data : NULL);
 			
 		}
@@ -55,6 +64,18 @@ class Dashboard extends CI_Controller {
 	     $data['wall_dashboard'] = $rows ;
 		 $this->load->view('wall_dashboard', isset($data) ? $data : NULL);
 	 }
+	 function create_ticket()
+	 {
+		 $this->user_model->create_ticket( $this->session->userdata('account_id'));     
+	 }
+	 function close_ticket()
+	 {
+		 $this->user_model->close_ticket(); 
+		 redirect('dashboard');
+    
+	 }
+
+
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

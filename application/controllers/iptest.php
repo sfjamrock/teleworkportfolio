@@ -14,7 +14,7 @@ class Iptest extends CI_Controller {
 	 }
 function index()
 	{
-		$rows = $this->test_model->map_users();
+		$rows = $this->main_model->map_users();
 	    $data['mapchallenge'] = $rows ;
 		$this->load->view('mapchallenge', isset($data) ? $data : NULL);
 

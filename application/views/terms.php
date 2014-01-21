@@ -7,7 +7,7 @@
 <meta name="description" content="Telework Portfolio is a online base platform that aims to facilitating data drive conversation about telework between employees and managers" />
 <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home" />
 <meta name="author" content="Telework Portfolio" />
-<link rel="stylesheet" href="resource/css/style.css" media="screen" />
+<link rel="stylesheet" href="resource/css/style2.css" media="screen" />
 <link rel="icon" href="resource/images/favicon.ico" />
 <link rel="shortcut icon" href="resource/images/favicon.ico" />
 

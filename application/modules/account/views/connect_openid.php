@@ -10,7 +10,7 @@
 <base href="<?php echo base_url(); ?>" />
 <link rel="shortcut icon" href="resource/resource/images/favicon.ico" />
 <link type="text/css" rel="stylesheet" href="resource/css/960gs/960gs.css" />
-<link type="text/css" rel="stylesheet" href="resource/css/style.css" />
+<link type="text/css" rel="stylesheet" href="resource/css/style2.css" />
 <link type="text/css" rel="stylesheet" href="resource/css/style7.css" />
 </head>
 <body>

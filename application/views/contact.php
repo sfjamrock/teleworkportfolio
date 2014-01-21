@@ -8,7 +8,7 @@
 <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home, remote worker" />
 <meta name="author" content="Telework Portfolio" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-<link rel="stylesheet" href="resource/css/style.css" media="screen" />
+<link rel="stylesheet" href="resource/css/style2.css" media="screen" />
 <link rel="icon" href="resource/images/favicon.ico" />
 <link rel="shortcut icon" href="resource/images/favicon.ico" />
 

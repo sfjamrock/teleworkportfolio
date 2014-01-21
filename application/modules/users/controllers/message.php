@@ -35,7 +35,7 @@ class Message extends CI_Controller {
 			$userid=$this->session->userdata('account_id');
 			if((isset($_POST['content']))&&($_POST['content']!=''))
 			{
-				$this->account_model->send_message($_POST['content'],$file_name,$sender_id);
+				$this->message_model->send_message($_POST['content'],$file_name,$sender_id);
 			}
 			$data['check'] = $this->user_model->userstats_lookup($userid);
 			$data['chart'] = $this->user_model->userstats_chart($userid);

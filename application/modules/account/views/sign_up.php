@@ -8,7 +8,7 @@
 <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home" />
 <meta name="author" content="Telework Portfolio" />
 <base href="<?php echo base_url(); ?>" />
-<link type="text/css" rel="stylesheet" href="resource/css/style.css" />
+<link type="text/css" rel="stylesheet" href="resource/css/style2.css" />
 </head>
 <body>
 <div id="main">

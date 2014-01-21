@@ -1,9 +1,9 @@
-﻿ <h1 class="heading">Active Teleworkers</h1>
+﻿ <h1 class="heading">Clock In Map</h1>
                     <div class="leader_map" id="default" style="width:100%; height:100%"></div>
                     <div class="leader_details">
                     	<div class="table_header">
-                        	<div class="text1">Leader Board</div>
-                        	<div class="text2"># of Check-In for the last 60 days</div>
+                        	<div class="text1">Currently Working</div>
+                        	<div class="text2">Site Location</div>
                         </div>
 						<?php $v=1?>
 						<?php foreach($leader as $leader): ?>
