@@ -26,7 +26,7 @@
  
         <div class="savings_tracker">
                             <div class="savings_tracker_form">
-                    <form id="saving" name="saving" action="teleworkwizard/savings/saving_tracker" method="post">
+                    <form id="saving" name="saving" action="teleworkwizard/savings/clock_in" method="post">
 					<?php echo validation_errors(); ?>
 <p id="map" style="width:40%; height:40%"></p>
 

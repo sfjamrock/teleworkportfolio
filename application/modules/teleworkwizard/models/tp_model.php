@@ -2,7 +2,29 @@
 
 class Tp_model extends CI_Model {
 
-      function GetAutocomplete($options = array())
+
+function clock_in()
+{
+$data = array(
+				'status' => $this->input->post('status'),
+				'latitude' => $this->input->post('latitude'),
+				'longitude' => $this->input->post('longitude'),
+				'user_id' => $this->session->userdata('account_id'),
+				'location_id' => $this->input->post('jobsite'),
+				'clock_in' => mdate('%Y-%m-%d %H:%i:%s', now()),
+				'created_date' => mdate('%Y-%m-%d %H:%i:%s', now())
+				);
+$query = $this->db->insert('timesheet',$data);
+		
+		if($query){
+			return true;
+		}else {
+			return false;
+		}
+}
+
+
+function GetAutocomplete($options = array())
     {
 	
 	    $this->db->select('*');

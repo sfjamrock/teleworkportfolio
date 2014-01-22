@@ -30,7 +30,7 @@ class Dashboard extends CI_Controller {
 			$data['employer'] = $this->user_model->employer_lookup($userid);
 			$data['account'] = $this->account_model->get_by_id($userid);
 			$data['timesheet'] = $this->user_model->timesheet($userid);
-
+			
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
 			$rows = $this->user_model->update_wall( $userid);
 	     	$data['wall_dashboard'] = $rows ;

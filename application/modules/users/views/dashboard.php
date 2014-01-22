@@ -97,7 +97,15 @@ $(document).ready(function() {
 							<a href="<?php echo base_url("");?><?php echo $employer->cusername?>"><?php echo $employer->name?></a>
 						<?php endif; ?>
 </div>
-            <div class="btn_holder"><a href="<?php echo base_url("teleworkwizard/savings");?>"><img src="resource/images/clock-in.png" alt="Telework Savings check in" width="80"></a></div>
+            <div class="btn_holder">
+<?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id')) == 0) :?>
+<a href="<?php echo base_url("teleworkwizard/savings");?>"><img src="resource/images/clock-out.png" alt="Telework Savings check in" width="80"></a>
+
+<?php else :?>
+<a href="<?php echo base_url("teleworkwizard/savings");?>"><img src="resource/images/clock-in.png" alt="Telework Savings check in" width="80"></a>
+
+<?php endif; ?>
+</div>
         </div>
         <br clear="all" /><br />
         <div class="main_tabholder">
@@ -181,10 +189,10 @@ $(document).ready(function() {
                     	<a href="#">
                             <div class="text3"><?php echo $timesheet->date1?></div>
                             <div class="text3"><?php echo $timesheet->date2?></div>
-                            <div class="text2">Baltimore</div>
-                            <div class="text3">10:30am</div>
-                            <div class="text3">10:30pm</div>
-                            <div class="text4">12</div>
+                            <div class="text2"><?php echo $timesheet->location?></div>
+                            <div class="text3"><?php echo $timesheet->clock_in?></div>
+                            <div class="text3"><?php echo $timesheet->clock_out?></div>
+                            <div class="text4"><?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id')) == 1) echo $timesheet->clock_in->diff($timesheet->clock_out); else echo $timesheet->clock_in->diff(date());?></div>
                         </a>
                     </h2>
                     

@@ -69,6 +69,10 @@ $route['users/dashboard/close_ticket'] = "users/dashboard/close_ticket";
 $route['users/profile/follow'] = "users/profile/follow";
 $route['teleworkwizard/SelfEvaluation'] = "teleworkwizard/SelfEvaluation";
 
+$route['teleworkwizard/savings/clockin'] = "teleworkwizard/savings/clockin";
+
+$route['teleworkwizard/clockin'] = "teleworkwizard/clockin";
+
 $route['dashboard'] = "users/dashboard";
 $route['history'] = "users/history";
 $route['message'] = "users/message";
