@@ -78,6 +78,8 @@ $(document).ready(function() {
 
     </head>
 <body>
+<?php date_default_timezone_set('America/New_York');?>
+
 <div id="main">
     <?php echo $this->load->view('header'); ?>   
     <div class="details_holder">
@@ -118,60 +120,6 @@ $(document).ready(function() {
             </div>
             <div class="new_tab_content">
             	
-         <!--       <div id="country1" class="tabcontent">
-
-				<div class="tab_table_header">
-                	<div class="text1">Tid</div>
-                    <div class="text2">Subject</div>
-                    <div class="text3">Status</div>
-                    <div class="text3">Issued</div>
-                    <div class="text3">Requester</div>
-                    <div class="text3">Priority</div>
-                    <div class="text4">Category</div>
-                </div>
-                
-                <?php if ($task == NULL) 
-					echo "hello world";
-				?>   
-                <?php foreach($task as $row): ?>
-                    <h2 class="acc_trigger">
-                    	<a href="#">
-							<div class="text1"><?php echo $row->TID; ?></div>
-                            <div class="text2"><?php echo $row->subject; ?></div>
-                            <div class="text3"><?php if ($row->status == 0) echo "Open"; elseif ($row->status == 2) echo "Closed";else echo "In progress" ?></div>
-                            <div class="text3"><?php echo date("Y-m-d",strtotime($row->assigned_date)); ?></div>
-                            <div class="text3"><?php echo $row->from_email; ?></div>
-                            <div class="text3"><?php if ($row->priority == 0) echo "Normal";?></div>
-                            <div class="text4"><?php if ($row->category == 0) echo "Default"; ?></div>                        </a>
-                    </h2>
-                    <div class="acc_container">
-			<?php foreach($task2 as $row2): ?>
-
-					<?php if($row->subject == $row2->subject)  :?>
-<div class="text_holder"><h3><?php echo $row2->from_email; ?> <span><?php echo date("Y-m-d H:i:s",strtotime($row2->assigned_date)); ?></span></h3><iframe srcdoc="<?php echo htmlspecialchars($row2->email_body); ?>" width="100%"  frameborder="0"></iframe></div>
-  
-					<?php elseif (strpos($row2->subject, $row->subject)!= false) :?>
-<div class="text_holder"><h3><?php echo $row2->from_email; ?> <span><?php echo date("Y-m-d H:i:s",strtotime($row2->assigned_date)); ?></span></h3><iframe srcdoc="<?php echo htmlspecialchars($row2->email_body); ?>" width="100%"  frameborder="0"></iframe></div>
-  					
-					<?php else : ?>
-
-					
-					<?php endif; ?>
-					<?php endforeach; ?>
-
-
-                        <div class="text_holder" style="text-align: center">
-
-
-<!--<form id="close-ticket" > <input type="text"  id="TID"value="<?php echo $row->TID; ?>" hidden="hidden"/><button type="submit" >Close Ticket <?php echo $row->TID; ?></button></form>
-<form name="close-ticket" action="users/dashboard/close_ticket" method="post"> <button type="submit" name="TID"value="<?php echo $row->TID; ?>">Close Ticket <?php echo $row->TID; ?></button></form>
-
-
-</div>
-                    </div>
- 			<?php endforeach; ?>
-                 
-                </div>-->
                 <div id="country1" class="tabcontent">
 					<div class="tab_table_header">
 						<div class="text3">Date</div>
@@ -181,9 +129,10 @@ $(document).ready(function() {
 						<div class="text3">Clock-Out</div>
 						<div class="text4">Total</div>
 					</div>
-                <?php if ($timesheet == NULL) 
-					echo "hello world";
-				?>  
+                <?php if ($timesheet == NULL) :?> 
+Hello World
+                 <?php else :?> 
+
 			<?php foreach($timesheet as $timesheet): ?>
                 	<h2 class="acc_trigger">
                     	<a href="#">
@@ -192,14 +141,16 @@ $(document).ready(function() {
                             <div class="text2"><?php echo $timesheet->location?></div>
                             <div class="text3"><?php echo $timesheet->clock_in?></div>
                             <div class="text3"><?php echo $timesheet->clock_out?></div>
-                            <div class="text4"><?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id')) == 1) echo $timesheet->clock_in->diff($timesheet->clock_out); else echo $timesheet->clock_in->diff(date());?></div>
+                           <div class="text4"><?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id')) == 1) echo $timesheet->clock_out - $timesheet->clock_in; else echo date("H:i:s") - $timesheet->clock_in;?>
+
+</div>
                         </a>
                     </h2>
                     
 
 
  			<?php endforeach; ?>
-
+ 			<?php endif; ?>
 				</div>
                 <div id="country2" class="tabcontent">
 
@@ -218,7 +169,7 @@ $(document).ready(function() {
 				<h2 class="acc_trigger">
                     	<a href="#">
 							<div class="text3"></br>12/12/13 - 1/12/14</div>
-                            <div class="text3">1200-1730</br>Ashley Steward<!--</br>7001 Martin Luther King Ave Landover Md, 20785--></div>
+                            <div class="text3">1200-1730</br>Ashley Steward</div>
                             <div class="text3">Monday</div>
                             <div class="text3">Baltimore</div>
                             <div class="text3">10:30am</div>
@@ -239,7 +190,6 @@ $(document).ready(function() {
             </div>  
         </div>
     </div>
-   		
 
     <?php echo $this->load->view('footer'); ?>
 <script type="text/javascript">

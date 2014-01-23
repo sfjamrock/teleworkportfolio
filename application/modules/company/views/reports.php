@@ -102,7 +102,7 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
 <div id="main">
     <?php echo $this->load->view('header'); ?>
     <div class="details_holder">
-    	<div class="innerpage_content">
+    	<!--<div class="innerpage_content">
  			<div class="employee_dashboard_box">
             	<div class="main_img"><a href="#"><img src="resource/images/img2.png" alt="" /></a></div>
                 <div class="text_holder">
@@ -115,7 +115,27 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
 				<a href="#"><img src="resource/images/subscription-status.png" alt="" /></a></div>
             </div>
 
-        	        </div>
+        	        </div>-->
+
+    	<div class="discussion_group_details">
+        	<div class="img_holder"><a href="<?php echo base_url("");?><?php echo $company->cusername?>">
+					<?php if (strpos($company->picture, "http://") === 0) :?>
+					<img src="<?php echo $company->picture; ?>" width="115" height="115"alt="" />
+					<?php elseif (isset($company->picture)) : ?>
+					<img src="resource/user/profile/<?php echo $company->picture; ?>?t=<?php echo md5(time()); ?>"  width="115" height="115"alt="" /> 
+					<?php else : ?>
+					<img src="resource/resource/images/img5.png" width="115" height="115"alt="" />
+					<?php endif; ?></a>
+			</div>
+            <div class="text_holder"><strong><?php echo $company->cusername?></strong><br /><br /><?php echo $company->city?>, <?php echo $company->state?></div>
+            <div class="btn_holder"><!--
+   <form action="company/profile/join" method="post"><input type="submit" id="join" name="company"value="<?php echo $this->uri->segment(1)?>"
+  style="background-image: url(resource/images/join-now1.png); border: solid 0px #000000; width: 70px; height: 32px; font-size: 0.1px;" />
+  </form>-->
+
+ &nbsp; <a href="#"><img src="resource/images/subscription-status.png" alt="" /></a></div>
+        </div>
+
 <?php if ($this->session->flashdata('enroll')  != '');
 echo $this->session->flashdata('enroll');
 ?>
@@ -123,7 +143,13 @@ echo $this->session->flashdata('enroll');
         <div class="main_tabholder">
             <div class="shadetabs">
                 <ul id="countrytabs">
-                    <li><a href="#" rel="country1" class="selected">Clock-In Employees</a></li>
+                    <li><a href="#" rel="country1" class="selected">EMPLOYEE MAP</a></li>
+                    <li><a href="#" rel="country2" >SCHEDULE</a></li>
+                    <li><a href="#" rel="country3" >TIMESHEET</a></li>
+                    <li><a href="#" rel="country4" >EMPLOYEE</a></li>
+                    <li><a href="#" rel="country5" >LOCATION</a></li>
+                    <li><a href="#" rel="country6" >ALERTS</a></li>
+
 
                 </ul>
             </div>
@@ -138,13 +164,13 @@ echo $this->session->flashdata('enroll');
                 	 <?php echo $this->load->view('inventory'); ?>
                 </div>                    
                 <div id="country4" class="tabcontent">
-                	 <?php echo $this->load->view('analytics'); ?>
+                	 <?php echo $this->load->view('teleworker'); ?>
                 </div>
                 <div id="country5" class="tabcontent">
                 	 <?php echo $this->load->view('hotel'); ?>               	
                 </div>
                 <div id="country6" class="tabcontent">
-                	 <?php echo $this->load->view('teleworker'); ?>
+                	 <?php echo $this->load->view('analytics'); ?>
                 </div>    
             </div>  
         </div>

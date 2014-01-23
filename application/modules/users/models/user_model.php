@@ -6,7 +6,7 @@ class User_model extends CI_Model {
 function timesheet ($user_id)
 {
 		$sql = "select DATE_FORMAT(timesheet.created_date,'%m/%d/%Y') as date1, DATE_FORMAT(timesheet.created_date,'%W') as date2, 
-				name as location, clock_in, clock_out
+				name as location, DATE_FORMAT(clock_in,'%T') as clock_in, DATE_FORMAT(clock_out,'%T') as clock_out	
 				from timesheet
 				join location
 				on location.location_id=timesheet.location_id
