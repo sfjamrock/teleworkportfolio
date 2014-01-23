@@ -3,6 +3,31 @@
 class User_model extends CI_Model {
 	
 	// --------------------------------------------------------------------
+function timesheet ($user_id)
+{
+		$sql = "select DATE_FORMAT(timesheet.created_date,'%m/%d/%Y') as date1, DATE_FORMAT(timesheet.created_date,'%W') as date2, 
+				name as location, DATE_FORMAT(clock_in,'%T') as clock_in, DATE_FORMAT(clock_out,'%T') as clock_out	
+				from timesheet
+				join location
+				on location.location_id=timesheet.location_id
+				where user_id= $user_id
+				order by timesheet.created_date DESC
+				limit 20";
+	    $query = $this->db->query($sql);
+		return $query->result();
+
+}
+
+
+function Check_user_clockin_status($user_id)
+{
+		$sql = "SELECT status FROM timesheet
+				where user_id = $user_id
+				order by created_date DESC";
+	    $query = $this->db->query($sql);
+ 		return $query->row();
+}
+
 
 	function close_ticket()
 	{
@@ -107,18 +132,16 @@ function history ($user_id)
 		return $query->result();
 
 }
-function timesheet ($user_id)
-{
-		$sql = "select user_id, DATE_FORMAT(date,'%m/%d/%Y') as date1, DATE_FORMAT(date,'%W') as date2
-
-		        from telework_tracker
-		        where user_id='$user_id'
-        		order by date DESC
-		        limit 20";
-	    $query = $this->db->query($sql);
-		return $query->result();
-
-}
+//function timesheet ($user_id)
+//{
+//		$sql = "select user_id, DATE_FORMAT(date,'%m/%d/%Y') as date1, DATE_FORMAT(date,'%W') as date2
+//		        from telework_tracker
+//		        where user_id='$user_id'
+//      		order by date DESC
+//		        limit 20";
+//	    $query = $this->db->query($sql);
+//		return $query->result();
+//}
 
 	function get_stats_list2($user_id)
 	{

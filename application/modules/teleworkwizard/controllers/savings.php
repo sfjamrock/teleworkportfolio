@@ -22,13 +22,8 @@ class Savings extends CI_Controller {
 		if ($this->authentication->is_signed_in())
 		{
 
-			//get user location info start
+
 			
-			//$ipaddress =$_SERVER["REMOTE_ADDR"];
-			//$ipaddress = '209.183.238.119';
-			//$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
-			//$data['location'] = json_decode($json);
-			//get user location info end
 			$userid=$this->session->userdata('account_id');
 			$data['account'] = $this->account_model->get_by_id($userid);
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
@@ -54,7 +49,7 @@ class Savings extends CI_Controller {
 			
 
 	}
-	function saving_tracker()
+	function clockin()
 	{
 			$userid=$this->session->userdata('account_id');
 			$data['account'] = $this->account_model->get_by_id($userid);
@@ -63,21 +58,19 @@ class Savings extends CI_Controller {
 
 			$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
 			$this->form_validation->set_rules(array(
-			array('field'=>'mile', 'label'=>'mile', 'rules'=>'trim|required|numeric|max_length[25]|xss_clean'),
-			array('field'=>'time', 'label'=>'time', 'rules'=>'trim|required|numeric|max_length[20]|xss_clean'),
-			array('field'=>'money', 'label'=>'money', 'rules'=>'trim|required|numeric|max_length[20]|xss_clean')
+			array('field'=>'latitude', 'label'=>'latitude', 'rules'=>'trim|required|max_length[25]|xss_clean'),
+			array('field'=>'longitude', 'label'=>'longitude', 'rules'=>'trim|required|max_length[20]|xss_clean')
 			));
-		// Run form validation
+		 //Run form validation
 		if ($this->form_validation->run() === TRUE) 
 		{
-			$this->tp_model->start_tracker();
+			$this->tp_model->clock_in();
 			redirect('dashboard');
 		}
 		else
 		{
 			$this->load->view('savings', isset($data) ? $data : NULL);
 		}
-
 		
 
 	}

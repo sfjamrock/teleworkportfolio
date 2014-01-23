@@ -15,7 +15,7 @@
 							<ul>
                            <li><a href="<?php echo base_url("account_settings");?>">Account Settings</a></li>
 
-                           <li><a href="<?php echo base_url("start");?>">Create Company Page</a></li>
+                          <!-- <li><a href="<?php echo base_url("start");?>">Create Company Page</a></li>-->
 
 
 <?php if($test1=$this->company_model->manager_lookup($this->session->userdata('account_id'))) :?>
@@ -24,11 +24,7 @@
  <li><a href="<?php echo htmlspecialchars(base_url("").$row->cusername);?>"><?php echo $row->cusername; ?> Profile</a></li>
 <?php endforeach; ?>
 <?php endif; ?>
-                           <li><a href="<?php echo base_url("teleworkwizard");?>">Job Evaluation</a></li>
-
-                           <li><a href="<?php echo base_url("find");?>">Locate Groups</a></li>
-
-                           <li><a href="<?php echo base_url("history");?>">History</a></li>
+                           <!--<li><a href="<?php echo base_url("history");?>">History</a></li>-->
             			   <li><a href="<?php echo base_url("account/sign_out");?>">Logout</a></li>
 
             			  <!-- <li><a href="#">Help</a></li>-->

@@ -1,4 +1,4 @@
-﻿ <h1 class="heading">Clock In Map</h1>
+﻿
                     <div class="leader_map" id="default" style="width:100%; height:100%"></div>
                     <div class="leader_details">
                     	<div class="table_header">
