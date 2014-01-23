@@ -100,12 +100,10 @@ $(document).ready(function() {
 						<?php endif; ?>
 </div>
             <div class="btn_holder">
-<?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id')) == 0) :?>
-<a href="<?php echo base_url("teleworkwizard/savings");?>"><img src="resource/images/clock-out.png" alt="Telework Savings check in" width="80"></a>
-
+<?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 0) :?>
+<div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/savings");?>">Clock-Out</a></div>
 <?php else :?>
-<a href="<?php echo base_url("teleworkwizard/savings");?>"><img src="resource/images/clock-in.png" alt="Telework Savings check in" width="80"></a>
-
+<div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/savings");?>">Clock-In</a></div>
 <?php endif; ?>
 </div>
         </div>
@@ -141,7 +139,8 @@ Hello World
                             <div class="text2"><?php echo $timesheet->location?></div>
                             <div class="text3"><?php echo $timesheet->clock_in?></div>
                             <div class="text3"><?php echo $timesheet->clock_out?></div>
-                           <div class="text4"><?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id')) == 1) echo $timesheet->clock_out - $timesheet->clock_in; else echo date("H:i:s") - $timesheet->clock_in;?>
+                           <div class="text4"><?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 1) echo date_diff(strtotime($timesheet->clock_out) , strtotime($timesheet->clock_in)); else echo date("H:i:s") - $timesheet->clock_in;?>
+
 
 </div>
                         </a>
@@ -151,6 +150,7 @@ Hello World
 
  			<?php endforeach; ?>
  			<?php endif; ?>
+
 				</div>
                 <div id="country2" class="tabcontent">
 

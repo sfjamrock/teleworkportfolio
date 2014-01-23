@@ -102,21 +102,6 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
 <div id="main">
     <?php echo $this->load->view('header'); ?>
     <div class="details_holder">
-    	<!--<div class="innerpage_content">
- 			<div class="employee_dashboard_box">
-            	<div class="main_img"><a href="#"><img src="resource/images/img2.png" alt="" /></a></div>
-                <div class="text_holder">
-                	<ul>
-                    	<li class="title"><?php echo $company->cusername?></li>
-                    	<li class="text"><?php echo $company->city?>, <?php echo $company->state?></li>
-                    </ul>
-                </div>
-                <div class="member_image">
-				<a href="#"><img src="resource/images/subscription-status.png" alt="" /></a></div>
-            </div>
-
-        	        </div>-->
-
     	<div class="discussion_group_details">
         	<div class="img_holder"><a href="<?php echo base_url("");?><?php echo $company->cusername?>">
 					<?php if (strpos($company->picture, "http://") === 0) :?>
@@ -133,7 +118,7 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
   style="background-image: url(resource/images/join-now1.png); border: solid 0px #000000; width: 70px; height: 32px; font-size: 0.1px;" />
   </form>-->
 
- &nbsp; <a href="#"><img src="resource/images/subscription-status.png" alt="" /></a></div>
+<div class="submit_button_holder"><a href="#">Subcription Status</a></div></div>
         </div>
 
 <?php if ($this->session->flashdata('enroll')  != '');
@@ -153,15 +138,15 @@ echo $this->session->flashdata('enroll');
 
                 </ul>
             </div>
-            <div class="tab_content none">
+            <div class="tab_content">
                 <div id="country1" class="tabcontent">
                 	 <?php echo $this->load->view('leaders'); ?>
                 </div>
                 <div id="country2" class="tabcontent">
-                 	 <?php echo $this->load->view('savings'); ?>               	
+                 	 <?php echo $this->load->view('scheduler'); ?>               	
                 </div>
                 <div id="country3" class="tabcontent">
-                	 <?php echo $this->load->view('inventory'); ?>
+                	 <?php echo $this->load->view('timesheet'); ?>
                 </div>                    
                 <div id="country4" class="tabcontent">
                 	 <?php echo $this->load->view('teleworker'); ?>

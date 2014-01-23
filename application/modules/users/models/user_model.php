@@ -22,9 +22,10 @@ function timesheet ($user_id)
 function Check_user_clockin_status($user_id)
 {
 		$sql = "SELECT status FROM timesheet
-				where user_id = $user_id";
+				where user_id = $user_id
+				order by created_date DESC";
 	    $query = $this->db->query($sql);
- 		return $query->result();
+ 		return $query->row();
 }
 
 

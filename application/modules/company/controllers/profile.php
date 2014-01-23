@@ -20,10 +20,10 @@ class Profile extends CI_Controller {
 			$cid = $cid ['0']->cid;
 			// get user_id using username in url end 
 			// get user access rights to analytics start
-	//		if (!$this->company_model->manager_lookup($this->session->userdata('account_id')))
-		//	{
-		//		redirect($cusername);
-		//	}
+			if (!$this->company_model->manager_lookup($this->session->userdata('account_id')))
+			{
+				redirect($cusername);
+			}
 			// get user access rights to analytics end
 
 			$data['equipment'] = $this->company_model->equipment_lookup($cid);
@@ -42,9 +42,7 @@ class Profile extends CI_Controller {
 		    $data['count'] = $this->company_model->track_count($cid);
 			$data['reserve'] = $this->company_model->reserve($cid);
 
-			//$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
-			//$data['account_details'] = $this->account_details_model->get_by_account_id($this->session->userdata('account_id'));
-			$this->load->view('profile', isset($data) ? $data : NULL);
+			$this->load->view('reports', isset($data) ? $data : NULL);
 
 		
 		
@@ -76,6 +74,48 @@ class Profile extends CI_Controller {
 		redirect('');
 
 	} 
+
+	function accept()
+	{
+			// get user_id using username in url start 		
+			$cusername = $_POST["company"];
+			$cid = $this->company_model->cid_lookup($cusername);
+			$cid = $cid ['0']->cid;
+			// get user_id using username in url end
+
+			// get user_id using username  		
+			$username = $_POST["user"];
+			$user_id = $this->user_model->userid_lookup($username);
+			$user_id = $user_id ['0']->id;
+			// get user_id using username in url end 
+
+	
+			$this->company_model->accept($cid,$user_id);
+			$this->session->set_flashdata('enroll', 'User as been enrolled into telework program.');
+			$url = htmlspecialchars($_POST["company"]).'/analytics';
+			redirect($url);
+	} 
+ 	function reject()
+	{
+			// get user_id using username in url start 		
+			$cusername = $_POST["company"];
+			$cid = $this->company_model->cid_lookup($cusername);
+			$cid = $cid ['0']->cid;
+			// get user_id using username in url end
+
+			// get user_id using username  		
+			$username = $_POST["user"];
+			$user_id = $this->user_model->userid_lookup($username);
+			$user_id = $user_id ['0']->id;
+			// get user_id using username in url end 
+
+	
+			$this->company_model->reject($cid,$user_id);
+			$this->session->set_flashdata('enroll', 'User as been removed from telework program.');
+			$url = htmlspecialchars($_POST["company"]).'/analytics';
+			redirect($url);
+	} 
+	
 	function join()
 	{
 			// get user_id using username in url start 		
@@ -88,6 +128,7 @@ class Profile extends CI_Controller {
 			$this->session->set_flashdata('join', 'Thanks for applying, you will be notified once your application as been approve.');
 			redirect($_POST["company"]);
 	} 
+
 
 }
 /* End of file welcome.php */
