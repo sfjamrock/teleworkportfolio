@@ -1,10 +1,6 @@
-﻿<?php date_default_timezone_set('America/New_York');?>     
+﻿ 
 
-           	<div class="main_two_tabs">
-                        <a href="#">View Schedule</a>
-                        <a href="#" class="grey">Create Schedule</a>
-                    </div>
-                    <div class="main_time_periods">
+                     	<div class="main_time_periods">
                     	<div class="title">Time Periods</div>
                         <div class="text_holder"><select name="jobsiteid">
 												  <option value="1">0347 - Ashley Stewart - 7001 Martin Luther King Ave, Landover Md,20785</option>

@@ -77,12 +77,16 @@ $submittime = $emailtime - 18000; // set email time
 <p></p>
 <p></p>
 <div class="col-xs-12 col-md-4">
-Jobsite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="jobsite" id="jobsite">
-			<option value="1" id="jobsite">Jobsite One</option>
-			<option value="2" id="jobsite">Jobsite Two</option>
-			<option value="3" id="jobsite">Jobsite Three</option>
-			<option value="4" id="jobsite">Jobsite Four</option>
-		</select>
+Jobsite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="jobsiteid">
+												  <option value="1">0347 - Ashley Stewart - 7001 Martin Luther King Ave, Landover Md,20785</option>
+												  <option value="2">0326 - Forever 21 - 2401 Liberty Heights Ave, Baltimore Md, 21215</option>
+												  <option value="3">1347 - TJ Maxx - 3500 East West Highway, Hyattsville Md, 20782</option>
+												  <option value="4">11200 - Rite Aid - 3250 Superior Lane, Bowie Md, 20715</option>
+												  <option value="5">Bowie State University - 14000 Jericho Park Rd</option>
+												  <option value="6">Lane Bryant - Baltimore, Md, 21228</option>
+												  <option value="7">1200 - Marshalls - 600 East Pratt Street, Baltimore MD, 21202</option>
+												  <option value="8">3813 - Rite Aid - 9530 Crain Highway, Upper Marlboro Md, 20772</option>
+												</select>
 </div>		
 		<br>
 		<input type="hidden" name="id" id="id" value="<? echo($user_id) ?>"/><br/>

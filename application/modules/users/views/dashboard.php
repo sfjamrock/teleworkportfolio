@@ -139,7 +139,7 @@ Hello World
                             <div class="text2"><?php echo $timesheet->location?></div>
                             <div class="text3"><?php echo $timesheet->clock_in?></div>
                             <div class="text3"><?php echo $timesheet->clock_out?></div>
-                           <div class="text4"><?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 0) echo $timesheet->clock_out - $timesheet->clock_in; else echo date("H:i:s") - $timesheet->clock_in;?>
+                           <div class="text4"><?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 1) echo $timesheet->clock_out - $timesheet->clock_in; else echo date("H:i:s") - $timesheet->clock_in;?>
 
 
 </div>
@@ -154,7 +154,7 @@ Hello World
 				</div>
                 <div id="country2" class="tabcontent">
 
-	
+	<!--
 				<div class="tab_table_header">
 					<div class="text3">Week Periods</div>
                     <div class="text3">Sunday</div>
@@ -178,7 +178,7 @@ Hello World
                             <div class="text3">10:30pm</div>
 
                         </a>
-                    </h2>
+                    </h2>-->Schedule goes here
 				
 				
 				

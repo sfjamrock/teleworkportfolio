@@ -45,7 +45,7 @@ class Profile extends CI_Controller {
 		    $data['count'] = $this->company_model->track_count($cid);
 			$data['reserve'] = $this->company_model->reserve($cid);
 
-			$this->load->view('reports', isset($data) ? $data : NULL);
+			$this->load->view('test', isset($data) ? $data : NULL);
 
 		
 		

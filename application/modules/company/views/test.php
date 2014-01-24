@@ -23,7 +23,7 @@
 google.maps.visualRefresh = true;
 var locations = [
 		<?php foreach($map as $row): ?>
-  			['<?php echo $row->city; ?>, <?php echo $row->state; ?>', <?php echo $row->latitude; ?>, <?php echo $row->longitude; ?>, <?php echo $row->user_id; ?>,
+  			['<?php echo $row->name; ?>', <?php echo $row->latitude; ?>, <?php echo $row->longitude; ?>, <?php echo $row->user_id; ?>,
 			 '<?php echo $row->firstname; ?> <?php echo $row->lastname; ?>',
 //<a href="<?php echo base_url("profile");?>/<?php echo $row->username?>">
 //<?php if (strpos($row->picture, "http://") === 0) :?>
@@ -124,42 +124,50 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
 <?php if ($this->session->flashdata('enroll')  != '');
 echo $this->session->flashdata('enroll');
 ?>
-
-        <div class="main_tabholder">
+    	<div class="main_tabholder">
             <div class="shadetabs">
                 <ul id="countrytabs">
                     <li><a href="#" rel="country1" class="selected">EMPLOYEE MAP</a></li>
-                    <li><a href="#" rel="country2" >SCHEDULE</a></li>
-                    <li><a href="#" rel="country3" >TIMESHEET</a></li>
-                    <li><a href="#" rel="country4" >EMPLOYEE</a></li>
-                    <li><a href="#" rel="country5" >LOCATION</a></li>
-                    <li><a href="#" rel="country6" >ALERTS</a></li>
-
+                    <li><a href="#" rel="country2">EMPLOYEES</a></li>
+                    <li><a href="#" rel="country3">LOCATION</a></li>
+                    <li><a href="#" rel="country4">TIMESHEET</a></li>
+                    <li><a href="#" rel="country5">VIEW SCHEDULER</a></li>
+                    <li><a href="#" rel="country6">CREATE SCHEDULER</a></li>
 
                 </ul>
             </div>
             <div class="tab_content">
-                <div id="country1" class="tabcontent">
-                	 <?php echo $this->load->view('leaders'); ?>
-                </div>
-                <div id="country2" class="tabcontent">
-                 	 <?php echo $this->load->view('scheduler'); ?>               	
-                </div>
-                <div id="country3" class="tabcontent">
-                	 <?php echo $this->load->view('timesheet'); ?>
-                </div>                    
+                <div id="country1" class="tabcontent"><?php echo $this->load->view('leaders'); ?></div>
+                <div id="country2" class="tabcontent"><?php echo $this->load->view('teleworker'); ?></div>
+                <div id="country3" class="tabcontent"><strong>Location - Details goes here...</strong></div>
+
+
                 <div id="country4" class="tabcontent">
-                	 <?php echo $this->load->view('teleworker'); ?>
+                	<div class="other_shadetabs">
+                        <ul id="othertabs">
+                            <li><a href="#" rel="details1" class="selected">Location</a></li>
+                            <li class="nospace"><a href="#" rel="details2">Employees</a></li>
+                        </ul>
+                    </div>
+                    <div id="details1" class="tabcontent">
+                     	 <?php echo $this->load->view('timesheet_location'); ?>
+     
+                    </div>
+                    <div id="details2" class="tabcontent">
+                	 <?php echo $this->load->view('timesheet_employee'); ?>
+
+                    	</div>
+                        <div class="submit_button_holder"><a href="#">Submit</a></div>
+                    </div>
+                        
                 </div>
-                <div id="country5" class="tabcontent">
-                	 <?php echo $this->load->view('hotel'); ?>               	
-                </div>
-                <div id="country6" class="tabcontent">
-                	 <?php echo $this->load->view('scheduler_create'); ?>
-                </div>    
+
+                <div id="country5" class="tabcontent"><strong> View Employee Schedule goes here</strong></div>
+				<div id="country6" class="tabcontent"><strong>  <?php echo $this->load->view('scheduler_create'); ?></strong></div>
             </div>  
         </div>
     </div>
+   
     <?php echo $this->load->view('footer'); ?>
 <script type="text/javascript">
 	var countries=new ddtabcontent("countrytabs")

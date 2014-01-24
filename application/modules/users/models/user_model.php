@@ -1,7 +1,10 @@
+<?php date_default_timezone_set('America/New_York');?>
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class User_model extends CI_Model {
 	
+
 	// --------------------------------------------------------------------
 function timesheet ($user_id)
 {

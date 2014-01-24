@@ -1,3 +1,4 @@
+<?php date_default_timezone_set('America/New_York');?>
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Tp_model extends CI_Model {
@@ -5,7 +6,7 @@ class Tp_model extends CI_Model {
 
 function clock_out()
 	{
-
+ date_default_timezone_set('America/New_York');
 		$user_id =$this->session->userdata('account_id');
 		$sql1 = "SELECT id FROM timesheet where user_id = $user_id order by created_date desc  limit 1";
 		$query = $this->db->query($sql1);
@@ -27,6 +28,7 @@ function clock_out()
 
 function clock_in()
 {
+ date_default_timezone_set('America/New_York');
 $data = array(
 				'status' => $this->input->post('status'),
 				'latitude' => $this->input->post('latitude'),
