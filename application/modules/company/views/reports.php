@@ -155,7 +155,7 @@ echo $this->session->flashdata('enroll');
                 	 <?php echo $this->load->view('hotel'); ?>               	
                 </div>
                 <div id="country6" class="tabcontent">
-                	 <?php echo $this->load->view('analytics'); ?>
+                	 <?php echo $this->load->view('scheduler_create'); ?>
                 </div>    
             </div>  
         </div>

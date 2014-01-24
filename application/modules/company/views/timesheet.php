@@ -17,67 +17,24 @@
                             <div class="text2">Fri 24</div>
                             <div class="text3">Sat 25</div>
                         </div>
-                        <div class="table_row">
-                        	<div class="username">User Name 1</div>
+                                                <div class="table_row">
+								<?php foreach($scheduler_user as $row2): ?>
+                        	<div class="username"><?php echo $row2->firstname?> <?php echo $row2->lastname?></div>
+								
+								<?php foreach($scheduler as $row3): ?>
+									<?php if($row2->user_id==$row3->user_id) : ?>
+
                             <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
+                            	<div class="start_time"><input type="text" name="clock_in" value="<?php echo $row3->clock_in?>" size="8"></div>
+                                <div class="end_time"><input type="text" name="clock_out" value="<?php echo $row3->clock_out?>" size="8"></div>
+<div class="end_time"> <?php if ($this->user_model->Check_user_clockin_status($row3 ->user_id)->status == 1) echo $row3->clock_out - $row3->clock_in; else echo date("H:i:s") - $row3->clock_in;?></div>
                             </div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder nospace">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
+						    <?php else : ?>
+						  <?php endif; ?>
+
+								<?php endforeach; ?>
+                    			<?php endforeach; ?>
                         </div>
-                        <div class="table_row">
-                        	<div class="username">User Name 2</div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                            <div class="text_holder nospace">
-                            	<div class="start_time">Start time</div>
-                                <div class="end_time">End time</div>
-                            </div>
-                        </div>
+
                     </div>
                     <div class="submit_button_holder"><a href="#">Update</a></div>

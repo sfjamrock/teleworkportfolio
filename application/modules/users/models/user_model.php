@@ -132,16 +132,6 @@ function history ($user_id)
 		return $query->result();
 
 }
-//function timesheet ($user_id)
-//{
-//		$sql = "select user_id, DATE_FORMAT(date,'%m/%d/%Y') as date1, DATE_FORMAT(date,'%W') as date2
-//		        from telework_tracker
-//		        where user_id='$user_id'
-//      		order by date DESC
-//		        limit 20";
-//	    $query = $this->db->query($sql);
-//		return $query->result();
-//}
 
 	function get_stats_list2($user_id)
 	{

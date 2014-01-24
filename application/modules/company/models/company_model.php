@@ -8,7 +8,42 @@ class Company_model extends CI_Model {
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
+	function scheduler_date_lookup($cid)
+	{
+		$sql="Select distinct(DATE_FORMAT(clock_in,'%m /%d/ %Y')) as clock_in,firstname, lastname,  DATE_FORMAT(clock_out,'%T') as clock_out, timesheet.user_id 
+				From timesheet
+				Join location on location.location_id=timesheet.location_id
+				Join a3m_account_details on timesheet.user_id = a3m_account_details.account_id
+				where cid = $cid";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
+		function scheduler_user_lookup($cid)
+	{
+		$sql="Select distinct(DATE_FORMAT(clock_in,'%T')) as clock_in,firstname, lastname,  DATE_FORMAT(clock_out,'%T') as clock_out, timesheet.user_id 
+				From timesheet
+				Join location on location.location_id=timesheet.location_id
+				Join a3m_account_details on timesheet.user_id = a3m_account_details.account_id
+				where cid = $cid
+				limit  1";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
+
+	function scheduler_lookup($cid)
+	{
+		$sql="Select distinct(DATE_FORMAT(clock_in,'%T')) as clock_in,firstname, lastname,  DATE_FORMAT(clock_out,'%T') as clock_out, timesheet.user_id 
+				From timesheet
+				Join location on location.location_id=timesheet.location_id
+				Join a3m_account_details on timesheet.user_id = a3m_account_details.account_id
+				where cid = $cid";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
 	
+
 	function chart_day($cid)
 	{
 		$sql="SELECT count(Distinct telework_tracker.id) as count, DAYNAME(date) as Day 

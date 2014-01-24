@@ -74,6 +74,31 @@ class Savings extends CI_Controller {
 		
 
 	}
+	function clockout()
+	{
+			$userid=$this->session->userdata('account_id');
+			$data['account'] = $this->account_model->get_by_id($userid);
+			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
+
+
+			$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+			$this->form_validation->set_rules(array(
+			array('field'=>'latitude_out', 'label'=>'latitude_out', 'rules'=>'trim|required|max_length[25]|xss_clean'),
+			array('field'=>'longitude_out', 'label'=>'longitude_out', 'rules'=>'trim|required|max_length[20]|xss_clean')
+			));
+		 //Run form validation
+		if ($this->form_validation->run() === TRUE) 
+		{
+			$this->tp_model->clock_out();
+			redirect('dashboard');
+		}
+		else
+		{
+			$this->load->view('clockout', isset($data) ? $data : NULL);
+		}
+		
+
+	}
 }
 
 

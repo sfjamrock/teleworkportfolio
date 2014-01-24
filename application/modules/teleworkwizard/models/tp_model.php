@@ -3,6 +3,28 @@
 class Tp_model extends CI_Model {
 
 
+function clock_out()
+	{
+
+		$user_id =$this->session->userdata('account_id');
+		$sql1 = "SELECT id FROM timesheet where user_id = $user_id order by created_date desc  limit 1";
+		$query = $this->db->query($sql1);
+		$sql2 = $query->row()->id;
+
+
+		$this->db->update('timesheet', array(
+			'status'=> 1,
+			'latitude_out'=> $this->input->post('latitude_out'),
+			'longitude_out'=> $this->input->post('longitude_out'),
+			'clock_out'=> mdate('%Y-%m-%d %H:%i:%s', now())
+
+		), array(
+			'id' => $sql2 
+			
+		)); 
+	}
+
+
 function clock_in()
 {
 $data = array(
