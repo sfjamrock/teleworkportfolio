@@ -100,7 +100,9 @@ $(document).ready(function() {
 						<?php endif; ?>
 </div>
             <div class="btn_holder">
-<?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 0) :?>
+<?php if (is_null($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status)) :?>
+<div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockin");?>">Clock-In</a></div>
+<?php elseif ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 0) :?>
 <div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockout");?>">Clock-Out</a></div>
 <?php else :?>
 <div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockin");?>">Clock-In</a></div>
@@ -139,10 +141,19 @@ Hello World
                             <div class="text2"><?php echo $timesheet->location?></div>
                             <div class="text3"><?php echo $timesheet->clock_in?></div>
                             <div class="text3"><?php echo $timesheet->clock_out?></div>
-                           <div class="text4"><?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 1) echo $timesheet->clock_out - $timesheet->clock_in; else echo date("H:i:s") - $timesheet->clock_in;?>
-
-
-</div>
+                            <div class="text4"><?php $datetime1 = new DateTime($timesheet->clock_in);
+													$datetime2 = new DateTime($timesheet->clock_out);
+													$datetime3 = new DateTime(date("Y-m-d H:i:s")); 
+													if ($timesheet->status == 0)
+													{
+													$interval = $datetime1->diff($datetime3);
+													echo $interval->format('%H:%m:%s');
+													}
+													else 
+													{	
+													$interval = $datetime1->diff($datetime2);
+													echo $interval->format('%H:%m:%s');}?>
+						  </div>
                         </a>
                     </h2>
                     

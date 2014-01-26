@@ -1,4 +1,4 @@
-﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Savings extends CI_Controller {
 	
@@ -69,7 +69,7 @@ class Savings extends CI_Controller {
 		}
 		else
 		{
-			$this->load->view('savings', isset($data) ? $data : NULL);
+			redirect('teleworkwizard/clockin');
 		}
 		
 
@@ -94,7 +94,7 @@ class Savings extends CI_Controller {
 		}
 		else
 		{
-			$this->load->view('clockout', isset($data) ? $data : NULL);
+			redirect('teleworkwizard/clockout');
 		}
 		
 

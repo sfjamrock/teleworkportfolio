@@ -1,4 +1,4 @@
-﻿<!--C:\xampp\htdocs\teleworkportfolio\application\modules\teleworkwizard\views\clockin.php-->
+<!--C:\xampp\htdocs\teleworkportfolio\application\modules\teleworkwizard\views\clockin.php-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -77,7 +77,7 @@ $submittime = $emailtime - 18000; // set email time
 <p></p>
 <p></p>
 <div class="col-xs-12 col-md-4">
-Jobsite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="jobsiteid">
+Jobsite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="jobsite">
 												  <option value="1">0347 - Ashley Stewart - 7001 Martin Luther King Ave, Landover Md,20785</option>
 												  <option value="2">0326 - Forever 21 - 2401 Liberty Heights Ave, Baltimore Md, 21215</option>
 												  <option value="3">1347 - TJ Maxx - 3500 East West Highway, Hyattsville Md, 20782</option>
@@ -89,8 +89,6 @@ Jobsite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="jobsiteid">
 												</select>
 </div>		
 		<br>
-		<input type="hidden" name="id" id="id" value="<? echo($user_id) ?>"/><br/>
-		<!-- The above field should be populated by the login ID of the current user. -->
 		
 		
 		
@@ -102,7 +100,7 @@ Jobsite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="jobsiteid">
 		
 <p></p>
 <br class="va">
-<!--<?php echo($test)?>-->
+
 <button type="button" class="va inset clockin" onclick="submit()">Clock-in!</button>
 </br>
 </div>		

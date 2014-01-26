@@ -1,4 +1,4 @@
-﻿<!-- C:\xampp\htdocs\teleworkportfolio\application\modules\teleworkwizard\controllers\clockout.php -->
+<!-- C:\xampp\htdocs\teleworkportfolio\application\modules\teleworkwizard\controllers\clockout.php -->
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Clockout extends CI_Controller {
