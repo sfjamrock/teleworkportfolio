@@ -1,14 +1,38 @@
+<?php date_default_timezone_set('America/New_York');?>
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Tp_model extends CI_Model {
 
 
-function clock_in()
+function clock_out()
+	{
+ date_default_timezone_set('America/New_York');
+		$user_id =$this->session->userdata('account_id');
+		$sql1 = "SELECT id FROM timesheet where user_id = $user_id order by created_date desc  limit 1";
+		$query = $this->db->query($sql1);
+		$sql2 = $query->row()->id;
+
+
+		$this->db->update('timesheet', array(
+			'status'=> 1,
+			'latitude_out'=> $this->input->post('latitude_out'),
+			'longitude_out'=> $this->input->post('longitude_out'),
+			'clock_out'=> mdate('%Y-%m-%d %H:%i:%s', now())
+
+		), array(
+			'id' => $sql2 
+			
+		)); 
+	}
+
+
+function clock_in($latitude,$longitude)
 {
+
 $data = array(
 				'status' => $this->input->post('status'),
-				'latitude' => $this->input->post('latitude'),
-				'longitude' => $this->input->post('longitude'),
+				'latitude' => $latitude,
+				'longitude' => $longitude,
 				'user_id' => $this->session->userdata('account_id'),
 				'location_id' => $this->input->post('jobsite'),
 				'clock_in' => mdate('%Y-%m-%d %H:%i:%s', now()),

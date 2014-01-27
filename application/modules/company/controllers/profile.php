@@ -8,7 +8,7 @@ class Profile extends CI_Controller {
 		$this->load->helper(array('language', 'url', 'form', 'account/ssl'));
 		$this->load->config('account/account');
         $this->load->library(array('account/authentication'));
-		$this->load->model(array('account/account_model', 'account/account_details_model', 'company_model'));
+		$this->load->model(array('account/account_model', 'account/account_details_model', 'company_model', 'users/user_model'));
 		$this->load->language(array('general', 'account/account_profile'));
 	 }
 	 
@@ -25,6 +25,9 @@ class Profile extends CI_Controller {
 				redirect($cusername);
 			}
 			// get user access rights to analytics end
+			$data['scheduler'] = $this->company_model->scheduler_lookup($cid);
+			$data['scheduler_date'] = $this->company_model->scheduler_date_lookup($cid);
+			$data['scheduler_user'] = $this->company_model->scheduler_user_lookup($cid);
 
 			$data['equipment'] = $this->company_model->equipment_lookup($cid);
 			$data['equipment_user'] = $this->company_model->equipment_user_lookup($cid);
@@ -42,7 +45,7 @@ class Profile extends CI_Controller {
 		    $data['count'] = $this->company_model->track_count($cid);
 			$data['reserve'] = $this->company_model->reserve($cid);
 
-			$this->load->view('reports', isset($data) ? $data : NULL);
+			$this->load->view('test', isset($data) ? $data : NULL);
 
 		
 		

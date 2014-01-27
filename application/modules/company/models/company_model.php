@@ -1,3 +1,4 @@
+<?php date_default_timezone_set('America/New_York');?>
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Company_model extends CI_Model {
@@ -8,7 +9,42 @@ class Company_model extends CI_Model {
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
+	function scheduler_date_lookup($cid)
+	{
+		$sql="Select distinct(DATE_FORMAT(clock_in,'%m /%d/ %Y')) as clock_in,firstname, lastname,  DATE_FORMAT(clock_out,'%T') as clock_out, timesheet.user_id 
+				From timesheet
+				Join location on location.location_id=timesheet.location_id
+				Join a3m_account_details on timesheet.user_id = a3m_account_details.account_id
+				where cid = $cid";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
+		function scheduler_user_lookup($cid)
+	{
+		$sql="Select distinct(DATE_FORMAT(clock_in,'%T')) as clock_in,firstname, lastname,  DATE_FORMAT(clock_out,'%T') as clock_out, timesheet.user_id 
+				From timesheet
+				Join location on location.location_id=timesheet.location_id
+				Join a3m_account_details on timesheet.user_id = a3m_account_details.account_id
+				where cid = $cid
+				limit  1";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
+
+	function scheduler_lookup($cid)
+	{
+		$sql="Select distinct(DATE_FORMAT(clock_in,'%T')) as clock_in,firstname, lastname,  DATE_FORMAT(clock_out,'%T') as clock_out, timesheet.user_id 
+				From timesheet
+				Join location on location.location_id=timesheet.location_id
+				Join a3m_account_details on timesheet.user_id = a3m_account_details.account_id
+				where cid = $cid";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
 	
+
 	function chart_day($cid)
 	{
 		$sql="SELECT count(Distinct telework_tracker.id) as count, DAYNAME(date) as Day 
@@ -75,17 +111,19 @@ class Company_model extends CI_Model {
 	
 	function map_users($cid)
 	{
-		$sql = "select telework_tracker.user_id,username, firstname, lastname,latitude, longitude, telework_tracker.city, telework_tracker.state, picture, max(date)
-				FROM telework_tracker
+		$sql = "select timesheet.user_id,username, firstname, lastname,latitude, longitude,  location.name,picture, max(timesheet.created_date)
+				FROM timesheet
 				join telework_requests
-				on  telework_tracker.user_id = telework_requests.user_id 
+				on  timesheet.user_id = telework_requests.user_id
+        		join location
+				on  timesheet.location_id = location.location_id 
 				join a3m_account_details
 				on  a3m_account_details.account_id = telework_requests.user_id 
 				join a3m_account
 				on  a3m_account.id = telework_requests.user_id 
-				where cid = $cid and user_status = 1 and DATE(date) = DATE(NOW())
-				group by telework_tracker.user_id
-				ORDER BY user_id ASC , date DESC;";
+				where telework_requests.cid = $cid and user_status = 1 and DATE( timesheet.created_date) = DATE(NOW())
+				group by timesheet.user_id
+				ORDER BY user_id ASC , timesheet.created_date DESC;";
 
 	    $query = $this->db->query($sql);
 		return $query->result();

@@ -1,6 +1,7 @@
+<!-- C:\xampp\htdocs\teleworkportfolio\application\modules\teleworkwizard\controllers\clockout.php -->
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Clockin extends CI_Controller {
+class Clockout extends CI_Controller {
 	
 	function __construct()
 	{
@@ -29,26 +30,22 @@ class Clockin extends CI_Controller {
 			$data['account'] = $this->account_model->get_by_id($userid);
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
 
-			$this->load->view('clockin', isset($data) ? $data : NULL);
+			$this->load->view('clockout', isset($data) ? $data : NULL);
 		}
 
 		
 
 	}
 
-	function clockin()
+	function clockout()
 	{
 
 
-$emaildate = date("d/m/Y"); // set email date
-$servertime = time ();
-
-$emailtime = date("G:i",$servertime); // set email time
 
 Welcome  :			echo $this->input->post('name'); 
 company : 	echo $this->input->post('company');  
-latitude:  	echo $this->input->post('latitude'); 
-longitude:  echo $this->input->post('longitude');  
+latitude:  	echo $this->input->post('latitude_out'); 
+longitude:  echo $this->input->post('longitude_out');  
 jobsite :  	echo $this->input->post('jobsite') ; 
 id: 	echo $this->input->post('id')  ;
 Date: 				echo date('m-d-Y ') ;

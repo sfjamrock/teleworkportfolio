@@ -100,10 +100,12 @@ $(document).ready(function() {
 						<?php endif; ?>
 </div>
             <div class="btn_holder">
-<?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 0) :?>
-<div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/savings");?>">Clock-Out</a></div>
+<?php if (is_null($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status)) :?>
+<div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockin");?>">Clock-In</a></div>
+<?php elseif ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 0) :?>
+<div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockout");?>">Clock-Out</a></div>
 <?php else :?>
-<div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/savings");?>">Clock-In</a></div>
+<div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockin");?>">Clock-In</a></div>
 <?php endif; ?>
 </div>
         </div>
@@ -137,12 +139,22 @@ Hello World
                             <div class="text3"><?php echo $timesheet->date1?></div>
                             <div class="text3"><?php echo $timesheet->date2?></div>
                             <div class="text2"><?php echo $timesheet->location?></div>
-                            <div class="text3"><?php echo $timesheet->clock_in?></div>
-                            <div class="text3"><?php echo $timesheet->clock_out?></div>
-                           <div class="text4"><?php if ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 1) echo date_diff(strtotime($timesheet->clock_out) , strtotime($timesheet->clock_in)); else echo date("H:i:s") - $timesheet->clock_in;?>
-
-
-</div>
+                            <div class="text3"><?php $date = new DateTime($timesheet->clock_in); $date->sub(new DateInterval('PT5H')); echo $date->format('H:i:s');?></div>
+                            <div class="text3"><?php if (is_null($timesheet->clock_out)){}
+													 else{
+													 $date = new DateTime($timesheet->clock_out); 
+													 $date->sub(new DateInterval('PT5H')); 
+													 echo $date->format('H:i:s');}?></div>
+                            <div class="text4"><?php $datetime1 = new DateTime($timesheet->clock_in);
+													$datetime2 = new DateTime($timesheet->clock_out);
+													if ($timesheet->status == 0)
+													{
+													}
+													else 
+													{	
+													$interval = $datetime2->diff($datetime1);
+													echo $interval->format('%h:%i:%s');}?>
+						  </div>
                         </a>
                     </h2>
                     
@@ -154,7 +166,7 @@ Hello World
 				</div>
                 <div id="country2" class="tabcontent">
 
-	
+	<!--
 				<div class="tab_table_header">
 					<div class="text3">Week Periods</div>
                     <div class="text3">Sunday</div>
@@ -178,7 +190,7 @@ Hello World
                             <div class="text3">10:30pm</div>
 
                         </a>
-                    </h2>
+                    </h2>-->Schedule goes here
 				
 				
 				
