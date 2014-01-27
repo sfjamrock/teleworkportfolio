@@ -139,20 +139,21 @@ Hello World
                             <div class="text3"><?php echo $timesheet->date1?></div>
                             <div class="text3"><?php echo $timesheet->date2?></div>
                             <div class="text2"><?php echo $timesheet->location?></div>
-                            <div class="text3"><?php echo $timesheet->clock_in?></div>
-                            <div class="text3"><?php echo $timesheet->clock_out?></div>
+                            <div class="text3"><?php $date = new DateTime($timesheet->clock_in); $date->sub(new DateInterval('PT5H')); echo $date->format('H:i:s');?></div>
+                            <div class="text3"><?php if (is_null($timesheet->clock_out)){}
+													 else{
+													 $date = new DateTime($timesheet->clock_out); 
+													 $date->sub(new DateInterval('PT5H')); 
+													 echo $date->format('H:i:s');}?></div>
                             <div class="text4"><?php $datetime1 = new DateTime($timesheet->clock_in);
 													$datetime2 = new DateTime($timesheet->clock_out);
-													$datetime3 = new DateTime(date("Y-m-d H:i:s")); 
 													if ($timesheet->status == 0)
 													{
-													$interval = $datetime1->diff($datetime3);
-													echo $interval->format('%H:%m:%s');
 													}
 													else 
 													{	
-													$interval = $datetime1->diff($datetime2);
-													echo $interval->format('%H:%m:%s');}?>
+													$interval = $datetime2->diff($datetime1);
+													echo $interval->format('%h:%i:%s');}?>
 						  </div>
                         </a>
                     </h2>

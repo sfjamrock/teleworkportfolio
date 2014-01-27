@@ -26,13 +26,13 @@ function clock_out()
 	}
 
 
-function clock_in()
+function clock_in($latitude,$longitude)
 {
- date_default_timezone_set('America/New_York');
+
 $data = array(
 				'status' => $this->input->post('status'),
-				'latitude' => $this->input->post('latitude'),
-				'longitude' => $this->input->post('longitude'),
+				'latitude' => $latitude,
+				'longitude' => $longitude,
 				'user_id' => $this->session->userdata('account_id'),
 				'location_id' => $this->input->post('jobsite'),
 				'clock_in' => mdate('%Y-%m-%d %H:%i:%s', now()),
