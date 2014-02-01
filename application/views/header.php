@@ -43,7 +43,7 @@
  <div class="logo"><a href="<?php echo base_url("");?>"><img src="resource/images/logo.png" alt="" height="100" width="200"/></a></div>    	<div class="header_content">
         	
             <div class="top_btn">  <div id="navigation">
-<li><a href="<?php echo base_url("sign_up");?>"><img src="resource/images/btn-signup.png" alt="" /></a></li>
+<!--<li><a href="<?php echo base_url("sign_up");?>"><img src="resource/images/btn-signup.png" alt="" /></a></li>-->
 <li><a href="<?php echo base_url("sign_in");?>"><img src="resource/images/btn-login.png" alt="" /></a></li>
  
 </div>

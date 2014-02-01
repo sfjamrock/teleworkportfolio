@@ -92,12 +92,15 @@ class Savings extends CI_Controller {
 		 //Run form validation
 		if ($this->form_validation->run() === TRUE) 
 		{
-			$this->tp_model->clock_out();
+			$this->tp_model->clock_out($this->input->post('latitude_out'),$this->input->post('longitude_out'));
 			redirect('dashboard');
 		}
 		else
 		{
-			redirect('teleworkwizard/clockout');
+			$latitude = '38.000001';
+			$longitude = '-77.000001';
+			$this->tp_model->clock_out($latitude_out,$longitude_out);
+			redirect('dashboard');
 		}
 		
 
