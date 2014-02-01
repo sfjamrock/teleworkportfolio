@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Welcome</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<base href="<?php echo base_url(); ?>" />
 
 <script src="resource/js/jquery-1.7.2.min.js" type="text/javascript"></script>
@@ -78,14 +79,15 @@ $submittime = $emailtime - 18000; // set email time
 <p></p>
 <div class="col-xs-12 col-md-4">
 Jobsite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="jobsite">
-												  <option value="1">0347 - Ashley Stewart - 7001 Martin Luther King Ave, Landover Md,20785</option>
-												  <option value="2">0326 - Forever 21 - 2401 Liberty Heights Ave, Baltimore Md, 21215</option>
-												  <option value="3">1347 - TJ Maxx - 3500 East West Highway, Hyattsville Md, 20782</option>
-												  <option value="4">11200 - Rite Aid - 3250 Superior Lane, Bowie Md, 20715</option>
-												  <option value="5">Bowie State University - 14000 Jericho Park Rd</option>
-												  <option value="6">Lane Bryant - Baltimore, Md, 21228</option>
-												  <option value="7">1200 - Marshalls - 600 East Pratt Street, Baltimore MD, 21202</option>
-												  <option value="8">3813 - Rite Aid - 9530 Crain Highway, Upper Marlboro Md, 20772</option>
+												
+												  <option value="1">0347 - Ashley Stewart</option>
+												  <option value="2">0326 - Forever 21</option>
+												  <option value="3">1347 - TJ Maxx </option>
+												  <option value="4">11200 - Rite Aid </option>
+												  <option value="5">Bowie State University </option>
+												  <option value="6">Lane Bryant - Baltimore, Md</option>
+												  <option value="7">1200 - Marshalls </option>
+												  <option value="8">3813 - Rite Aid </option>
 												</select>
 </div>		
 		<br>

@@ -4,7 +4,7 @@
 class Tp_model extends CI_Model {
 
 
-function clock_out()
+function clock_out($latitude_out,$longitude_out)
 	{
  date_default_timezone_set('America/New_York');
 		$user_id =$this->session->userdata('account_id');
@@ -15,8 +15,8 @@ function clock_out()
 
 		$this->db->update('timesheet', array(
 			'status'=> 1,
-			'latitude_out'=> $this->input->post('latitude_out'),
-			'longitude_out'=> $this->input->post('longitude_out'),
+			'latitude_out'=> $latitude_out,
+			'longitude_out'=> $longitude_out,
 			'clock_out'=> mdate('%Y-%m-%d %H:%i:%s', now())
 
 		), array(

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Welcome</title>
-
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="resource/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 <link rel="icon" href="resource/images/favicon.ico" />
   <link href="resource/css/bootstrap.min.css" rel="stylesheet"/>
