@@ -3,6 +3,15 @@
 
 class Company_model extends CI_Model {
 
+	function location_lookup($cid)
+	{
+		$sql="SELECT name, address
+			FROM  `location` 
+		 	WHERE cid =$cid";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
 	function manager_lookup($user_id)
 	{
 		$sql="SELECT * FROM company where manager_id=$user_id";

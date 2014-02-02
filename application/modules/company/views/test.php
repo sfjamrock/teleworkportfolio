@@ -139,7 +139,7 @@ echo $this->session->flashdata('enroll');
             <div class="tab_content">
                 <div id="country1" class="tabcontent"><?php echo $this->load->view('leaders'); ?></div>
                 <div id="country2" class="tabcontent"><?php echo $this->load->view('teleworker'); ?></div>
-                <div id="country3" class="tabcontent"><strong>Location - Details goes here...</strong></div>
+                <div id="country3" class="tabcontent"> <?php echo $this->load->view('location'); ?></div>
 
 
                 <div id="country4" class="tabcontent">

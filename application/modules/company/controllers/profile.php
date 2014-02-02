@@ -25,6 +25,7 @@ class Profile extends CI_Controller {
 				redirect($cusername);
 			}
 			// get user access rights to analytics end
+			$data['location_lookup'] = $this->company_model->location_lookup($cid);
 			$data['scheduler'] = $this->company_model->scheduler_lookup($cid);
 			$data['scheduler_date'] = $this->company_model->scheduler_date_lookup($cid);
 			$data['scheduler_user'] = $this->company_model->scheduler_user_lookup($cid);

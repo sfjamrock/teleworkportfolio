@@ -1,11 +1,11 @@
 <?php date_default_timezone_set('America/New_York');?>     
 
 <div class="main_time_periods">
-                            <div class="title">Time Periods</div>
-                            <div class="text_holder">Ashley Steward - 7001 Martin Luther King Ave Landover Md, 20785</div>
-                        </div>
-                        <div class="datewise_details">
-                            <div class="table_header">
+                            <div class="title"></div>
+                            <div class="text_holder"></div>
+						
+<!--                        <div class="datewise_details"> -->
+                           <!-- <div class="table_header">
                                 <div class="text1">&nbsp;</div>
                                 <div class="text2">Sun 19</div>
                                 <div class="text2">Mon 20</div>
@@ -77,4 +77,31 @@
                                     <div class="end_time">End time</div>
                                 </div>
                             </div>
-                        
+                        -->
+<!--// Sample code for tables						-->
+<table border="1" width="100%">
+	<?php foreach($location_lookup as $row): ?>
+	<tr>
+		
+		<td><?php echo $row->name; ?>&nbsp; <?php echo $row->address; ?></td>
+		<td align="center"><button type="button">Delete?</button></td></tr>
+	<?php endforeach; ?>
+	<tr>
+		<td align="center" colspan="2">
+		<form>
+		<button type="button" class="btn-primary" onclick="submit()">Add Location</<button>
+		</td>
+		</form>
+		</tr>
+</table>	
+				
+                        </div>
+						
+						
+<!--<tr>
+		<td>
+		<select name="jobsite">
+<?php foreach($location_lookup as $row2): ?>
+<option><?php echo $row2->name; ?>&nbsp; <?php echo $row2->address; ?></option>			
+							
+							</select><?php endforeach; ?>		</td></tr>	-->						
