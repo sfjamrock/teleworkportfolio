@@ -88,7 +88,7 @@ class Sign_up extends CI_Controller {
 				// Add user details (auto detected country, language, timezone, city , state)
 				$this->account_details_model->update($user_id);
 				
-
+/*
  //send welcome email email. 
     $to =  $this->input->post('sign_up_email') ;
     $from = "sfuller@teleworkportfolio.com"; 
@@ -149,7 +149,7 @@ body{margin:0; padding:0; background:#cccccc;}
     // now lets send the email. 
     mail($to, $subject, $message, $headers); 
 
-
+*/
 				// Auto sign in?
 				if ($this->config->item("sign_up_auto_sign_in"))
 				{

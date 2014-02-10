@@ -61,6 +61,7 @@ $route['business'] = "business";
 $route['employee'] = "employee";
 $route['terms'] = "terms";
 $route['contact_us'] = "contact_us";
+$route['contact_us/send_contact_us_info'] = "contact_us/send_contact_us_info";
 $route['about_us'] = "about_us";
 $route['policy'] = "policy";
 $route['sendmail'] = "sendmail";
@@ -96,7 +97,7 @@ $route['teleworkwizard/GetJobEvaluation'] = "teleworkwizard/GetJobEvaluation";
 
 
 
-
+$route['company/profile/week'] = "company/profile/week";
 $route['start'] = "company/start";
 $route['(:any)/analytics'] = "company/analytics";
 $route['(:any)/dashboard'] = "company/dashboard";

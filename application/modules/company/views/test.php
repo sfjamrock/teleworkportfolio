@@ -162,7 +162,7 @@ echo $this->session->flashdata('enroll');
                         
                 </div>
 
-                <div id="country5" class="tabcontent"><strong> View Employee Schedule goes here</strong></div>
+                <div id="country5" class="tabcontent"><strong><?php echo $this->load->view('stats_city'); ?></div>
 				<div id="country6" class="tabcontent"><strong>  <?php echo $this->load->view('scheduler_create'); ?></strong></div>
             </div>  
         </div>

@@ -22,9 +22,51 @@ class Profile extends CI_Controller {
 			// get user access rights to analytics start
 			if (!$this->company_model->manager_lookup($this->session->userdata('account_id')))
 			{
-				redirect($cusername);
+				redirect();
 			}
+			// get current date range for timesheet start
+			if (is_null($_POST["week"]))
+			$date = date('d-m-Y');
+			if (isset($_POST["week"]))
+			$date = $_POST["week"];
+			else $date = date('d-m-Y');
+			    // Assuming $date is in format DD-MM-YYYY
+			    list($day, $month, $year) = explode("-", $date);
+			
+			    // Get the weekday of the given date
+			    $wkday = date('l',mktime('0','0','0', $month, $day, $year));
+			
+			    switch($wkday) {
+			        case 'Sunday': $numDays = 0; break; 
+			        case 'Monday': $numDays = 1; break;
+			        case 'Tuesday': $numDays = 2; break;
+			        case 'Wednesday': $numDays = 3; break;
+			        case 'Thursday': $numDays = 4; break;
+			        case 'Friday': $numDays = 5; break;
+			        case 'Saturday': $numDays = 6; break;
+			  
+			    }
+			
+			    // Timestamp of the monday for that week
+			    $start = mktime('0','0','0', $month, $day-$numDays, $year);
+			
+			    $seconds_in_a_day = 86400;
+			
+			    // Get date for 7 days from Monday (inclusive)
+			    for($i=0; $i<7; $i++)
+			    {
+			        $dates[$i] = date('Y-m-d',$start+($seconds_in_a_day*$i));
+			    }
+				$data['dates']=$dates;
+			//get current date for timesheet end
+
+			echo  $dates[0];
+			$start = $dates[0];
+			$end   = $dates[6];
 			// get user access rights to analytics end
+			$data['timesheet'] = $this->company_model->timesheet_lookup($cid,$start,$end);
+			$data['timesheet_user'] = $this->company_model->timesheet_user_lookup($cid,$start,$end);
+
 			$data['location_lookup'] = $this->company_model->location_lookup($cid);
 			$data['scheduler'] = $this->company_model->scheduler_lookup($cid);
 			$data['scheduler_date'] = $this->company_model->scheduler_date_lookup($cid);
@@ -132,6 +174,55 @@ class Profile extends CI_Controller {
 			$this->session->set_flashdata('join', 'Thanks for applying, you will be notified once your application as been approve.');
 			redirect($_POST["company"]);
 	} 
+	function week() 
+	{
+			$cid=22;
+
+			$data['location_lookup'] = $this->company_model->location_lookup($cid);
+			if (is_null($_POST["week"]))
+			$date = date('d-m-Y');
+			if (isset($_POST["week"]))
+			$date = $_POST["week"];
+			else $date = date('d-m-Y');
+
+    // Assuming $date is in format DD-MM-YYYY
+    list($day, $month, $year) = explode("-", $date);
+
+    // Get the weekday of the given date
+    $wkday = date('l',mktime('0','0','0', $month, $day, $year));
+
+    switch($wkday) {
+        case 'Sunday': $numDays = 0; break; 
+        case 'Monday': $numDays = 1; break;
+        case 'Tuesday': $numDays = 2; break;
+        case 'Wednesday': $numDays = 3; break;
+        case 'Thursday': $numDays = 4; break;
+        case 'Friday': $numDays = 5; break;
+        case 'Saturday': $numDays = 6; break;
+  
+    }
+
+    // Timestamp of the monday for that week
+    $start = mktime('0','0','0', $month, $day-$numDays, $year);
+
+    $seconds_in_a_day = 86400;
+
+    // Get date for 7 days from Monday (inclusive)
+    for($i=0; $i<7; $i++)
+    {
+        echo $dates[$i] = date('Y-m-d',$start+($seconds_in_a_day*$i)),"<br />";
+    }
+	$data['dates']=$dates;
+			echo  $dates[0];
+			$start = $dates[0];
+			$end   = $dates[6];
+			$data['timesheet'] = $this->company_model->timesheet_lookup($cid,$start,$end);
+			$data['timesheet_user'] = $this->company_model->timesheet_user_lookup($cid,$start,$end);
+
+	$this->load->view('testcal', isset($data) ? $data : NULL);
+
+			
+	}
 
 
 }
