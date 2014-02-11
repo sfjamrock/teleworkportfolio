@@ -162,12 +162,12 @@ echo $this->session->flashdata('enroll');
                         
                 </div>
 
-                <div id="country5" class="tabcontent"><strong><?php echo $this->load->view('stats_city'); ?></div>
+                <div id="country5" class="tabcontent"><strong><?php echo $this->load->view('stats_city'); ?></strong></div>
 				<div id="country6" class="tabcontent"><strong>  <?php echo $this->load->view('scheduler_create'); ?></strong></div>
             </div>  
         </div>
-    </div>
-   
+ 
+
     <?php echo $this->load->view('footer'); ?>
 <script type="text/javascript">
 	var countries=new ddtabcontent("countrytabs")

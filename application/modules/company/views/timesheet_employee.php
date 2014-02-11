@@ -1,20 +1,8 @@
-﻿<head>
-<style type="text/css">
-table
-{
-border-collapse:collapse;
-}
-table,th, td
-{
-border: 1px solid black;
-}
-</style>
-</head>
-
-<table style="width: 100%; text-align:center; border: 1px solid black;" >
+﻿
+<table style="width: 100%; text-align:center;" >
 	<tr>
 		<td colspan="8" >
-		<form name="input" action="<?php $PHP_SELF ?>" method="post">
+		<form name="input1" action="<?php $PHP_SELF ?>" method="post">
 		<select name="week">
 		  <option value="30-12-2013">December 30, 2013 - January 5, 2014</option> 
 		  <option value="6-1-2014">January 6, 2014 - January 12, 2014</option>
@@ -29,9 +17,9 @@ border: 1px solid black;
 		</form>
 </td>
 	</tr>
-<?php foreach($location_lookup as $row): ?>
+<?php foreach($user_timesheet as $row): ?>
 	<tr>
-		<td colspan="8"><?php echo $row->name; ?> -  <?php echo $row->address; ?></td>
+		<td colspan="8" height="80"><?php echo $row->firstname; ?> <?php echo $row->lastname; ?></td>
 	</tr>
 	<tr>
 		<td><?php echo date('m-d', strtotime($dates[0])) ?> - <?php echo date('m-d', strtotime($dates[6])) ?></td>
@@ -43,12 +31,12 @@ border: 1px solid black;
 		<td>Fri <?php echo date('m-d', strtotime($dates[5])) ?></td>
 		<td>Sat <?php echo date('m-d', strtotime($dates[6])) ?></td>
 	</tr>
-		<?php foreach($timesheet_user as $row2): ?>
-		   		 <?php if($row->location_id==$row2->location_id) : ?>
+		<?php foreach($location_user as $row2): ?>
+		   		 <?php if($row->user_id==$row2->user_id) : ?>
 	<tr>
-		<td rowspan="2"><?php echo $row2->firstname; ?> <?php echo $row2->lastname; ?></td>
+		<td rowspan="2"> <?php echo $row2->name; ?></td>
 <!-- Clock In Timesheet Area Start-->
-<td>
+<td style="height: 25px">
 
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
@@ -58,7 +46,8 @@ border: 1px solid black;
 		<?php endif; ?>
 	<?php endforeach; ?>
 </td>
-<td>
+<td style="height: 25px">
+
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $starttime = new DateTime($row3->clock_in); ?>
@@ -68,7 +57,8 @@ border: 1px solid black;
 	<?php endforeach; ?>
 
 </td>
-<td>	<?php foreach($timesheet as $row3) : ?>
+<td style="height: 25px">	
+<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $starttime = new DateTime($row3->clock_in); ?>
 				<?php if($starttime->format('Y-m-d') == date('Y-m-d', strtotime($dates[2]))) echo $starttime->format('h:i:s');?>
@@ -76,7 +66,7 @@ border: 1px solid black;
 		<?php endif; ?>
 	<?php endforeach; ?>
 </td>
-<td>
+<td style="height: 25px">
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $starttime = new DateTime($row3->clock_in); ?>
@@ -85,7 +75,8 @@ border: 1px solid black;
 		<?php endif; ?>
 	<?php endforeach; ?>
 </td>
-<td>
+<td style="height: 25px">
+
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $starttime = new DateTime($row3->clock_in); ?>
@@ -94,7 +85,8 @@ border: 1px solid black;
 		<?php endif; ?>
 	<?php endforeach; ?>
 </td>
-<td>
+<td style="height: 25px">
+
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $starttime = new DateTime($row3->clock_in); ?>
@@ -103,7 +95,7 @@ border: 1px solid black;
 		<?php endif; ?>
 	<?php endforeach; ?>
 </td>
-<td>
+<td style="height: 25px">
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $starttime = new DateTime($row3->clock_in); ?>
@@ -119,6 +111,7 @@ border: 1px solid black;
 <!-- Clock Out Timesheet Area Start-->
 	<tr>
 <td>
+
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $endime = new DateTime($row3->clock_out); ?>
@@ -127,7 +120,8 @@ border: 1px solid black;
 		<?php endif; ?>
 	<?php endforeach; ?>
 </td>
-<td>	
+<td>
+	
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $endime = new DateTime($row3->clock_out); ?>
@@ -136,7 +130,8 @@ border: 1px solid black;
 		<?php endif; ?>
 	<?php endforeach; ?>
 </td>
-<td>	
+<td>
+	
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $endime = new DateTime($row3->clock_out); ?>
@@ -146,6 +141,7 @@ border: 1px solid black;
 	<?php endforeach; ?>
 </td>
 <td>
+
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $endime = new DateTime($row3->clock_out); ?>
@@ -154,7 +150,8 @@ border: 1px solid black;
 		<?php endif; ?>
 	<?php endforeach; ?>
 </td>
-<td>	<?php foreach($timesheet as $row3) : ?>
+<td>	
+ <?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $endime = new DateTime($row3->clock_out); ?>
 				<?php if($endime->format('Y-m-d') == date('Y-m-d', strtotime($dates[4]))) echo $endime->format('h:i:s');?>
@@ -163,6 +160,7 @@ border: 1px solid black;
 	<?php endforeach; ?>
 </td>
 <td>
+
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $endime = new DateTime($row3->clock_out); ?>
@@ -171,7 +169,7 @@ border: 1px solid black;
 		<?php endif; ?>
 	<?php endforeach; ?>
 </td>
-<td>	
+<td>
 	<?php foreach($timesheet as $row3) : ?>
 		<?php if($row2->location_id==$row3->location_id) : ?>
 			<?php $endime = new DateTime($row3->clock_out); ?>
@@ -180,7 +178,7 @@ border: 1px solid black;
 		<?php endif; ?>
 	<?php endforeach; ?>
 </td>
- <!-- Clock In Timesheet Area End-->
+ <!-- Clock In Timesheet Area End -->
 							
 
 	</tr>
@@ -193,3 +191,4 @@ border: 1px solid black;
 		<td colspan="8">&nbsp;</td>
 	</tr>
 </table>
+

@@ -24,10 +24,10 @@ class Profile extends CI_Controller {
 			{
 				redirect();
 			}
-			// get current date range for timesheet start
-			if (is_null($_POST["week"]))
+			// get date range for timesheet start
+			if (is_null($this->input->post('week')))
 			$date = date('d-m-Y');
-			if (isset($_POST["week"]))
+			elseif (isset($_POST["week"]))
 			$date = $_POST["week"];
 			else $date = date('d-m-Y');
 			    // Assuming $date is in format DD-MM-YYYY
@@ -60,12 +60,13 @@ class Profile extends CI_Controller {
 				$data['dates']=$dates;
 			//get current date for timesheet end
 
-			echo  $dates[0];
 			$start = $dates[0];
 			$end   = $dates[6];
 			// get user access rights to analytics end
 			$data['timesheet'] = $this->company_model->timesheet_lookup($cid,$start,$end);
 			$data['timesheet_user'] = $this->company_model->timesheet_user_lookup($cid,$start,$end);
+			$data['user_timesheet'] = $this->company_model->user_timesheet_lookup($cid,$start,$end);
+			$data['location_user'] = $this->company_model->location_user_lookup($cid,$start,$end);
 
 			$data['location_lookup'] = $this->company_model->location_lookup($cid);
 			$data['scheduler'] = $this->company_model->scheduler_lookup($cid);
@@ -210,14 +211,19 @@ class Profile extends CI_Controller {
     // Get date for 7 days from Monday (inclusive)
     for($i=0; $i<7; $i++)
     {
-        echo $dates[$i] = date('Y-m-d',$start+($seconds_in_a_day*$i)),"<br />";
+        $dates[$i] = date('Y-m-d',$start+($seconds_in_a_day*$i));
     }
 	$data['dates']=$dates;
-			echo  $dates[0];
+			
 			$start = $dates[0];
 			$end   = $dates[6];
 			$data['timesheet'] = $this->company_model->timesheet_lookup($cid,$start,$end);
 			$data['timesheet_user'] = $this->company_model->timesheet_user_lookup($cid,$start,$end);
+			$data['user_timesheet'] = $this->company_model->user_timesheet_lookup($cid,$start,$end);
+			$data['location_user'] = $this->company_model->location_user_lookup($cid,$start,$end);
+
+			$data['location_lookup'] = $this->company_model->location_lookup($cid);
+
 
 	$this->load->view('testcal', isset($data) ? $data : NULL);
 

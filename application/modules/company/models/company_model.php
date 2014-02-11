@@ -3,16 +3,29 @@
 
 class Company_model extends CI_Model {
 
-
-	function location_user_lookup($cid)
+	function user_timesheet_lookup($cid,$start,$end)
 	{
-		$sql="SELECT user_id, timesheet.location_id, clock_in,clock_out, cid
+		$sql="Select distinct(timesheet.user_id) ,firstname, lastname
+				FROM a3m_account_details
+				join timesheet
+				on timesheet.user_id = a3m_account_details.account_id 
+                join location
+				on location.location_id = timesheet.location_id
+				where location.cid = $cid and clock_in between '$start' and '$end'";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
+	function location_user_lookup($cid,$start,$end)
+	{
+		$sql="SELECT distinct( timesheet.location_id), name, user_id, cid
 			FROM timesheet
 			join location
 			on location.location_id = timesheet.location_id
-			where cid = $cid and clock_in BETWEEN '2014-01-19' AND '2014-01-25'
-			ORDER BY clock_in ASC
-			limit 7";
+      		join a3m_account_details
+      		on a3m_account_details.account_id = timesheet.user_id
+			where cid = $cid and clock_in between '$start' and '$end'
+			ORDER BY clock_in ASC";
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
@@ -23,7 +36,7 @@ class Company_model extends CI_Model {
 			FROM timesheet
 			join location
 			on location.location_id = timesheet.location_id
-			where cid = $cid and clock_in BETWEEN '2014-01-19' AND '2014-01-25'
+			where cid = $cid and clock_in BETWEEN '$start' and '$end'
 			ORDER BY clock_in ASC";
 		$query = $this->db->query($sql);
 		return $query->result();
