@@ -1,0 +1,11 @@
+.circle_small
+{
+	width:200px;
+	height:60px;
+	border-radius:10px;
+	font-size:20px;
+	color:#fff;
+	line-height:60px;
+	text-align:center;
+	background:#6c6c6c;
+}

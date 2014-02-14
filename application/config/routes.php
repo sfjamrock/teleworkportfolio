@@ -38,6 +38,7 @@
 |
 */
 
+
 $route['default_controller'] = 'home';
 $route['404_override'] = 'home';
 $route['sign_up'] = "account/sign_up";
@@ -76,6 +77,12 @@ $route['teleworkwizard/savings/clockout'] = "teleworkwizard/savings/clockout";
 
 $route['teleworkwizard/clockin'] = "teleworkwizard/clockin";
 $route['teleworkwizard/clockout'] = "teleworkwizard/clockout";
+$route['teleworkwizard/test'] = "teleworkwizard/test";
+$route['teleworkwizard/test/carousel'] = "teleworkwizard/test/carousel";
+$route['teleworkwizard/test/testboard'] = "teleworkwizard/test/testboard";
+$route['teleworkwizard/test/aboutdash'] = "teleworkwizard/test/aboutdash";
+$route['teleworkwizard/test/contact'] = "teleworkwizard/test/contact";
+
 
 $route['dashboard'] = "users/dashboard";
 $route['history'] = "users/history";
