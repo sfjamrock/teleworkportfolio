@@ -100,7 +100,7 @@ $(document).ready(function() {
 						<?php endif; ?>
 </div>
             <div class="btn_holder">
-<?php if (is_null($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status)) :?>
+<?php if (is_null($clock->status)) :?>
 <div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockin");?>">Clock-In</a></div>
 <?php elseif ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 0) :?>
 <div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockout");?>">Clock-Out</a></div>

@@ -11,6 +11,10 @@
   html { height: 100% }
   body { height: 50%; margin: 0; padding: 0 }
   #map_canvas { height: 100% }
+table, th, td
+{
+border: 1px solid black;
+}
 </style>
 <script type="text/javascript"
   src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZQjI-dh8LgP2X8O-7LH0e2_fLomCDKKw&sensor=false">
@@ -111,18 +115,25 @@ echo $this->session->flashdata('enroll');
                     <li><a href="#" rel="country1" class="selected">EMPLOYEE MAP</a></li>
                     <li><a href="#" rel="country2">EMPLOYEES</a></li>
                     <li><a href="#" rel="country3">LOCATION</a></li>
+
 					<?php if ($product->timesheet == 1) :?>
-                    <li><a href="#" rel="country4">TIMESHEET</a></li>
+                    	<li><a href="#" rel="country4">TIMESHEET</a></li>
 					<?php endif; ?>
-                    <li><a href="#" rel="country5">SCHEDULER</a></li>
+
 					<?php if ($product->schedule == 1) :?>
-                    <li><a href="#" rel="country6">HOTELLING</a></li>
+                    	<li><a href="#" rel="country5">SCHEDULER</a></li>
 					<?php endif; ?>
+
+					<?php if ($product->hotelling == 1) :?>
+                    	<li><a href="#" rel="country6">HOTELLING</a></li>
+					<?php endif; ?>
+
 					<?php if ($product->equipment_management == 1) :?>
-                    <li><a href="#" rel="country7">EQUIPMENT</a></li>
+                    	<li><a href="#" rel="country7">EQUIPMENT</a></li>
 					<?php endif; ?>
+
 					<?php if ($product->stats == 1) :?>
-                    <li><a href="#" rel="country8">STATS</a></li>
+                    	<li><a href="#" rel="country8">STATS</a></li>
 					<?php endif; ?>
 
 
@@ -132,16 +143,23 @@ echo $this->session->flashdata('enroll');
                 <div id="country1" class="tabcontent"><?php echo $this->load->view('leaders'); ?></div>
                 <div id="country2" class="tabcontent"><?php echo $this->load->view('teleworker'); ?></div>
                 <div id="country3" class="tabcontent"> <?php echo $this->load->view('location'); ?></div>
+
 				<?php if ($product->timesheet == 1) :?>
                 <div id="country4" class="tabcontent"><?php echo $this->load->view('timesheet'); ?></div>
 				<?php endif; ?>
-                <div id="country5" class="tabcontent"><?php echo $this->load->view('scheduler'); ?></div>
+
 				<?php if ($product->schedule == 1) :?>
+                <div id="country5" class="tabcontent"><?php echo $this->load->view('scheduler'); ?></div>
+				<?php endif; ?>
+
+				<?php if ($product->hotelling == 1) :?>
 				<div id="country6" class="tabcontent"><strong>  <?php echo $this->load->view('hotel'); ?></strong></div>
 				<?php endif; ?>
+
 				<?php if ($product->equipment_management == 1) :?>
 				<div id="country7" class="tabcontent"><strong>  <?php echo $this->load->view('inventory'); ?></strong></div>
 				<?php endif; ?>
+
 				<?php if ($product->stats == 1) :?>
 				<div id="country8" class="tabcontent"><strong>  <?php echo $this->load->view('analytics'); ?></strong></div>
 				<?php endif; ?>

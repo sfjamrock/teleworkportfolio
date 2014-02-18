@@ -28,7 +28,7 @@ function Check_user_clockin_status($user_id)
 				where user_id = $user_id
 				order by created_date DESC";
 	    $query = $this->db->query($sql);
- 		return $query->row();
+ 		return $query->result();
 }
 
 

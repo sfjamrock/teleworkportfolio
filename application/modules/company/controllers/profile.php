@@ -24,7 +24,7 @@ class Profile extends CI_Controller {
 			// get user access rights to analytics start
 			if (!$this->company_model->manager_lookup($this->session->userdata('account_id')))
 			{
-				redirect('');
+				redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
 			}
 
 			// get user_id using username in url start 		

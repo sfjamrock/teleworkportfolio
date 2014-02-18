@@ -23,6 +23,7 @@ class Dashboard extends CI_Controller {
 		
 		if ($this->authentication->is_signed_in())
 		{
+			$data['clock'] = $this->user_model->Check_user_clockin_status($this->session->userdata('account_id'));
 			$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
 			$data['account_details'] = $this->account_details_model->get_by_account_id($this->session->userdata('account_id'));
 			$this->load->view('dashboard', isset($data) ? $data : NULL);
