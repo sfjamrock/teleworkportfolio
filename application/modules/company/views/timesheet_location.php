@@ -1,5 +1,5 @@
 ﻿
-<table style="width: 100%; text-align:center; " >
+<table style="width: 100%; text-align:center; border: solid;" border="1" >
 	<tr>
 		<td colspan="8" >
 		<form name="input" action="<?php $PHP_SELF ?>" method="post">

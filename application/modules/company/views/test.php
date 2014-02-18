@@ -120,10 +120,12 @@ echo $this->session->flashdata('enroll');
 					<?php endif; ?>
 					<?php if ($product->equipment_management == 1) :?>
                     <li><a href="#" rel="country7">EQUIPMENT</a></li>
+					<li><a href="#" rel="country8">STATS</a></li>
 					<?php endif; ?>
-					<?php if ($product->stats == 1) :?>
-                    <li><a href="#" rel="country8">STATS</a></li>
-					<?php endif; ?>
+					<!--<?php if ($product->stats == 1) :?> -->
+                    
+					
+					<!--<?php endif; ?>-->
 
 
                 </ul>
@@ -141,10 +143,10 @@ echo $this->session->flashdata('enroll');
 				<?php endif; ?>
 				<?php if ($product->equipment_management == 1) :?>
 				<div id="country7" class="tabcontent"><strong>  <?php echo $this->load->view('inventory'); ?></strong></div>
-				<?php endif; ?>
-				<?php if ($product->stats == 1) :?>
 				<div id="country8" class="tabcontent"><strong>  <?php echo $this->load->view('analytics'); ?></strong></div>
 				<?php endif; ?>
+				<!--<?php if ($product->stats == 1) :?>
+				<?php endif; ?>-->
 
 
             </div>  
