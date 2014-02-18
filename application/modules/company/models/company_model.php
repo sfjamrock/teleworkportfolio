@@ -3,6 +3,26 @@
 
 class Company_model extends CI_Model {
 
+	function product_lookup($cid)
+	{
+		$sql="select * from product_config	where cid = $cid";
+		$query = $this->db->query($sql);
+		return $query->row();
+	}
+
+
+	function user_schedule_lookup($cid)
+	{
+		$sql="select distinct(account_id),firstname, lastname 
+				from telework_requests
+				join a3m_account_details
+				on user_id = account_id
+				where cid = $cid and user_status = 1";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
+
 	function user_timesheet_lookup($cid,$start,$end)
 	{
 		$sql="Select distinct(timesheet.user_id) ,firstname, lastname
@@ -66,7 +86,10 @@ class Company_model extends CI_Model {
 
 	function manager_lookup($user_id)
 	{
-		$sql="SELECT * FROM company where manager_id=$user_id";
+		$sql="SELECT * FROM company_admin 
+				join company
+				on company.cid=company_admin.cid
+				where user_id = $user_id";
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
@@ -108,10 +131,10 @@ class Company_model extends CI_Model {
 
 	function chart_day($cid)
 	{
-		$sql="SELECT count(Distinct telework_tracker.id) as count, DAYNAME(date) as Day 
-				FROM telework_tracker 
+		$sql="SELECT count(Distinct timesheet.id) as count, DAYNAME(created_date) as Day 
+				FROM timesheet 
 				join telework_requests
-				on telework_tracker.user_id=telework_requests.user_id
+				on timesheet.user_id=telework_requests.user_id
 				where cid=$cid and user_status=1
 				group by Day 
 				ORDER BY Day";
@@ -328,16 +351,16 @@ class Company_model extends CI_Model {
 	{
 		// Look up users that are in the company telework program and are teleworking 
 
-		$sql = "SELECT  count(DISTINCT telework_tracker.id) as count,telework_tracker.user_id, username, firstname, lastname, cid, user_status,picture, MAX( date ) as date 
-				FROM telework_tracker
+		$sql = "SELECT  count(DISTINCT timesheet.id) as count,timesheet.user_id, username, firstname, lastname, cid, user_status,picture, MAX( created_date ) as date 
+				FROM timesheet
 				join telework_requests
-				on  telework_tracker.user_id = telework_requests.user_id 
+				on  timesheet.user_id = telework_requests.user_id 
 				join a3m_account_details
 				on  a3m_account_details.account_id = telework_requests.user_id
 				join a3m_account
 				on  a3m_account.id = telework_requests.user_id  
 				where cid = $cid and user_status = 1 
-				group by telework_tracker.user_id
+				group by timesheet.user_id
 				limit 10";
 
 	    $query = $this->db->query($sql);

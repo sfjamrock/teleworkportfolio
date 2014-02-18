@@ -59,9 +59,7 @@ class Teleworkwizard extends CI_Controller {
 		}
 				
 
-		$this->form_validation->set_rules(array(
-			array('field'=>'choice[]', 'label'=>'choice[]', 'rules'=>'trim|required|xss_clean'),
-		));
+		$this->form_validation->set_rules(array(array('field'=>'choice[]', 'label'=>'choice[]', 'rules'=>'trim|required|xss_clean'),));
 
 $a=array();
 $b=0;

@@ -14,16 +14,24 @@ class Profile extends CI_Controller {
 	 
 	 function index()
 	 {
+
+
+		if ( ! $this->authentication->is_signed_in()) 
+		{
+			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+		}
+		
+			// get user access rights to analytics start
+			if (!$this->company_model->manager_lookup($this->session->userdata('account_id')))
+			{
+				redirect('');
+			}
+
 			// get user_id using username in url start 		
 			$cusername = $this->uri->segment(1);
 			$cid = $this->company_model->cid_lookup($cusername);
 			$cid = $cid ['0']->cid;
 			// get user_id using username in url end 
-			// get user access rights to analytics start
-			if (!$this->company_model->manager_lookup($this->session->userdata('account_id')))
-			{
-				redirect();
-			}
 			// get date range for timesheet start
 			if (is_null($this->input->post('week')))
 			$date = date('d-m-Y');
@@ -88,6 +96,8 @@ class Profile extends CI_Controller {
 		    $data['saving'] = $this->company_model->saving_lookup($cid);
 		    $data['count'] = $this->company_model->track_count($cid);
 			$data['reserve'] = $this->company_model->reserve($cid);
+			$data['product'] = $this->company_model->product_lookup($cid);
+			
 
 			$this->load->view('test', isset($data) ? $data : NULL);
 
@@ -177,53 +187,75 @@ class Profile extends CI_Controller {
 	} 
 	function week() 
 	{
-			$cid=22;
+	$cid =22;
+	$data['user_schedule'] = $this->company_model->user_schedule_lookup($cid);
 
-			$data['location_lookup'] = $this->company_model->location_lookup($cid);
-			if (is_null($_POST["week"]))
+	$data['location_lookup'] = $this->company_model->location_lookup($cid);
+	// get date range for timesheet start
+			if (is_null($this->input->post('week')))
 			$date = date('d-m-Y');
-			if (isset($_POST["week"]))
+			elseif (isset($_POST["week"]))
 			$date = $_POST["week"];
 			else $date = date('d-m-Y');
-
-    // Assuming $date is in format DD-MM-YYYY
-    list($day, $month, $year) = explode("-", $date);
-
-    // Get the weekday of the given date
-    $wkday = date('l',mktime('0','0','0', $month, $day, $year));
-
-    switch($wkday) {
-        case 'Sunday': $numDays = 0; break; 
-        case 'Monday': $numDays = 1; break;
-        case 'Tuesday': $numDays = 2; break;
-        case 'Wednesday': $numDays = 3; break;
-        case 'Thursday': $numDays = 4; break;
-        case 'Friday': $numDays = 5; break;
-        case 'Saturday': $numDays = 6; break;
-  
-    }
-
-    // Timestamp of the monday for that week
-    $start = mktime('0','0','0', $month, $day-$numDays, $year);
-
-    $seconds_in_a_day = 86400;
-
-    // Get date for 7 days from Monday (inclusive)
-    for($i=0; $i<7; $i++)
-    {
-        $dates[$i] = date('Y-m-d',$start+($seconds_in_a_day*$i));
-    }
-	$data['dates']=$dates;
+			    // Assuming $date is in format DD-MM-YYYY
+			    list($day, $month, $year) = explode("-", $date);
 			
+			    // Get the weekday of the given date
+			    $wkday = date('l',mktime('0','0','0', $month, $day, $year));
+			
+			    switch($wkday) {
+			        case 'Sunday': $numDays = 0; break; 
+			        case 'Monday': $numDays = 1; break;
+			        case 'Tuesday': $numDays = 2; break;
+			        case 'Wednesday': $numDays = 3; break;
+			        case 'Thursday': $numDays = 4; break;
+			        case 'Friday': $numDays = 5; break;
+			        case 'Saturday': $numDays = 6; break;
+			  
+			    }
+			
+			    // Timestamp of the monday for that week
+			    $start = mktime('0','0','0', $month, $day-$numDays, $year);
+			
+			    $seconds_in_a_day = 86400;
+			
+			    // Get date for 7 days from Monday (inclusive)
+			    for($i=0; $i<7; $i++)
+			    {
+			        $dates[$i] = date('Y-m-d',$start+($seconds_in_a_day*$i));
+			    }
+				$data['dates']=$dates;
+			//get current date for timesheet end
+
 			$start = $dates[0];
 			$end   = $dates[6];
-			$data['timesheet'] = $this->company_model->timesheet_lookup($cid,$start,$end);
-			$data['timesheet_user'] = $this->company_model->timesheet_user_lookup($cid,$start,$end);
-			$data['user_timesheet'] = $this->company_model->user_timesheet_lookup($cid,$start,$end);
-			$data['location_user'] = $this->company_model->location_user_lookup($cid,$start,$end);
+			$user = array();
+			$sun = array();
+			$mon = array();
+			$tue = array();
+			$wed = array();
+			$thu = array();
+			$fri = array();
+			$sat = array();
 
-			$data['location_lookup'] = $this->company_model->location_lookup($cid);
 
+			//echo $this->input->post('location');
+			//echo $this->input->post('user_id');
+			print_r( $this->input->post('start_sun'));
+			print_r( $this->input->post('start_mon'));
+			print_r( $this->input->post('start_tue'));
+			print_r( $this->input->post('start_wed'));
+			print_r( $this->input->post('start_thu'));
+			print_r( $this->input->post('start_fri'));
+			print_r( $this->input->post('start_sat'));
+
+			
+
+			
+			
+			//$sun_start = $this->input->post('start_sun');
+			
+			
 
 	$this->load->view('testcal', isset($data) ? $data : NULL);
 

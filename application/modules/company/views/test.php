@@ -16,29 +16,11 @@
   src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZQjI-dh8LgP2X8O-7LH0e2_fLomCDKKw&sensor=false">
 </script>
 <script type="text/javascript">
-//    setTimeout(function () {
-  //     window.location.reload();
-    //}, 1000);
-// Enable the visual refresh
 google.maps.visualRefresh = true;
 var locations = [
 		<?php foreach($map as $row): ?>
   			['<?php echo $row->name; ?>', <?php echo $row->latitude; ?>, <?php echo $row->longitude; ?>, <?php echo $row->user_id; ?>,
-			 '<?php echo $row->firstname; ?> <?php echo $row->lastname; ?>',
-//<a href="<?php echo base_url("profile");?>/<?php echo $row->username?>">
-//<?php if (strpos($row->picture, "http://") === 0) :?>
-//<img src="<?php echo $row->picture; ?>" width="75" height="75"alt="" />
-				//	<?php elseif (isset($row->picture)) : ?>
-					//<img src="resource/user/profile/<?php echo $row->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" />
-					//<?php else : ?>
-					//'<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />'
-					//<?php endif; ?>	</a>
-
-
-
-
-
-],
+			 '<?php echo $row->firstname; ?> <?php echo $row->lastname; ?>',],
         <?php endforeach; ?>
   ];
 
@@ -117,7 +99,6 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
    <form action="company/profile/join" method="post"><input type="submit" id="join" name="company"value="<?php echo $this->uri->segment(1)?>"
   style="background-image: url(resource/images/join-now1.png); border: solid 0px #000000; width: 70px; height: 32px; font-size: 0.1px;" />
   </form>-->
-
 <div class="submit_button_holder"><a href="#">Subcription Status</a></div></div>
         </div>
 
@@ -130,9 +111,20 @@ echo $this->session->flashdata('enroll');
                     <li><a href="#" rel="country1" class="selected">EMPLOYEE MAP</a></li>
                     <li><a href="#" rel="country2">EMPLOYEES</a></li>
                     <li><a href="#" rel="country3">LOCATION</a></li>
+					<?php if ($product->timesheet == 1) :?>
                     <li><a href="#" rel="country4">TIMESHEET</a></li>
-                    <li><a href="#" rel="country5">VIEW SCHEDULER</a></li>
-                    <li><a href="#" rel="country6">CREATE SCHEDULER</a></li>
+					<?php endif; ?>
+                    <li><a href="#" rel="country5">SCHEDULER</a></li>
+					<?php if ($product->schedule == 1) :?>
+                    <li><a href="#" rel="country6">HOTELLING</a></li>
+					<?php endif; ?>
+					<?php if ($product->equipment_management == 1) :?>
+                    <li><a href="#" rel="country7">EQUIPMENT</a></li>
+					<?php endif; ?>
+					<?php if ($product->stats == 1) :?>
+                    <li><a href="#" rel="country8">STATS</a></li>
+					<?php endif; ?>
+
 
                 </ul>
             </div>
@@ -140,32 +132,23 @@ echo $this->session->flashdata('enroll');
                 <div id="country1" class="tabcontent"><?php echo $this->load->view('leaders'); ?></div>
                 <div id="country2" class="tabcontent"><?php echo $this->load->view('teleworker'); ?></div>
                 <div id="country3" class="tabcontent"> <?php echo $this->load->view('location'); ?></div>
+				<?php if ($product->timesheet == 1) :?>
+                <div id="country4" class="tabcontent"><?php echo $this->load->view('timesheet'); ?></div>
+				<?php endif; ?>
+                <div id="country5" class="tabcontent"><?php echo $this->load->view('scheduler'); ?></div>
+				<?php if ($product->schedule == 1) :?>
+				<div id="country6" class="tabcontent"><strong>  <?php echo $this->load->view('hotel'); ?></strong></div>
+				<?php endif; ?>
+				<?php if ($product->equipment_management == 1) :?>
+				<div id="country7" class="tabcontent"><strong>  <?php echo $this->load->view('inventory'); ?></strong></div>
+				<?php endif; ?>
+				<?php if ($product->stats == 1) :?>
+				<div id="country8" class="tabcontent"><strong>  <?php echo $this->load->view('analytics'); ?></strong></div>
+				<?php endif; ?>
 
 
-                <div id="country4" class="tabcontent">
-                	<div class="other_shadetabs">
-                        <ul id="othertabs">
-                            <li><a href="#" rel="details1" class="selected">Location</a></li>
-                            <li class="nospace"><a href="#" rel="details2">Employees</a></li>
-                        </ul>
-                    </div>
-                    <div id="details1" class="tabcontent">
-                     	 <?php echo $this->load->view('timesheet_location'); ?>
-     
-                    </div>
-                    <div id="details2" class="tabcontent">
-                	 <?php echo $this->load->view('timesheet_employee'); ?>
-
-                    	</div>
-                        <div class="submit_button_holder"><a href="#">Submit</a></div>
-                    </div>
-                        
-                </div>
-
-                <div id="country5" class="tabcontent"><strong><?php echo $this->load->view('stats_city'); ?></strong></div>
-				<div id="country6" class="tabcontent"><strong>  <?php echo $this->load->view('scheduler_create'); ?></strong></div>
             </div>  
-        </div>
+           </div>   </div>
  
 
     <?php echo $this->load->view('footer'); ?>
