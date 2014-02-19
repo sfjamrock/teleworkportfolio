@@ -97,7 +97,7 @@ Jobsite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="jobsite">
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="hidden" name="zealot" id="zealot" /><br/>
         <input type="hidden" name="latitude" id="latitude"><br/>
 		<input type="hidden" name="longitude" id="longitude">
-		<input type="hidden" name="status" value="0">
+		<input type="hidden" name="status" value="1">
 		<input type="hidden" name="derive_fields" value="Date=%dom0%.%'/'%.%moy0%.%'/'%.%fullyear%,Time=%hour240%.%':'%.%min%" />		
 		
 <p></p>

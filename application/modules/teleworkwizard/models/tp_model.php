@@ -14,7 +14,7 @@ function clock_out($latitude_out,$longitude_out)
 
 
 		$this->db->update('timesheet', array(
-			'status'=> 1,
+			'status'=> 2,
 			'latitude_out'=> $latitude_out,
 			'longitude_out'=> $longitude_out,
 			'clock_out'=> mdate('%Y-%m-%d %H:%i:%s', now())

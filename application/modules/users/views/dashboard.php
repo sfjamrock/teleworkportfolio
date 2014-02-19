@@ -94,15 +94,17 @@ $(document).ready(function() {
 					<?php endif; ?>
 									 </a></div>
             <div class="text_holder"><strong><?php echo $account_details->firstname ?> <?php echo $account_details->lastname ?>
-				</strong><br /><br /><?php echo $account_details->city ?>, <?php echo $account_details->state ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;             
+				</strong><br /><br /><?php echo $account_details->city ?>, <?php echo $account_details->state ?> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br/>            
            	<?php if( $employer ) :?>
-							<a href="<?php echo base_url("");?><?php echo $employer->cusername?>"><?php echo $employer->name?></a>
+							<strong><?php echo $employer->name?></strong>
 						<?php endif; ?>
 </div>
             <div class="btn_holder">
-<?php if (is_null($clock->status)) :?>
+
+<?php if (empty($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status) ):?>
 <div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockin");?>">Clock-In</a></div>
-<?php elseif ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 0) :?>
+
+<?php elseif ($this->user_model->Check_user_clockin_status($this->session->userdata('account_id'))->status == 1) :?>
 <div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockout");?>">Clock-Out</a></div>
 <?php else :?>
 <div class="submit_button_holder"><a href="<?php echo base_url("teleworkwizard/clockin");?>">Clock-In</a></div>
