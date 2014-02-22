@@ -1,15 +1,22 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
 <title>Telework Analytics</title>
+
 <base href="<?php echo base_url(); ?>" />
-<link href="resource/css/style.css" rel="stylesheet" type="text/css" />
-<link href="resource/css/tabcontent.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="resource/js/tabcontent.js"></script>
+
+<link href="resource/dist/css/universalStyle.css" rel="stylesheet" type="text/css" />
+<link href="resource/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!--<link href="resource/css/style.css" rel="stylesheet" type="text/css" /> -->
+<!--<link href="resource/css/tabcontent.css" rel="stylesheet" type="text/css" /> -->
+
 <style type="text/css"> 
   html { height: 100% }
-  body { height: 50%; margin: 0; padding: 0 }
+  body { height: 50%; margin: 0; padding-bottom: 700px;  padding: 0 }
   #map_canvas { height: 100% }
 </style>
 <script type="text/javascript"
@@ -80,10 +87,13 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
 
   </script>
 
+<style>
+	body { padding-bottom: 1500px; }
+</style>
 </head><body onload="initialize()">
-<div id="main">
+<div id="main" >
     <?php echo $this->load->view('header'); ?>
-    <div class="details_holder">
+    <div class="details_holder border-shadow">
     	<div class="discussion_group_details">
         	<div class="img_holder"><a href="<?php echo base_url("");?><?php echo $company->cusername?>">
 					<?php if (strpos($company->picture, "http://") === 0) :?>
@@ -99,75 +109,65 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
    <form action="company/profile/join" method="post"><input type="submit" id="join" name="company"value="<?php echo $this->uri->segment(1)?>"
   style="background-image: url(resource/images/join-now1.png); border: solid 0px #000000; width: 70px; height: 32px; font-size: 0.1px;" />
   </form>-->
-<div class="submit_button_holder"><a href="#">Subcription Status</a></div></div>
+<div class="button"><button class="button btn-primary"><a href="#">Subcription Status</a></button></div></div>
         </div>
 
 <?php if ($this->session->flashdata('enroll')  != '');
 echo $this->session->flashdata('enroll');
 ?>
-    	<div class="main_tabholder">
-            <div class="shadetabs">
-                <ul id="countrytabs">
-                    <li><a href="#" rel="country1" class="selected">EMPLOYEE MAP</a></li>
-                    <li><a href="#" rel="country2">EMPLOYEES</a></li>
-                    <li><a href="#" rel="country3">LOCATION</a></li>
-					<?php if ($product->timesheet == 1) :?>
-                    <li><a href="#" rel="country4">TIMESHEET</a></li>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" >
+   <li class="active"><a href="#employeeMap" class="selected">EMPLOYEE MAP</a></li>
+  
+  
+  <li><a href="#employees1" data-toggle="tab">EMPLOYEES</a></li>
+  <li><a href="#location" data-toggle="tab">LOCATION</a></li>
+  <li><a href="#timesheet" data-toggle="tab">TIMESHEET</a></li>
+  <?php if ($product->timesheet == 1) :?>
+  <li><a href="#scheduler" data-toggle="tab">SCHEDULER</a></li>
 					<?php endif; ?>
-                    <li><a href="#" rel="country5">SCHEDULER</a></li>
-					<?php if ($product->schedule == 1) :?>
-                    <li><a href="#" rel="country6">HOTELLING</a></li>
+  <?php if ($product->schedule == 1) :?>
+  <li><a href="#hotelling" data-toggle="tab">HOTELLING</a></li>
 					<?php endif; ?>
 					<?php if ($product->equipment_management == 1) :?>
-                    <li><a href="#" rel="country7">EQUIPMENT</a></li>
-					<li><a href="#" rel="country8">STATS</a></li>
+  <li><a href="#equipment" data-toggle="tab">EQUIPMENT</a></li>
+  <li><a href="#stats" data-toggle="tab">STATS</a></li>
 					<?php endif; ?>
-					<!--<?php if ($product->stats == 1) :?> -->
-                    
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <div class="tab-pane active" id="employeeMap">
+                <?php echo $this->load->view('leaders'); ?>
 					
-					<!--<?php endif; ?>-->
-
-
-                </ul>
-            </div>
-            <div class="tab_content">
-                <div id="country1" class="tabcontent"><?php echo $this->load->view('leaders'); ?></div>
-                <div id="country2" class="tabcontent"><?php echo $this->load->view('teleworker'); ?></div>
-                <div id="country3" class="tabcontent"> <?php echo $this->load->view('location'); ?></div>
-				<?php if ($product->timesheet == 1) :?>
-                <div id="country4" class="tabcontent"><?php echo $this->load->view('timesheet'); ?></div>
-				<?php endif; ?>
-                <div id="country5" class="tabcontent"><?php echo $this->load->view('scheduler'); ?></div>
-				<?php if ($product->schedule == 1) :?>
-				<div id="country6" class="tabcontent"><strong>  <?php echo $this->load->view('hotel'); ?></strong></div>
-				<?php endif; ?>
-				<?php if ($product->equipment_management == 1) :?>
-				<div id="country7" class="tabcontent"><strong>  <?php echo $this->load->view('inventory'); ?></strong></div>
-				<div id="country8" class="tabcontent"><strong>  <?php echo $this->load->view('analytics'); ?></strong></div>
-				<?php endif; ?>
-				<!--<?php if ($product->stats == 1) :?>
-				<?php endif; ?>-->
-
-
-            </div>  
-           </div>   </div>
+				</div>
+  <div class="tab-pane" id="employees1">
+                <?php echo $this->load->view('teleworker'); ?>
+					
+</div>
+  <div class="tab-pane" id="location">
+                <?php echo $this->load->view('location'); ?></div>
+  <div class="tab-pane" id="timesheet">
+                <?php echo $this->load->view('timesheet'); ?></div>
+  <div class="tab-pane" id="scheduler">
+                <?php echo $this->load->view('scheduler'); ?></div>
+  <div class="tab-pane" id="hotelling">
+                <?php echo $this->load->view('hotel'); ?></div>
+  <div class="tab-pane" id="equipment">
+                <?php echo $this->load->view('inventory'); ?></div>
+  <div class="tab-pane" id="stats">
+                <?php echo $this->load->view('analytics'); ?></div>
+</div>
  
 
     <?php echo $this->load->view('footer'); ?>
-<script type="text/javascript">
-	var countries=new ddtabcontent("countrytabs")
-	countries.setpersist(true)
-	countries.setselectedClassTarget("link") //"link" or "linkparent"
-	countries.init()
-
-	var countries=new ddtabcontent("othertabs")
-	countries.setpersist(true)
-	countries.setselectedClassTarget("link") //"link" or "linkparent"
-	countries.init()
-</script>
 
 
+
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="resource/dist/js/bootstrap.min.js"></script>
 </div>
-
-
-</body></html>
+</body>
+</html>

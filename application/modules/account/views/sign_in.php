@@ -3,17 +3,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo lang('sign_in_page_name'); ?></title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Bootstrap core CSS -->
+    <link href="resource/dist/css/universalStyle.css" rel="stylesheet">
+    <link href="resource/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../dist/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 <meta name="description" content="Telework Portfolio is a online base platform that aims to facilitating data drive conversation about telework between employees and managers" />
 <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home" />
 <meta name="author" content="Telework Portfolio" />
 <base href="<?php echo base_url(); ?>" />
-<link type="text/css" rel="stylesheet" href="resource/css/style2.css" />
+<!--<link type="text/css" rel="stylesheet" href="resource/css/style2.css" />-->
 </head>
 <body>
 <div id="main">
 	<?php echo $this->load->view('header'); ?>
-    <div class="details_holder">
+    <div class="main_holder">
     
     	<div class="other_content">
         	<div class="signin_holder">

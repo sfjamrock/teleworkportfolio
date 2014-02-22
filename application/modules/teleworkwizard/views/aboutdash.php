@@ -85,7 +85,6 @@
 					<li class="divider"></li>
                 	<li><a href="#sign_up">Sign up!</a></li>
                 	
-					<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 					
 			  </ul>  
               

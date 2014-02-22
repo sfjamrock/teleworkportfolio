@@ -4,6 +4,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Welcome</title>
 		<base href="<?php echo base_url(); ?>" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!-- Bootstrap core CSS -->
+    <link href="resource/dist/css/universalStyle.css" rel="stylesheet">
+    <link href="resource/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../dist/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
 <link href="resource/css/style.css" rel="stylesheet" type="text/css" />
 

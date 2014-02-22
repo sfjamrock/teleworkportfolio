@@ -23,11 +23,19 @@
 		<script src="resource/js/jquery.hoverIntent.minified.js"></script>
 		<link rel="stylesheet" href="resource/css/ie.css"> 
 	<![endif]-->
+<style>
+	.placeholder-top
+	{
+		min-height: 50px;
+	}
+</style>	
 </head>
 <body>
+<div class="placeholder-top">&nbsp;</div>
 <div id="main">
  <?php echo $this->load->view('header'); ?>
   <div class="details_holder">
+
     <div class="benefit_buttons"><h1>About Us</h1></div>
 <div style="clear:both"></div>
 
