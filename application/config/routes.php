@@ -44,18 +44,31 @@ $route['404_override'] = 'home';
 $route['sign_up'] = "account/sign_up";
 $route['sign_in'] = "account/sign_in";
 $route['forgot_password'] = "account/forgot_password";
+$route['account/forgot_password'] = "account/forgot_password";
+$route['account/reset_password'] = "account/reset_password";
+
 $route['account_settings'] = "account/account_settings";
+$route['account/account_settings'] = "account/account_settings";
+
 $route['account/connect_facebook'] = "account/connect_facebook";
 $route['connect_facebook'] = "account/connect_facebook";
+
 $route['account/connect_google'] = "account/connect_google";
 $route['connect_google'] = "account/connect_google";
+
+$route['account/account_password'] = "account/account_password";
 $route['account_password'] = "account/account_password";
+
 $route['account_profile'] = "account/account_profile";
 $route['account/account_profile'] = "account/account_profile";
+
 $route['email'] = "email";
 $route['tickets'] = "users/tickets";
+
 $route['account_linked'] = "account/account_linked";
+
 $route['account/sign_out'] = "account/sign_out";
+
 $route['company/profile/join'] = "company/profile/join";
 $route['iptest'] = "iptest";
 $route['business'] = "business";
