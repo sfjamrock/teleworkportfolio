@@ -12,7 +12,7 @@
 <link href="resource/dist/css/universalStyle.css" rel="stylesheet" type="text/css" />
 <link href="resource/dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <!--<link href="resource/css/style.css" rel="stylesheet" type="text/css" /> -->
-<!--<link href="resource/css/tabcontent.css" rel="stylesheet" type="text/css" /> -->
+<!--<link href="resource/css/tabcontent.css" rel="stylesheet" type="text/css" />-->
 
 <style type="text/css"> 
   html { height: 100% }
@@ -91,11 +91,14 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
 	body { padding-bottom: 1500px; }
 </style>
 </head><body onload="initialize()">
-<div id="main" >
+<div id="main" class="main_main">
     <?php echo $this->load->view('header'); ?>
-    <div class="details_holder border-shadow">
-    	<div class="discussion_group_details">
-        	<div class="img_holder"><a href="<?php echo base_url("");?><?php echo $company->cusername?>">
+	<div class="main_holder">
+    <div class="details_holder border-shadow" style="max-width: 80%;">
+    	<div class="discuss_group_details">
+        	
+<!--
+			<div class="img_holder"><a href="<?php echo base_url("");?><?php echo $company->cusername?>">
 					<?php if (strpos($company->picture, "http://") === 0) :?>
 					<img src="<?php echo $company->picture; ?>" width="115" height="115"alt="" />
 					<?php elseif (isset($company->picture)) : ?>
@@ -103,24 +106,35 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
 					<?php else : ?>
 					<img src="resource/resource/images/img5.png" width="115" height="115"alt="" />
 					<?php endif; ?></a>
-			</div>
+			</div> 
+-->
             <div class="text_holder"><strong><?php echo $company->cusername?></strong><br /><br /><?php echo $company->city?>, <?php echo $company->state?></div>
             <div class="btn_holder"><!--
    <form action="company/profile/join" method="post"><input type="submit" id="join" name="company"value="<?php echo $this->uri->segment(1)?>"
   style="background-image: url(resource/images/join-now1.png); border: solid 0px #000000; width: 70px; height: 32px; font-size: 0.1px;" />
   </form>-->
-<div class="button"><button class="button btn-primary"><a href="#">Subcription Status</a></button></div></div>
+  
+ <table class="table table-striped table-bordered">
+<tr>	
+	<td style="text-align: center;">
+<a href="#">Subcription Status</a></button>
+	</td>
+</tr>
+
+</table> 
+</div>
         </div>
 
 <?php if ($this->session->flashdata('enroll')  != '');
 echo $this->session->flashdata('enroll');
 ?>
+<div class="main_main" style="padding: 10px;">	
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" >
-   <li class="active"><a href="#employeeMap" class="selected">EMPLOYEE MAP</a></li>
+   <li class="active"><a href="javascript:history.go(0)" class="selected">EMPLOYEE MAP</a></li>
   
   
-  <li><a href="#employees1" data-toggle="tab">EMPLOYEES</a></li>
+  <li><a data-target="#employees1" data-toggle="tab">EMPLOYEES</a></li>
   <li><a href="#location" data-toggle="tab">LOCATION</a></li>
   <li><a href="#timesheet" data-toggle="tab">TIMESHEET</a></li>
   <?php if ($product->timesheet == 1) :?>
@@ -137,7 +151,7 @@ echo $this->session->flashdata('enroll');
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div class="tab-pane active" id="employeeMap">
+  <div class="tab-pane active" id="&nbsp;">
                 <?php echo $this->load->view('leaders'); ?>
 					
 				</div>
@@ -160,6 +174,9 @@ echo $this->session->flashdata('enroll');
 </div>
  
 
+</div>
+</div> 
+</div>  
     <?php echo $this->load->view('footer'); ?>
 
 

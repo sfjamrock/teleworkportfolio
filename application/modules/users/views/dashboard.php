@@ -6,6 +6,24 @@
         <title>Dashboard -Telework Portfolio</title>
 		<base href="<?php echo base_url(); ?>" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/> 
+		<link rel="stylesheet" type="text/css" href="resource/dist/css/universalStyle.css" />
+		    <!-- Bootstrap core CSS -->
+    <link href="resource/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resource/dist/css/universalStyle.css" rel="stylesheet">
+<style type="text/css"> 
+  html { height: 100% }
+  body { height: 50%; margin: 0; padding-bottom: 700px;  padding: 0 }
+  #map_canvas { height: 100% }
+</style>
+
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+    <!--[if lt IE 9]><script src="../dist/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
         <meta name="description" content="Telework Portfolio is a online base platform that aims to facilitating data drive conversation about telework between employees and managers" />
         <meta name="keywords" content="Telework, Telecommute, Telecommuting, Teleworker, Teleworking, Work from Home" />
         <meta name="author" content="Telework Portfolio" />
@@ -16,7 +34,7 @@
 		<script type="text/javascript" src="resource/js/tabcontent.js"></script>
         <script src="resource/js/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="resource/js/modernizr.custom.04022.js"></script>
-<script type="text/javascript" src="resource/js/jquery-latest.js"></script>
+<script type="text/javascript" src="resource/dist/js/jquery-latest.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){	
 	//Set default open/close settings
@@ -80,7 +98,7 @@ $(document).ready(function() {
 <body>
 <?php date_default_timezone_set('America/New_York');?>
 
-<div id="main">
+<div id="main_main">
     <?php echo $this->load->view('header'); ?>   
     <div class="details_holder">
     	<div class="tms_mockup_member">
@@ -210,6 +228,14 @@ Hello World
 	countries.setselectedClassTarget("link") //"link" or "linkparent"
 	countries.init()
 </script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="resource/dist/js/bootstrap.min.js"></script>
+
+    <script src="resource/dist/assets/js/docs.min.js"></script>
+    <script src="resource/dist/js/holder.js"></script>
 </body></html>
 
 

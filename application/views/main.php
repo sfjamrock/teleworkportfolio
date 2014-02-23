@@ -21,23 +21,13 @@
 <!-- SmartAddon.com Verification --> 
 <meta name="smartaddon-verification" content="3b219f3b7e193f60d4373862942e52c1" />
 <meta name="author" content="Telework Portfolio" />
-<link rel="stylesheet" href="resource/css/style2.css" media="screen" />
+<!--<link rel="stylesheet" href="resource/css/style2.css" media="screen" />-->
 
 <!-- <link rel="stylesheet" href="resource/css/style.css" media="screen" />-->
 <link rel="icon" href="resource/images/favicon.ico" />
 <link rel="shortcut icon" href="resource/images/favicon.ico" />
 <link href="resource/dist/css/carousel.css" rel="stylesheet">
 	<style>
-
-/*	table
-	{
-	horizontal-align:middle;
-	vertical-align: middle;
-	width: 80%;
-	margin-left: auto ;
-	margin-right: auto ;
-	}
-	*/
 	.table-bg
 	{
 	background-color:#a0a0a0;
@@ -56,7 +46,7 @@
 	</style>
 </head>
 <body>
-<div id="main">
+<div id="main_main">
  <?php echo $this->load->view('header'); ?>
 <hr />
 <p></p>
@@ -88,7 +78,7 @@
         <div class="item">
           <img src="resource/images/img7.png" alt="&nbsp;">
           <div class="container">
-            <div class="carousel-caption">
+            <div class="carousel-caption" style="color:#030201">
               <h1>Geolocation tracking:</h1>
               <p>Location and time tracking</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">See the demo!</a></p>
@@ -98,7 +88,7 @@
         <div class="item">
           <img src="resource/images/img8.png" alt="&nbsp;">
           <div class="container">
-            <div class="carousel-caption">
+            <div class="carousel-caption" style="color:#030201">
               <h1>Return On Investment Reports</h1>
               <p>Know the amount that you are saving utilizing our system</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
@@ -108,7 +98,7 @@
              <div class="item">
           <img src="resource/images/img9.png" alt="&nbsp;">
           <div class="container">
-            <div class="carousel-caption">
+            <div class="carousel-caption" style="color:#030201">
               <h1>Scheduling &amp; Timesheet System</h1>
               <p>Online scheduling tools</p>
               <p><a class="btn btn-lg btn-primary" href="#" role="button">Samples</a></p>
@@ -122,8 +112,8 @@
 	<!-- /.carousel -->
 
 
-<div class="main">
-<div class="main_holder">
+<div class="main_main" >
+<div class="main_holder border-shadow round-corners">
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs">

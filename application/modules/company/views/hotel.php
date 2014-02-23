@@ -1,18 +1,43 @@
+
+<!-- <div class="table-responsive"> -->
+
 <h1 class="heading">Avaliable Hotelling Space</h1>
-                    <div class="hotelling_space">
-                    	<ul>
+<!--                    <table class="table table-bordered table-striped">
+					<tr>
+-->
+								
 							
+						<div class="row">
 							<?php $i=1 ?>
 							<?php foreach($space as $space1): ?>
     							<?php if($i==9) : ?>
-									<li class="nospace"><?php echo $space1->office?></li>
+							<!--<td bgcolor="#4659a6">-->
+								<div class="col-lg-12" >
+									<div class="square_holder">   
+									<?php echo $space1->office?>
+										
+									
+								</div>
+						
+									
+							
 								<?php else : ?>
-									<li><?php echo $space1->office?></li>
+							<!-- <td> -->
+							<div class="col-md-3" style="padding: 5px;">
+									<div class="square_holder" style="padding: 10px;"><?php echo $space1->office?>
+									
+							</div>
 							    <?php endif; ?>
 								<?php $i++ ?>
+								</div>
 	 					  	<?php endforeach; ?>
-                        </ul>
-                    </div>
+					</td>
+					</tr>		
+					</table>	
+					</div>		
+
+
+            
                     <h1 class="heading">Reserved Users List</h1>
                     <div class="hotel_reserve">
                     	<div class="table_header">
@@ -37,3 +62,14 @@
 							<?php endforeach; ?>
 
                     </div>
+					
+					
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="resource/dist/js/bootstrap.min.js"></script>
+
+    <script src="resource/dist/assets/js/docs.min.js"></script>
+    <script src="resource/dist/js/holder.js"></script>					

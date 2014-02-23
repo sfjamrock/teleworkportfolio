@@ -165,7 +165,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand inset-text" href="#">Telework Portfolio</a>
+              <a class="navbar-brand inset-text" href="#"><strong>Telework Portfolio</strong></a>
 
 
             </div>

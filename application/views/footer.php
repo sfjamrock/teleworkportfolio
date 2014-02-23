@@ -26,7 +26,7 @@
                 <li><a href="#">Terms</a></li>
 			</ul>
 			<ul	class="nav navbar-nav pull-right">
-                <li><a href="#">&copy; 2014 Telework Portfolio, LLC &middot;</a></li>
+                <li><a href="#"><strong>&copy; 2014 Telework Portfolio, LLC &middot;</strong></a></li>
           	</ul>
 			 <!-- <ul class="nav navbar-nav navbar-right">
 			  		<li><a href="<?php echo base_url("sign_in");?>">Login</a></li>
