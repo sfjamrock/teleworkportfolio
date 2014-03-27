@@ -18,7 +18,7 @@ class Clockin extends CI_Controller {
 	{
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'timesheet'));
 		}
 		if ($this->authentication->is_signed_in())
 		{
@@ -26,6 +26,10 @@ class Clockin extends CI_Controller {
 
 			
 			$userid=$this->session->userdata('account_id');
+			$cid = $this->tp_model->company_id($userid);
+			$cid = $cid ['0']->cid;
+
+			$data['location_lookup'] = $this->company_model->location_lookup($cid);
 			$data['account'] = $this->account_model->get_by_id($userid);
 			$data['account_details'] = $this->account_details_model->get_by_account_id($userid);
 

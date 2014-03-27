@@ -15,7 +15,7 @@ class Home extends CI_Controller {
 	{
 	if ($this->authentication->is_signed_in())
 		{
-			redirect('dashboard');
+			redirect('timesheet');
 		}
 		$data['account'] = $this->account_model->get_by_id($this->session->userdata('account_id'));
 		$data['group'] = $this->main_model->user_groups();

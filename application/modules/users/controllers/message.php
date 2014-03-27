@@ -17,7 +17,7 @@ class Message extends CI_Controller {
 		 $sender_id=@$_GET['user'];
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'timesheet'));
 		}
 		
 

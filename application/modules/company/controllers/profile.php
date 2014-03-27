@@ -18,13 +18,13 @@ class Profile extends CI_Controller {
 
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'timesheet'));
 		}
 		
 			// get user access rights to analytics start
 			if (!$this->company_model->manager_lookup($this->session->userdata('account_id')))
 			{
-				redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+				redirect('sign_in/?continue='.urlencode(base_url().'timesheet'));
 			}
 
 			// get user_id using username in url start 		
@@ -99,7 +99,7 @@ class Profile extends CI_Controller {
 			$data['product'] = $this->company_model->product_lookup($cid);
 			
 
-			$this->load->view('test', isset($data) ? $data : NULL);
+			$this->load->view('profile_new', isset($data) ? $data : NULL);
 
 		
 		
@@ -108,7 +108,7 @@ class Profile extends CI_Controller {
 	{
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'timesheet'));
 		}
 
 			if ($this->authentication->is_signed_in())
@@ -185,6 +185,8 @@ class Profile extends CI_Controller {
 			$this->session->set_flashdata('join', 'Thanks for applying, you will be notified once your application as been approve.');
 			redirect($_POST["company"]);
 	} 
+		
+
 	function week() 
 	{
 	$cid =22;

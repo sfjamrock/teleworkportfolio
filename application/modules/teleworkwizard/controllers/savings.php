@@ -17,7 +17,7 @@ class Savings extends CI_Controller {
 	{
  		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'timesheet'));
 		}
 		if ($this->authentication->is_signed_in())
 		{
@@ -65,14 +65,17 @@ class Savings extends CI_Controller {
 		if ($this->form_validation->run() === TRUE) 
 		{
 			$this->tp_model->clock_in($this->input->post('latitude'),$this->input->post('longitude'));
-			redirect('dashboard');
+			redirect('timesheet');
 		}
 		else
 		{
-			$latitude = '38.000001';
-			$longitude = '-77.000001';
+			$ipaddress = $_SERVER['REMOTE_ADDR'];
+			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
+			$location = json_decode($json);
+			$latitude = $location->latitude;
+			$longitude = $location->longitude;
 			$this->tp_model->clock_in($latitude,$longitude);
-			redirect('dashboard');
+			redirect('timesheet');
 		}
 		
 
@@ -93,14 +96,17 @@ class Savings extends CI_Controller {
 		if ($this->form_validation->run() === TRUE) 
 		{
 			$this->tp_model->clock_out($this->input->post('latitude_out'),$this->input->post('longitude_out'));
-			redirect('dashboard');
+			redirect('timesheet');
 		}
 		else
 		{
-			$latitude = '38.000001';
-			$longitude = '-77.000001';
-			$this->tp_model->clock_out($latitude_out,$longitude_out);
-			redirect('dashboard');
+			$ipaddress = $_SERVER['REMOTE_ADDR'];
+			$json = file_get_contents("http://freegeoip.net/json/$ipaddress");
+			$location = json_decode($json);
+			$latitude = $location->latitude;
+			$longitude = $location->longitude;
+			$this->tp_model->clock_in($latitude,$longitude);
+			redirect('timesheet');
 		}
 		
 

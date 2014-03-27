@@ -15,7 +15,7 @@ class Sign_up extends CI_Controller {
 		$this->load->config('account/account');
 		$this->load->helper(array('language', 'account/ssl', 'url'));
         $this->load->library(array('account/authentication', 'account/recaptcha', 'form_validation'));
-		$this->load->model(array('account/account_model', 'account/account_details_model'));
+		$this->load->model(array('account/account_model', 'account/account_details_model', 'company/company_model'));
 		$this->load->language(array('general', 'account/sign_up', 'account/connect_third_party'));
 	}
 	
@@ -31,7 +31,7 @@ class Sign_up extends CI_Controller {
 		maintain_ssl($this->config->item("ssl_enabled"));
 		
 		// Redirect signed in users to membership area
-		if ($this->authentication->is_signed_in()) redirect('dashboard');
+		if ($this->authentication->is_signed_in()) redirect('');
 		
 		// Check recaptcha
 		$recaptcha_result = $this->recaptcha->check();
@@ -87,7 +87,7 @@ class Sign_up extends CI_Controller {
 				
 				// Add user details (auto detected country, language, timezone, city , state)
 				$this->account_details_model->update($user_id);
-				
+					
 /*
  //send welcome email email. 
     $to =  $this->input->post('sign_up_email') ;

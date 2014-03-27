@@ -19,7 +19,7 @@ class Clockout extends CI_Controller {
 	{
 		if ( ! $this->authentication->is_signed_in()) 
 		{
-			redirect('sign_in/?continue='.urlencode(base_url().'dashboard'));
+			redirect('sign_in/?continue='.urlencode(base_url().'timesheet'));
 		}
 		if ($this->authentication->is_signed_in())
 		{

@@ -31,7 +31,7 @@ class Sign_in extends CI_Controller {
 		maintain_ssl($this->config->item("ssl_enabled"));
 		
 		// Redirect signed in users to membership area
-		if ($this->authentication->is_signed_in()) redirect('dashboard');
+		if ($this->authentication->is_signed_in()) redirect('');
 		
 		// Set default recaptcha pass
 		$recaptcha_pass = $this->session->userdata('sign_in_failed_attempts') < $this->config->item('sign_in_recaptcha_offset') ? TRUE : FALSE;
