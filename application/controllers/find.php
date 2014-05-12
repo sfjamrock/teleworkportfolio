@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class Find extends CI_Controller {
 

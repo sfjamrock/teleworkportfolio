@@ -3,17 +3,61 @@
 
 class Company_model extends CI_Model {
 
-	function product_lookup($cid)
+//Code for Company schedule View and Creation start area
+// By Sean Fuller
+// April 6, 2014
+	function user_schedule_lookup($cid,$start,$end)
 	{
-		$sql="select * from product_config	where cid = $cid";
+		$sql="SELECT  distinct(schedule.user_id) ,firstname, lastname, picture
+				FROM a3m_account_details
+				join schedule
+				on schedule.user_id = a3m_account_details.account_id 
+                join location
+				on location.location_id = schedule.location_id
+                join telework_requests
+      			on telework_requests.cid = location.cid
+				where telework_requests.user_status = 1 and schedule.cid =$cid and  DATE_FORMAT(start_time,'%Y-%m-%d')  between '$start' and '$end'";
 		$query = $this->db->query($sql);
-		return $query->row();
+		return $query->result();
 	}
 
 
-	function user_schedule_lookup($cid)
+	function location_user_schedule($cid,$start,$end)
 	{
-		$sql="select distinct(account_id),firstname, lastname 
+		$sql="SELECT distinct(schedule.location_id), name, schedule.user_id, location.cid,picture
+			FROM schedule
+			join location
+			on location.location_id = schedule.location_id
+      		join a3m_account_details
+      		on a3m_account_details.account_id = schedule.user_id
+            join telework_requests
+      		on telework_requests.cid = location.cid
+			where telework_requests.user_status = 1 and telework_requests.cid = $cid and  DATE_FORMAT(start_time,'%Y-%m-%d')  between '$start' and '$end'
+			ORDER BY start_time ASC";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
+
+	function schedule_edit_lookup($cid,$start,$end)
+	{
+		$sql="select DATE_FORMAT(schedule.created_date,'%m/%d/%Y') as date, firstname, lastname, name as location, 
+				start_time, end_time, schedule.location_id ,schedule.id, user_id 
+  				from schedule
+  				join location
+  				on location.location_id=schedule.location_id
+          		Join a3m_account_details
+				on schedule.user_id = a3m_account_details.account_id  	
+				where schedule.cid=$cid and  DATE_FORMAT(start_time,'%Y-%m-%d')  between '$start' and '$end'
+				order by schedule.created_date DESC ";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
+
+	function schedule_lookup($cid)
+	{
+		$sql="select distinct(account_id),firstname, lastname, picture 
 				from telework_requests
 				join a3m_account_details
 				on user_id = account_id
@@ -23,28 +67,125 @@ class Company_model extends CI_Model {
 	}
 
 
+	function add_schedule($cid,$admin,$lid,$user,$sdate,$edate)
+	{
+		// Add User Schedule
+		
+		$this->db->insert('schedule', array(
+			'cid' => $cid, 
+			'user_id' => $user, 
+			'location_id' => $lid,
+			'start_time'=> $sdate,
+			'end_time'=> $edate,
+			'create_user_id'=> $admin,
+			'created_date'=> mdate('%Y-%m-%d %H:%i:%s', now())
+		));
+	}
+//Code for Company schedule View and Creation end
+
+	function admin_logout()
+	{
+	$date = new DateTime(mdate('%Y-%m-%d %H:%i:%s', now())); 
+	$date->sub(new DateInterval('PT4H')); 
+		// admin logout of user 
+		$this->db->update('timesheet', array(
+			'status'=> 2,
+			'clock_out'=>$date->format('Y-m-d H:i:s'),
+			'update_user_id'=> $this->session->userdata('account_id'),
+			'updated_date'=> mdate('%Y-%m-%d %H:%i:%s', now())
+		), array(
+			'id'=> $_POST["id"]
+		)); 
+	}
+
+	function update_time()
+	{
+	$start =  mdate($_POST["time_date"]." ".$_POST["start"]);
+	$end   = mdate($_POST["time_date"]." ".$_POST["end"]);
+		// admin update of user timesheet
+		$this->db->update('timesheet', array(
+			'location_id'=> $_POST["location"],
+			'clock_in'=> $start,
+			'clock_out'=> $end,
+			'update_user_id'=> $this->session->userdata('account_id'),
+			'updated_date'=> mdate('%Y-%m-%d %H:%i:%s', now())
+
+		), array(
+			'id'=> $_POST["time_id"]
+		)); 
+	}
+
+	function delete_time()
+	{
+		// admin delete of user timesheet
+
+		$this->db->delete('timesheet', array('id' =>  $_POST["time_id"])); 
+	}
+
+	function timesheet_edit_lookup($cid,$start,$end)
+	{
+		$sql="select DATE_FORMAT(timesheet.created_date,'%m/%d/%Y') as date, firstname, lastname, 
+				name as location, DATE_FORMAT(clock_in,'%T') as clock_in, DATE_FORMAT(clock_out,'%T') as clock_out, status,timesheet.location_id as lid,timesheet.id,timesheet.user_id	
+  				from timesheet
+  				join location
+  				on location.location_id=timesheet.location_id
+          		Join a3m_account_details
+				on timesheet.user_id = a3m_account_details.account_id
+  				where cid=$cid and  DATE_FORMAT(clock_in,'%Y-%m-%d')  between '$start' and '$end'
+				order by timesheet.created_date DESC ";
+		$query = $this->db->query($sql);
+		return $query->result();
+	}
+
+	function add_location($cid)
+	{
+		// Add location to company list
+		
+		$this->db->insert('location', array(
+			'cid' => $cid, 
+			'name' => $this->input->post('location_name'),
+			'address'=> $this->input->post('location_address'),
+			'created_date'=> mdate('%Y-%m-%d %H:%i:%s', now())
+
+		));
+	}
+
+
+	function product_lookup($cid)
+	{
+		$sql="select * from product_config	where cid = $cid";
+		$query = $this->db->query($sql);
+		return $query->row();
+	}
+
+
+	
 	function user_timesheet_lookup($cid,$start,$end)
 	{
-		$sql="Select distinct(timesheet.user_id) ,firstname, lastname
+		$sql="SELECT    distinct(timesheet.user_id) ,firstname, lastname, picture
 				FROM a3m_account_details
 				join timesheet
 				on timesheet.user_id = a3m_account_details.account_id 
                 join location
 				on location.location_id = timesheet.location_id
-				where location.cid = $cid and clock_in between '$start' and '$end'";
+                join telework_requests
+      			on telework_requests.cid = location.cid
+				where telework_requests.user_status = 1 and location.cid = $cid and  DATE_FORMAT(clock_in,'%Y-%m-%d') between '$start' and '$end'";
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
 
 	function location_user_lookup($cid,$start,$end)
 	{
-		$sql="SELECT distinct( timesheet.location_id), name, user_id, cid
+		$sql="SELECT distinct( timesheet.location_id), name, timesheet.user_id, location.cid,picture
 			FROM timesheet
 			join location
 			on location.location_id = timesheet.location_id
       		join a3m_account_details
       		on a3m_account_details.account_id = timesheet.user_id
-			where cid = $cid and clock_in between '$start' and '$end'
+            join telework_requests
+      		on telework_requests.cid = location.cid
+			where telework_requests.user_status = 1 and telework_requests.cid = $cid and  DATE_FORMAT(clock_in,'%Y-%m-%d')  between '$start' and '$end'
 			ORDER BY clock_in ASC";
 		$query = $this->db->query($sql);
 		return $query->result();
@@ -56,7 +197,7 @@ class Company_model extends CI_Model {
 			FROM timesheet
 			join location
 			on location.location_id = timesheet.location_id
-			where cid = $cid and clock_in BETWEEN '$start' and '$end'
+			where cid = $cid and  DATE_FORMAT(clock_in,'%Y-%m-%d')  BETWEEN '$start' and '$end'
 			ORDER BY clock_in ASC";
 		$query = $this->db->query($sql);
 		return $query->result();
@@ -64,13 +205,15 @@ class Company_model extends CI_Model {
 
 	function timesheet_user_lookup($cid,$start,$end)
 	{
-		$sql="Select distinct(timesheet.user_id) ,firstname, lastname,location.cid,location.location_id
+		$sql="Select distinct(timesheet.user_id) ,firstname, lastname,location.cid,location.location_id, picture
 				FROM a3m_account_details
 				join timesheet
 				on timesheet.user_id = a3m_account_details.account_id 
 				join location
 				on location.location_id=timesheet.location_id
-				where location.cid = $cid and clock_in between '$start' and '$end'";
+				join telework_requests
+      			on telework_requests.cid = location.cid
+				where telework_requests.user_status = 1 and  location.cid = $cid and  DATE_FORMAT(clock_in,'%Y-%m-%d')  between '$start' and '$end'";
 		$query = $this->db->query($sql);
 		return $query->result();
 	}
@@ -195,7 +338,7 @@ class Company_model extends CI_Model {
 	
 	function map_users($cid)
 	{
-		$sql = "select timesheet.user_id,username, firstname, lastname,latitude, longitude,  location.name,picture, max(timesheet.created_date)
+		$sql = "select timesheet.user_id,username, firstname, lastname,latitude, longitude,  location.name,picture, max(timesheet.created_date) as date, clock_out, timesheet.id
 				FROM timesheet
 				join telework_requests
 				on  timesheet.user_id = telework_requests.user_id
@@ -286,8 +429,10 @@ class Company_model extends CI_Model {
 		$this->db->insert('telework_requests', array(
 			'cid' => $userA, 
 			'user_id' => $userB,
-			'user_status'=> 0,
-			'submit_date'=> mdate('%Y-%m-%d %H:%i:%s', now())
+			'user_status'=> 1,
+			'submit_date'=> mdate('%Y-%m-%d %H:%i:%s', now()),
+			'approve_date'=> mdate('%Y-%m-%d %H:%i:%s', now())
+
 
 		));
 	}

@@ -1,4 +1,4 @@
-﻿                            <legend>Telework Calculator</legend>
+                            <legend>Telework Calculator</legend>
 <p>Enter the number day requested per week for telework, the miles travelled per day to and from work, average time spent commuting to work per day (in minutes) and average amount of money spent per day.   <a href="<?php echo base_url(); ?>resource/userDoc/Sample_Telework_Saving.pdf"style="color: blue" target="_blank">Click Here</a> to see a sample telework calculation</p><div class="clear"></div><br/><br/>
 
                             <p>

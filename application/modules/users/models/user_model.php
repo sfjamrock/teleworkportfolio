@@ -6,6 +6,46 @@ class User_model extends CI_Model {
 	
 
 	// --------------------------------------------------------------------
+
+
+
+//User Schedule Area start
+
+function user_schedule ($user_id,$start,$end)
+  {
+  		$sql = "select DATE_FORMAT(start_time,'%m/%d/%Y') as date1, DATE_FORMAT(start_time,'%W') as date2, 
+				name as location, start_time, end_time	
+				from schedule
+				join location	on location.location_id=schedule.location_id
+				where user_id= $user_id  and DATE_FORMAT(start_time,'%Y-%m-%d') between '$start' and '$end'
+
+				order by schedule.created_date DESC";
+  	    $query = $this->db->query($sql);
+  		return $query->result();  
+  }
+
+
+//User Schedule Area End
+// test area start
+
+function timesheet1 ($user_id,$start,$end)
+  {
+  		$sql = "select DATE_FORMAT(timesheet.created_date,'%m/%d/%Y') as date1, DATE_FORMAT(timesheet.created_date,'%W') as date2, 
+				name as location, DATE_FORMAT(clock_in,'%T') as clock_in, DATE_FORMAT(clock_out,'%T') as clock_out, status	
+  				from timesheet
+  				join location
+  				on location.location_id=timesheet.location_id
+  				where user_id= $user_id  and DATE_FORMAT(clock_in,'%Y-%m-%d') between '$start' and '$end'
+				order by timesheet.created_date DESC";
+  	    $query = $this->db->query($sql);
+  		return $query->result();  
+  }
+
+//test area finish
+
+
+
+
 function timesheet ($user_id)
 {
 		$sql = "select DATE_FORMAT(timesheet.created_date,'%m/%d/%Y') as date1, DATE_FORMAT(timesheet.created_date,'%W') as date2, 
@@ -13,7 +53,7 @@ function timesheet ($user_id)
 				from timesheet
 				join location
 				on location.location_id=timesheet.location_id
-				where user_id= $user_id
+				where user_id= $user_id 
 				order by timesheet.created_date DESC
 				limit 20";
 	    $query = $this->db->query($sql);
@@ -24,10 +64,9 @@ function timesheet ($user_id)
 
 function Check_user_clockin_status($user_id)
 {
-		$sql = "SELECT status, clock_in FROM timesheet
+		$sql = "SELECT status FROM timesheet
 				where user_id = $user_id
-				order by clock_in DESC
-				limit 1";
+				order by created_date DESC";
 	    $query = $this->db->query($sql);
  		return $query->row();
 }
@@ -107,7 +146,7 @@ function Check_user_clockin_status($user_id)
 	
 	function employer_lookup($user_id)
 	{
-		$sql = "select name, cusername
+		$sql = "select name, cusername, company.cid
 				from company
 				join telework_requests
 				on telework_requests.cid=company.cid

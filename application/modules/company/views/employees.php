@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
 	<base href="<?php echo base_url(); ?>" />
@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="resource/images/favicon.ico" />
 	<script type="text/javascript" src="resource/js/tabcontent.js"></script>
-    <title>Company Timesheets</title>
+    <title>Employee Center</title>
     <!-- Bootstrap core CSS -->
     <link href="resource/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -30,33 +30,71 @@
   <body>
     <?php echo $this->load->view('header_new'); ?> 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">LOCATION LIST</h1>
+          <h1 class="page-header">EMPLOYEES CENTER</h1>
 		<div class="table-responsive">
             <table class="table table-striped">
               <thead>                
                 <tr>
-                  <th>Name</th>
-                  <th>Address</th>
-                  <th class="auto-style1">Action</th>
+                  <th>FIRST NAME</th>
+				  <th>LAST NAME</th>
+				  <th>EMAIL</th>
+				  <th>PASSWORD</th>
+                  <th class="auto-style1">ACTION</th>
                 </tr>
               </thead>
               <tbody>
 				<tr>
-				<form name="input" action="company/location/add_location" method="post">
+				<form name="input" action="company/employees/add_employee" method="post">
 					<input type="hidden" name="company" value="<?php echo $this->uri->segment(1) ?>">
-					<td><input type="text" name="location_name" placeholder="Location Name"></td>
-					<td><input type="text" name="location_address" placeholder="Location Address"></td>
-					<td align="center" ><button type="button" class="btn-primary" onclick="submit()">Add Location</<button></td>
+					<td><input type="text" name="sign_up_firstname" placeholder="First Name"></td>
+					<td><input type="text" name="sign_up_lastname" placeholder="Last Name"></td>
+					<td><input type="text" name="sign_up_email" placeholder="Email"></td>
+					<td><input type="password" name="sign_up_password" placeholder="Password"></td>
+					<td align="center" ><button type="button" class="btn-primary" onclick="submit()">Add Employee</<button></td>
 				</form>
 				</tr>
+             </tbody>
+            </table>
+          </div>
 
-			<?php foreach($location_lookup as $row): ?>
-				<tr>				
-					<td><?php echo $row->name; ?></td>
-					<td> <?php echo $row->address; ?></td>
-					<td align="center"><button type="button">Delete?</button></td>
-				</tr>
-			<?php endforeach; ?>
+
+		<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>                
+                <tr>
+                  <th>PICTURE</th>
+                  <th>FIRST NAME</th>
+				  <th>LAST NAME</th>
+                  <th class="auto-style1">ACTION</th>
+                </tr>
+              </thead>
+              <tbody>
+					<?php foreach($enroll as $enroll): ?>
+						<tr>
+							<td>
+								<?php if (strpos($enroll->picture, "http://") === 0) :?>
+								<img src="<?php echo $enroll->picture; ?>" width="75" height="75"alt="" />
+								<?php elseif (isset($enroll->picture)) : ?>
+								<img src="resource/user/profile/<?php echo $enroll->picture; ?>?t=<?php echo md5(time()); ?>"  width="75" height="75"alt="" /> 
+								<?php else : ?>
+								<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
+								<?php endif; ?>	 
+							</td>				
+							<td><?php echo $enroll->firstname?></td>
+							<td><?php echo $enroll->lastname?></td>
+							<td align="center">
+									<form action="" method="post">
+									<input type="hidden"  name="user"value="<?php echo $enroll->username?>"/> 
+									<button type="submit" id="accept" name="company"value="<?php echo $this->uri->segment(1)?>"/>Profile</button>
+								</form>
+
+									<form action="company/employees/reject" method="post">
+									<input type="hidden"  name="user"value="<?php echo $enroll->username?>"/> 
+									<button type="submit" id="accept" name="company"value="<?php echo $this->uri->segment(1)?>"/>Reject</button>
+								</form>
+							</td>
+						</tr>
+					<?php endforeach; ?>
 
               </tbody>
             </table>

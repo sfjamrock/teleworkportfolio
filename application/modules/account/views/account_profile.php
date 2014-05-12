@@ -64,7 +64,6 @@
 					<img src="resource/img/default-picture.gif"  width="75" height="75"alt="" />
 					<?php endif; ?>
                 </p>
-
                 <?php echo form_upload(array(
                     'name' => 'account_picture_upload',
                     'id' => 'account_picture_upload'

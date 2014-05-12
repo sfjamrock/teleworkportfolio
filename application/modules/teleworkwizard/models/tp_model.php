@@ -4,9 +4,20 @@
 class Tp_model extends CI_Model {
 
 
+function company_id($user_id)
+	{
+		$sql = "SELECT distinct(cid) FROM telework_requests where user_id = $user_id  and user_status =1";
+	    $query = $this->db->query($sql);
+ 		return $query->result();
+
+	}
+
+
 function clock_out($latitude_out,$longitude_out)
 	{
- date_default_timezone_set('America/New_York');
+$date = new DateTime(mdate('%Y-%m-%d %H:%i:%s', now())); 
+$date->sub(new DateInterval('PT4H')); 
+
 		$user_id =$this->session->userdata('account_id');
 		$sql1 = "SELECT id FROM timesheet where user_id = $user_id order by created_date desc  limit 1";
 		$query = $this->db->query($sql1);
@@ -17,8 +28,7 @@ function clock_out($latitude_out,$longitude_out)
 			'status'=> 2,
 			'latitude_out'=> $latitude_out,
 			'longitude_out'=> $longitude_out,
-			'clock_out'=> mdate('%Y-%m-%d %H:%i:%s', now())
-
+			'clock_out'=>  $date->format('Y-m-d H:i:s')
 		), array(
 			'id' => $sql2 
 			
@@ -28,6 +38,8 @@ function clock_out($latitude_out,$longitude_out)
 
 function clock_in($latitude,$longitude)
 {
+$date = new DateTime(mdate('%Y-%m-%d %H:%i:%s', now())); 
+$date->sub(new DateInterval('PT4H')); 
 
 $data = array(
 				'status' => $this->input->post('status'),
@@ -35,7 +47,7 @@ $data = array(
 				'longitude' => $longitude,
 				'user_id' => $this->session->userdata('account_id'),
 				'location_id' => $this->input->post('jobsite'),
-				'clock_in' => mdate('%Y-%m-%d %H:%i:%s', now()),
+				'clock_in' => $date->format('Y-m-d H:i:s'),
 				'created_date' => mdate('%Y-%m-%d %H:%i:%s', now())
 				);
 $query = $this->db->insert('timesheet',$data);

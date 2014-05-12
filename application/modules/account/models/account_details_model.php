@@ -117,7 +117,7 @@ class Account_details_model extends CI_Model {
 			$attributes['account_id'] = $account_id;
 			$attributes['firstname'] =$this->input->post('sign_up_firstname');
 			$attributes['lastname'] = $this->input->post('sign_up_lastname');
-			$attributes['city'] =$location->city;;
+			$attributes['city'] =$location->city;
 			$attributes['state'] =$location->region_code;
 
 			$this->db->insert('a3m_account_details', $attributes);

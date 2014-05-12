@@ -58,17 +58,6 @@
 </head>
 
 <body onload="getLocation()">
-<!--<?php
-$emaildate = date("d/m/Y"); // set email date
-$servertime = time ();
-$testtime= $servertime - 18000;
-$emailtime = date("G:i",$servertime); // set email time
-$submittime = $emailtime - 18000; // set email time
-//$user_id = "Test";
-?>
--->
-
-
 <p></p>
 <p></p>
 <form action="teleworkwizard/savings/clockin" method="post">
@@ -79,19 +68,16 @@ $submittime = $emailtime - 18000; // set email time
 <p></p>
 <div class="col-xs-12 col-md-4">
 Jobsite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="jobsite">
-												
-												  <option value="1">0347 - Ashley Stewart</option>
-												  <option value="2">0326 - Forever 21</option>
-												  <option value="3">1347 - TJ Maxx </option>
-												  <option value="4">11200 - Rite Aid </option>
-												  <option value="5">Bowie State University </option>
-												  <option value="6">Lane Bryant - Baltimore, Md</option>
-												  <option value="7">1200 - Marshalls </option>
-												  <option value="8">3813 - Rite Aid </option>
+
+					<?php foreach($location_lookup as $row): ?>
+			<option value="<?php echo $row->location_id; ?>"><?php echo $row->name; ?> - <?php echo $row->address; ?></option>
+
+					
+			<?php endforeach; ?>
 												</select>
 </div>		
 		<br>
-		
+
 		
 		
        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="hidden" name="zealot" id="zealot" /><br/>

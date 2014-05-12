@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -41,6 +41,8 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">TIMESHEET <b class="caret"></b></a>
 
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">ADMINISTRATOR <b class="caret"></b></a>
@@ -59,10 +61,6 @@
             <li><a href="#">ALERTS</a></li>
                 </ul>
 
-
-
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">TIMESHEET <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="#">SCHEDULE</a></li>
                   <li><a href="#">TASK</a></li>
@@ -104,7 +102,7 @@
             <li><a href="#">EMPLOYEES</a></li>
 
             <li><a href="#">LOCATIONS</a></li>
-            <li><a href="#">ALERTS</a></li>
+            <li><a href="#">ALETS</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -135,9 +133,9 @@
 							</form>
 						</td>
 				 </tr>
-				<?php foreach($location_lookup as $row): ?>
+				<?php foreach($user_timesheet as $row): ?>
 				<tr>
-					<td colspan="8" style="text-align:center"><?php echo $row->name; ?> -  <?php echo $row->address; ?></td>
+					<td colspan="8" style="text-align:center"><?php echo $row->firstname; ?> <?php echo $row->lastname; ?></td>
 				</tr>
 
                 <tr>
@@ -151,19 +149,19 @@
                   <th>Sat <?php echo date('m-d', strtotime($dates[6])) ?></th>
                 </tr>
               </thead>
-			  <?php foreach($timesheet_user as $row2): ?>
-		   		 <?php if($row->location_id==$row2->location_id) : ?>
+			  <?php foreach($location_user as $row2): ?>
+		   		 <?php if($row->user_id==$row2->user_id) : ?>
 
               <tbody>
                 <tr>
-                  <td  rowspan="2"><?php echo $row2->firstname; ?> <?php echo $row2->lastname; ?></td>
+                  <td  rowspan="2"><?php echo $row2->name; ?></td>
 
 					<!-- Clock In Timesheet Area Start-->
 
 						<td>						
 							<?php foreach($timesheet as $row3) : ?>
 								<?php if($row2->location_id==$row3->location_id) : ?>
-									<?php $starttime = new DateTime($row3->clock_in); ?>
+									<?php $starttime = new DateTime($row3->clock_in);  ?>
 										<?php if($starttime->format('Y-m-d') == date('Y-m-d', strtotime($dates[0]))) echo $starttime->format('h:i:s');?>
 							   	<?php else : ?>
 								<?php endif; ?>
@@ -291,10 +289,9 @@
 						<?php endforeach; ?>
 					</td>
 					 <!-- Clock In Timesheet Area End-->
-
-					<!-- TOTAL TIME Timesheet Area Start-->
-
                 </tr>
+	
+					<!-- TOTAL TIME Timesheet Area Start-->
 				<tr>
 					<td> Total Time (HH:MM:SS) :
 					</td>
@@ -367,9 +364,8 @@
 							<?php endif; ?>
 						<?php endforeach; ?>
 					</td>
-                </tr>
 					 <!-- TOTAL TIME Timesheet Area End-->
-
+                </tr>
 
 		<?php else : ?>
 		<?php endif; ?>

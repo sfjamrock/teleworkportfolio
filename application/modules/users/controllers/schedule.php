@@ -1,7 +1,6 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+﻿<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Iptest extends CI_Controller {
-
+class Schedule extends CI_Controller {
 
 	 function __construct()
 	 {
@@ -9,15 +8,27 @@ class Iptest extends CI_Controller {
 		$this->load->helper(array('language', 'url', 'form', 'account/ssl'));
 		$this->load->config('account/account');
         $this->load->library(array('account/authentication', 'form_validation'));
-		$this->load->model(array('account/account_model', 'account/account_details_model','main_model', 'company/company_model', 'users/user_model'));
+		$this->load->model(array('account/account_model', 'account/account_details_model','teleworkwizard/tp_model','user_model', 'company/company_model'));
 		$this->load->language(array('general', 'account/account_profile'));
 	 }
-function index()
-	{
-	/*NEW UI DATA REQUIPMENT TEST -START AREA*/
+	 
+	 function index()
+	 {
+		if ( ! $this->authentication->is_signed_in()) 
+		{
+			redirect('sign_in/?continue='.urlencode(base_url().'timesheet'));
+		}
+		
 
-			$cid = 22;
-			// get user_id using username in url end 
+		if ($this->authentication->is_signed_in())
+		{
+		/*NEW UI DATA REQUIPMENT TEST -START AREA*/
+
+			// get user_id and company_id start	
+			$user_id=$this->session->userdata('account_id');
+			$cid = $this->user_model->employer_lookup($user_id)->cid;
+			// get user_id and company_id end 
+
 			// get date range for timesheet start
 			if (is_null($this->input->post('week')))
 			$date = date('d-m-Y');
@@ -56,24 +67,26 @@ function index()
 
 			$start = $dates[0];
 			$end   = $dates[6];
-			// get user access rights to analytics end
-			$data['timesheet'] = $this->company_model->timesheet_lookup($cid,$start,$end);
-			$data['timesheet_user'] = $this->company_model->timesheet_user_lookup($cid,$start,$end);
-			$data['user_timesheet'] = $this->company_model->user_timesheet_lookup($cid,$start,$end);
+
+			$data['schedule'] = $this->user_model->user_schedule($user_id,$start,$end);
+
 			$data['location_user'] = $this->company_model->location_user_lookup($cid,$start,$end);
-			$data['location_lookup'] = $this->company_model->location_lookup($cid);
-			$data['scheduler'] = $this->company_model->scheduler_lookup($cid);
-			$data['scheduler_date'] = $this->company_model->scheduler_date_lookup($cid);
-			$data['scheduler_user'] = $this->company_model->scheduler_user_lookup($cid);
+			$data['product'] = $this->company_model->product_lookup($cid);
+			$data['employer'] = $this->user_model->employer_lookup($user_id);
+			$data['account'] = $this->account_model->get_by_id($user_id);
+			$data['company'] = $this->company_model->company_lookup($cid);
+			$data['account_details'] = $this->account_details_model->get_by_account_id($user_id);
 
-	/*NEW UI DATA REQUIPMENT TEST -END AREA*/
+			$this->load->view('schedule', isset($data) ? $data : NULL);
+		}
+		else
+		redirect('');
+
+	} 
+
+	 
 
 
-		$rows = $this->main_model->map_users();
-	    $data['mapchallenge'] = $rows ;
-		$this->load->view('test3', isset($data) ? $data : NULL);
-
-	}
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

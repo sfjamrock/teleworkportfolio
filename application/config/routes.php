@@ -69,6 +69,12 @@ $route['account_linked'] = "account/account_linked";
 
 $route['account/sign_out'] = "account/sign_out";
 
+$route['company/employees/add_employee'] = "company/employees/add_employee";
+
+$route['company/profile/admin_logout'] = "company/profile/admin_logout";
+$route['company/schedule/schedule_create'] = "company/schedule/schedule_create";
+$route['company/timesheets/delete_time'] = "company/timesheets/delete_time";
+$route['company/timesheets/update_time'] = "company/timesheets/update_time";
 $route['company/profile/join'] = "company/profile/join";
 $route['iptest'] = "iptest";
 $route['business'] = "business";
@@ -96,8 +102,9 @@ $route['teleworkwizard/test/testboard'] = "teleworkwizard/test/testboard";
 $route['teleworkwizard/test/aboutdash'] = "teleworkwizard/test/aboutdash";
 $route['teleworkwizard/test/contact'] = "teleworkwizard/test/contact";
 
-
-$route['dashboard'] = "users/dashboard";
+$route['timesheet'] = "users/timesheet";
+$route['schedule'] = "users/schedule";
+$route['dashboard'] = "users/timesheet";
 $route['history'] = "users/history";
 $route['message'] = "users/message";
 $route['stats'] = "users/stats";
@@ -108,17 +115,32 @@ $route['profile/(:any)'] = "users/profile/lookup";
 $route['teleworker/(:any)'] = "users/teleworker/lookup";
 $route['teleworkwizard'] = "teleworkwizard";
 $route['users/dashboard/update_status'] = "users/dashboard/update_status";
-$route['company/analytics/accept'] = "company/analytics/accept";
-$route['company/analytics/reject'] = "company/analytics/reject";
+
+$route['company/analytics/accept'] = "company/employees/accept";
+
+$route['company/employees/accept'] = "company/employees/accept";
+
+$route['company/analytics/reject'] = "company/employees/reject";
+
+$route['company/employees/reject'] = "company/employees/reject";
+
 $route['teleworkwizard/savings'] = "teleworkwizard/savings";
 $route['teleworkwizard/savings/saving_tracker'] = "teleworkwizard/savings/saving_tracker";
 $route['teleworkwizard/suggestions'] = "teleworkwizard/suggestions";
 $route['teleworkwizard/GetJobEvaluation'] = "teleworkwizard/GetJobEvaluation";
 
 
-
+$route['company/location/add_location'] = "company/location/add_location";
+$route['company/profile/schedule_create'] = "company/profile/schedule_create";
 $route['company/profile/week'] = "company/profile/week";
 $route['start'] = "company/start";
+
+
+$route['(:any)/employees'] = "company/employees";
+$route['(:any)/schedule'] = "company/schedule";
+$route['(:any)/timesheets'] = "company/timesheets";
+$route['(:any)/equipment'] = "company/equipment";
+$route['(:any)/location'] = "company/location";
 $route['(:any)/analytics'] = "company/analytics";
 $route['(:any)/dashboard'] = "company/dashboard";
 $route['(:any)'] = "company/profile";

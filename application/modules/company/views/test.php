@@ -7,6 +7,7 @@
 <link href="resource/css/style.css" rel="stylesheet" type="text/css" />
 <link href="resource/css/tabcontent.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="resource/js/tabcontent.js"></script>
+        <script src="resource/js/jquery-1.7.2.min.js"></script>
 <style type="text/css"> 
   html { height: 100% }
   body { height: 50%; margin: 0; padding: 0 }
@@ -19,6 +20,7 @@ border: 1px solid black;
 <script type="text/javascript"
   src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZQjI-dh8LgP2X8O-7LH0e2_fLomCDKKw&sensor=false">
 </script>
+
 <script type="text/javascript">
 google.maps.visualRefresh = true;
 var locations = [
@@ -83,6 +85,28 @@ google.maps.event.addListener(marker,'click', (function(marker,content,infowindo
   }
 
   </script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$("form#add_location").submit(function (){
+
+	$.ajax({
+		type: "POST",
+		url:"<?php echo site_url('company/profile/add_location'); ?>",
+		data:{ 
+				location_name: $('#location_name').attr('value'),
+				location_address: $('#location_address').attr('value'),
+				company: "<?php echo $this->uri->segment(1)?>"
+		},
+		success: function(){
+				window.location.reload();
+		
+		}
+	});
+	return false;	
+	});
+});
+</script>
+
 
 </head><body onload="initialize()">
 <div id="main">

@@ -1,22 +1,36 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Iptest extends CI_Controller {
-
+class Timesheets extends CI_Controller {
 
 	 function __construct()
 	 {
 	   parent::__construct();
 		$this->load->helper(array('language', 'url', 'form', 'account/ssl'));
 		$this->load->config('account/account');
-        $this->load->library(array('account/authentication', 'form_validation'));
-		$this->load->model(array('account/account_model', 'account/account_details_model','main_model', 'company/company_model', 'users/user_model'));
+        $this->load->library(array('account/authentication'));
+		$this->load->model(array('account/account_model', 'account/account_details_model', 'company_model', 'users/user_model'));
 		$this->load->language(array('general', 'account/account_profile'));
 	 }
-function index()
-	{
-	/*NEW UI DATA REQUIPMENT TEST -START AREA*/
+	 
+	 function index()
+	 {
 
-			$cid = 22;
+
+		if ( ! $this->authentication->is_signed_in()) 
+		{
+			redirect('sign_in/?continue='.urlencode(base_url().'timesheet'));
+		}
+		
+			// get user access rights to analytics start
+			if (!$this->company_model->manager_lookup($this->session->userdata('account_id')))
+			{
+				redirect('sign_in/?continue='.urlencode(base_url().'timesheet'));
+			}
+
+			// get user_id using username in url start 		
+			$cusername = $this->uri->segment(1);
+			$cid = $this->company_model->cid_lookup($cusername);
+			$cid = $cid ['0']->cid;
 			// get user_id using username in url end 
 			// get date range for timesheet start
 			if (is_null($this->input->post('week')))
@@ -58,22 +72,33 @@ function index()
 			$end   = $dates[6];
 			// get user access rights to analytics end
 			$data['timesheet'] = $this->company_model->timesheet_lookup($cid,$start,$end);
+			$data['timesheet1'] = $this->company_model->timesheet_edit_lookup($cid,$start,$end);
 			$data['timesheet_user'] = $this->company_model->timesheet_user_lookup($cid,$start,$end);
 			$data['user_timesheet'] = $this->company_model->user_timesheet_lookup($cid,$start,$end);
 			$data['location_user'] = $this->company_model->location_user_lookup($cid,$start,$end);
 			$data['location_lookup'] = $this->company_model->location_lookup($cid);
-			$data['scheduler'] = $this->company_model->scheduler_lookup($cid);
-			$data['scheduler_date'] = $this->company_model->scheduler_date_lookup($cid);
-			$data['scheduler_user'] = $this->company_model->scheduler_user_lookup($cid);
+			$data['company'] = $this->company_model->company_lookup($cid);
+			$data['product'] = $this->company_model->product_lookup($cid);			
 
-	/*NEW UI DATA REQUIPMENT TEST -END AREA*/
-
-
-		$rows = $this->main_model->map_users();
-	    $data['mapchallenge'] = $rows ;
-		$this->load->view('test3', isset($data) ? $data : NULL);
-
+			$this->load->view('timesheet', isset($data) ? $data : NULL);		
+		
+	 }
+	function update_time()
+	{
+			$this->company_model->update_time();
+			$this->session->set_flashdata('time has been updated');
+			$url = htmlspecialchars($_POST["company"]).'/timesheets';
+			redirect($url);
 	}
+
+	function delete_time()
+	{
+			$this->company_model->delete_time();
+			$this->session->set_flashdata('Deleted');
+			$url = htmlspecialchars($_POST["company"]).'/timesheets';
+			redirect($url);
+	}
+
 }
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

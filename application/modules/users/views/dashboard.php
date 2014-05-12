@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html >
+<!DOCTYPE html >
 <html >
 <head>
 		<meta charset="UTF-8" />
@@ -149,7 +149,7 @@ Hello World
 													 echo $date->format('H:i:s');}?></div>
                             <div class="text4"><?php $datetime1 = new DateTime($timesheet->clock_in);
 													$datetime2 = new DateTime($timesheet->clock_out);
-													if ($timesheet->status == 0)
+													if ($timesheet->status == 1)
 													{
 													}
 													else 

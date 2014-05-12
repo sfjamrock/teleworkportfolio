@@ -43,8 +43,8 @@ $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
-$db['default']['password'] = 'password1';
-$db['default']['database'] = 'telework';
+$db['default']['password'] = '';
+$db['default']['database'] = 'tpv1';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;

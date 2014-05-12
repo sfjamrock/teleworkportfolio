@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 class Sendmail extends CI_Controller {
 
